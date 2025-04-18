@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvg545j85q5u5"]
+
+[ext_resource type="Texture2D" uid="uid://crwn6h171rh0v" path="res://environment/object_resources/tileset/3 Objects/Willows/img/1.png" id="1_dlqfv"]
+
+[node name="tree" type="Node2D"]
+
+[node name="image_tree" type="Sprite2D" parent="."]
+position = Vector2(53, 67)
+texture = ExtResource("1_dlqfv")

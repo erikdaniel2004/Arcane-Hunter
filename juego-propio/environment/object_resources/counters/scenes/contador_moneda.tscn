@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://dxlfqhpqjsa8u"]
+
+[ext_resource type="Script" path="res://environment/object_resources/counters/scripts/contador_moneda.gd" id="1_4aymb"]
+[ext_resource type="Texture2D" uid="uid://c76rnnqryykwh" path="res://environment/object_resources/tileset/4 Animated objects/img/Coin.png" id="2_qgnoa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0owff"]
+atlas = ExtResource("2_qgnoa")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3167"]
+atlas = ExtResource("2_qgnoa")
+region = Rect2(10, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osqq2"]
+atlas = ExtResource("2_qgnoa")
+region = Rect2(20, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xavxw"]
+atlas = ExtResource("2_qgnoa")
+region = Rect2(30, 0, 10, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s4sjm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0owff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3167")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osqq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xavxw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="contador_moneda" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4aymb")
+
+[node name="hbox_moneda" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 152.0
+offset_bottom = 92.0
+
+[node name="lbl_moneda" type="Label" parent="hbox_moneda"]
+layout_mode = 2
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ani_moneda" type="AnimatedSprite2D" parent="hbox_moneda"]
+texture_repeat = 2
+position = Vector2(13.5, 14.5)
+scale = Vector2(3.7, 3.9)
+sprite_frames = SubResource("SpriteFrames_s4sjm")
+animation = &"idle"
+frame_progress = 0.0932402

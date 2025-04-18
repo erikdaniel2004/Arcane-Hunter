@@ -1,0 +1,294 @@
+[gd_scene load_steps=41 format=3 uid="uid://dwykw44qlawi5"]
+
+[ext_resource type="Script" path="res://characters/enemies/ene_cave/gorgon/scripts/player_gorgon.gd" id="1_l6qv8"]
+[ext_resource type="Texture2D" uid="uid://bt60vtm7vnhi" path="res://characters/enemies/ene_cave/gorgon/Gorgon_1/Attack_2.png" id="2_53hai"]
+[ext_resource type="Texture2D" uid="uid://dvnye8u13pjr2" path="res://characters/enemies/ene_cave/gorgon/Gorgon_1/Dead.png" id="3_o36m6"]
+[ext_resource type="Texture2D" uid="uid://by5s0w321kko3" path="res://characters/enemies/ene_cave/gorgon/Gorgon_1/Hurt.png" id="4_wmtj8"]
+[ext_resource type="Texture2D" uid="uid://cnysdml5y2c5a" path="res://characters/enemies/ene_cave/gorgon/Gorgon_1/Idle.png" id="5_njap7"]
+[ext_resource type="Texture2D" uid="uid://cm0j8ac1xti3a" path="res://characters/enemies/ene_cave/gorgon/Gorgon_1/Run.png" id="6_4vqvh"]
+[ext_resource type="AudioStream" uid="uid://d1d8wl680g41d" path="res://characters/enemies/ene_cave/gorgon/sounds/monster-death-grunt-131480.mp3" id="7_4flw6"]
+[ext_resource type="Texture2D" uid="uid://qhfmd1m6x53l" path="res://characters/player/img/Under.png" id="8_tddyd"]
+[ext_resource type="Texture2D" uid="uid://dgp20hdd774br" path="res://characters/player/img/Over.png" id="9_1kf52"]
+[ext_resource type="Texture2D" uid="uid://b5tuyxluli5q5" path="res://characters/player/img/Progress.png" id="10_wflu2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgstp"]
+atlas = ExtResource("2_53hai")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6nyd"]
+atlas = ExtResource("2_53hai")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yhny"]
+atlas = ExtResource("2_53hai")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pj848"]
+atlas = ExtResource("2_53hai")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dglgt"]
+atlas = ExtResource("2_53hai")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7gtp"]
+atlas = ExtResource("2_53hai")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nt25o"]
+atlas = ExtResource("2_53hai")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob8l0"]
+atlas = ExtResource("3_o36m6")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5naty"]
+atlas = ExtResource("3_o36m6")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vd84r"]
+atlas = ExtResource("3_o36m6")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlg74"]
+atlas = ExtResource("4_wmtj8")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8k72"]
+atlas = ExtResource("4_wmtj8")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r43uh"]
+atlas = ExtResource("4_wmtj8")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oflcy"]
+atlas = ExtResource("5_njap7")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_845cx"]
+atlas = ExtResource("5_njap7")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jxht"]
+atlas = ExtResource("5_njap7")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkuvy"]
+atlas = ExtResource("5_njap7")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2md2"]
+atlas = ExtResource("5_njap7")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_if1ms"]
+atlas = ExtResource("5_njap7")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nybq"]
+atlas = ExtResource("5_njap7")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1sgof"]
+atlas = ExtResource("6_4vqvh")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ypk6"]
+atlas = ExtResource("6_4vqvh")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sngl4"]
+atlas = ExtResource("6_4vqvh")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6eyou"]
+atlas = ExtResource("6_4vqvh")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2t7n"]
+atlas = ExtResource("6_4vqvh")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5w7e"]
+atlas = ExtResource("6_4vqvh")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pvtl"]
+atlas = ExtResource("6_4vqvh")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x4qd7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgstp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6nyd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yhny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pj848")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dglgt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7gtp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nt25o")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ob8l0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5naty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vd84r")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlg74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8k72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r43uh")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oflcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_845cx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jxht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkuvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2md2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_if1ms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nybq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1sgof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ypk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sngl4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6eyou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2t7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5w7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pvtl")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_naqgp"]
+size = Vector2(31, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnnu6"]
+size = Vector2(58, 84)
+
+[node name="player_gorgon" type="CharacterBody2D" groups=["enemigos"]]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_l6qv8")
+metadata/_edit_group_ = true
+
+[node name="ani_gorgon" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_x4qd7")
+animation = &"attack"
+frame = 6
+frame_progress = 1.0
+
+[node name="col_gorgon" type="CollisionShape2D" parent="."]
+position = Vector2(41.5, 32)
+shape = SubResource("RectangleShape2D_naqgp")
+
+[node name="gorgon_area" type="Area2D" parent="."]
+
+[node name="col_area" type="CollisionShape2D" parent="gorgon_area"]
+position = Vector2(43, 25)
+shape = SubResource("RectangleShape2D_bnnu6")
+
+[node name="detector_right" type="RayCast2D" parent="."]
+position = Vector2(72, 0)
+target_position = Vector2(0, 63)
+
+[node name="detector_left" type="RayCast2D" parent="."]
+position = Vector2(14, 0)
+target_position = Vector2(0, 64)
+
+[node name="timer_dead" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="timer_bar" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="timer_attack" type="Timer" parent="."]
+
+[node name="audio_gorgon" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_4flw6")
+
+[node name="bar_health" type="Node2D" parent="."]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="bar_health"]
+offset_left = -84.0
+offset_top = -78.0
+offset_right = 45.0
+offset_bottom = 32.0
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("8_tddyd")
+texture_over = ExtResource("9_1kf52")
+texture_progress = ExtResource("10_wflu2")
+tint_under = Color(0, 0, 0, 1)
+tint_over = Color(0.0627451, 0.588235, 0.345098, 1)
+
+[connection signal="body_entered" from="gorgon_area" to="." method="_on_gorgon_area_body_entered"]
+[connection signal="timeout" from="timer_bar" to="." method="_on_timer_bar_timeout"]
+[connection signal="timeout" from="timer_attack" to="." method="_on_timer_attack_timeout"]

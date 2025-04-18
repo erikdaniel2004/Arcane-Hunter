@@ -1,0 +1,115 @@
+[gd_scene load_steps=11 format=3 uid="uid://bf310qhl7at8o"]
+
+[ext_resource type="Script" path="res://menus/menu/script/menu.gd" id="1_hphn0"]
+[ext_resource type="AudioStream" uid="uid://cjm2xyolltbqj" path="res://menus/menu/music/medieval-adventure-270566.mp3" id="2_adlgu"]
+[ext_resource type="Texture2D" uid="uid://cj862apvtrktv" path="res://menus/menu/img/menu.jpg" id="3_5fvo0"]
+[ext_resource type="Texture2D" uid="uid://6dmy4wp2a215" path="res://menus/menu/img/marco_menu.png" id="4_nqurh"]
+[ext_resource type="Texture2D" uid="uid://b3boye3ex5ps1" path="res://menus/menu/img/sprite_botones_menu.png" id="5_t6lnh"]
+[ext_resource type="FontFile" uid="uid://ctpxvfa6lk3p7" path="res://menus/menu/text_resource/fuente.otf" id="6_c8eer"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gu15q"]
+atlas = ExtResource("5_t6lnh")
+region = Rect2(0, 0, 183, 68)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ota3u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gu15q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4iuve"]
+font = ExtResource("6_c8eer")
+font_size = 48
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_l2dhr"]
+font = ExtResource("6_c8eer")
+font_size = 48
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hphn0")
+
+[node name="audio_menu" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_adlgu")
+autoplay = true
+parameters/looping = true
+
+[node name="imagen_menu" type="Sprite2D" parent="."]
+position = Vector2(575, 316)
+scale = Vector2(3.84, 3.7619)
+texture = ExtResource("3_5fvo0")
+
+[node name="marco_menu" type="Sprite2D" parent="."]
+position = Vector2(568.5, 268.5)
+scale = Vector2(5.50813, 4.26829)
+texture = ExtResource("4_nqurh")
+
+[node name="marco_opcion" type="AnimatedSprite2D" parent="."]
+position = Vector2(566, 224)
+scale = Vector2(1.70219, 2)
+sprite_frames = SubResource("SpriteFrames_ota3u")
+
+[node name="marco_opcion2" type="AnimatedSprite2D" parent="."]
+position = Vector2(566, 320)
+scale = Vector2(1.70219, 2)
+sprite_frames = SubResource("SpriteFrames_ota3u")
+
+[node name="vbox_menu" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 478.0
+offset_top = 96.0
+offset_right = 665.0
+offset_bottom = 396.0
+theme_override_constants/separation = 66
+
+[node name="lbl_opciones" type="Label" parent="vbox_menu"]
+layout_mode = 2
+text = "Opciones
+"
+label_settings = SubResource("LabelSettings_4iuve")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="btn_start" type="Button" parent="vbox_menu"]
+layout_mode = 2
+text = "Iniciar
+"
+flat = true
+
+[node name="btn_exit" type="Button" parent="vbox_menu"]
+layout_mode = 2
+text = "Salir
+"
+flat = true
+
+[node name="lbl_nombre_juego" type="Label" parent="."]
+layout_mode = 2
+offset_left = 411.0
+offset_top = 560.0
+offset_right = 769.0
+offset_bottom = 624.0
+text = "Arcane Hunter"
+label_settings = SubResource("LabelSettings_l2dhr")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="vbox_menu/btn_start" to="." method="_on_btn_start_pressed"]
+[connection signal="pressed" from="vbox_menu/btn_exit" to="." method="_on_btn_end_pressed"]

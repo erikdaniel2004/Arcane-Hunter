@@ -1,0 +1,68 @@
+[gd_scene load_steps=11 format=3 uid="uid://bkk3boxpsoi28"]
+
+[ext_resource type="Script" path="res://environment/object_resources/tileset_swamp/4 Animated objects/scripts/rune.gd" id="1_db4ok"]
+[ext_resource type="Texture2D" uid="uid://sobxl3n1vn0g" path="res://environment/object_resources/tileset_swamp/4 Animated objects/img/Rune.png" id="1_o14v8"]
+[ext_resource type="AudioStream" uid="uid://dtskcgfa70mtr" path="res://environment/object_resources/tileset_swamp/4 Animated objects/audio/retro-coin-4-236671.mp3" id="3_wgxam"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ax3gk"]
+atlas = ExtResource("1_o14v8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agyuc"]
+atlas = ExtResource("1_o14v8")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erv4t"]
+atlas = ExtResource("1_o14v8")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mapnt"]
+atlas = ExtResource("1_o14v8")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bhodb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ax3gk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agyuc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_erv4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mapnt")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_70ix4"]
+radius = 3.0
+height = 10.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0q5ot"]
+radius = 16.0312
+
+[node name="runa" type="RigidBody2D"]
+script = ExtResource("1_db4ok")
+
+[node name="ani_runa" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bhodb")
+animation = &"idle"
+
+[node name="col_runa" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
+shape = SubResource("CapsuleShape2D_70ix4")
+
+[node name="area_runa" type="Area2D" parent="."]
+
+[node name="col_area" type="CollisionShape2D" parent="area_runa"]
+shape = SubResource("CircleShape2D_0q5ot")
+
+[node name="audio_runa" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(541, 297)
+stream = ExtResource("3_wgxam")

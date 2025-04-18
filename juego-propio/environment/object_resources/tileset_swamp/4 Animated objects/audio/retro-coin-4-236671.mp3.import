@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dtskcgfa70mtr"
+path="res://.godot/imported/retro-coin-4-236671.mp3-e1b86863257a8816f0c789a406eb69a3.mp3str"
+
+[deps]
+
+source_file="res://environment/object_resources/tileset_swamp/4 Animated objects/audio/retro-coin-4-236671.mp3"
+dest_files=["res://.godot/imported/retro-coin-4-236671.mp3-e1b86863257a8816f0c789a406eb69a3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

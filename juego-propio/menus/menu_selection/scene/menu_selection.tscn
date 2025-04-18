@@ -1,0 +1,123 @@
+[gd_scene load_steps=11 format=3 uid="uid://c2avhp51q28y4"]
+
+[ext_resource type="Script" path="res://menus/menu_selection/script/menu_selection.gd" id="1_qpvc5"]
+[ext_resource type="AudioStream" uid="uid://tku240roit3h" path="res://menus/menu_selection/music/medieval-adventure-270567.mp3" id="1_r1j1n"]
+[ext_resource type="Texture2D" uid="uid://cj862apvtrktv" path="res://menus/menu/img/menu.jpg" id="2_v2gsm"]
+[ext_resource type="Texture2D" uid="uid://6dmy4wp2a215" path="res://menus/menu/img/marco_menu.png" id="3_c0p77"]
+[ext_resource type="Texture2D" uid="uid://fhjhobfau628" path="res://menus/menu_selection/img/levels.png" id="4_hpgr7"]
+[ext_resource type="Texture2D" uid="uid://7tm6xubfmup0" path="res://menus/menu_selection/img/level_closed.png" id="5_hs2he"]
+[ext_resource type="FontFile" uid="uid://ctpxvfa6lk3p7" path="res://menus/menu/text_resource/fuente.otf" id="6_xqda6"]
+[ext_resource type="Texture2D" uid="uid://w15mqkncq0uh" path="res://menus/menu_selection/img/boton_volver.png" id="7_rpsn6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_el0bc"]
+font = ExtResource("6_xqda6")
+font_size = 48
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_q6h11"]
+font = ExtResource("6_xqda6")
+font_size = 48
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="menu_selection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qpvc5")
+
+[node name="audio_menu" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_r1j1n")
+autoplay = true
+parameters/looping = true
+
+[node name="imagen_menu" type="Sprite2D" parent="."]
+position = Vector2(575, 316)
+scale = Vector2(3.84, 3.7619)
+texture = ExtResource("2_v2gsm")
+
+[node name="marco_menu" type="Sprite2D" parent="."]
+position = Vector2(568.5, 268.5)
+scale = Vector2(5.50813, 4.26829)
+texture = ExtResource("3_c0p77")
+
+[node name="imagen_niveles" type="Sprite2D" parent="."]
+position = Vector2(577, 302)
+texture = ExtResource("4_hpgr7")
+
+[node name="imagen_nivel_cerrado" type="Sprite2D" parent="."]
+position = Vector2(505, 136.5)
+scale = Vector2(1.02521, 1.0625)
+texture = ExtResource("5_hs2he")
+
+[node name="imagen_marco_salir" type="Sprite2D" parent="."]
+position = Vector2(923.5, 288)
+scale = Vector2(0.448889, 0.417778)
+texture = ExtResource("7_rpsn6")
+
+[node name="lbl_opciones" type="Label" parent="."]
+layout_mode = 2
+offset_left = 130.0
+offset_top = 260.0
+offset_right = 317.0
+offset_bottom = 391.0
+text = "Niveles
+
+"
+label_settings = SubResource("LabelSettings_el0bc")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="vbox_menu" type="VBoxContainer" parent="."]
+offset_left = 315.0
+offset_top = 71.0
+offset_right = 413.0
+offset_bottom = 168.0
+theme_override_constants/separation = 66
+
+[node name="btn_start" type="Button" parent="vbox_menu"]
+layout_mode = 2
+text = "
+
+
+
+"
+flat = true
+
+[node name="vbox_salir" type="VBoxContainer" parent="."]
+offset_left = 879.0
+offset_top = 238.0
+offset_right = 977.0
+offset_bottom = 338.0
+theme_override_constants/separation = 66
+
+[node name="btn_salir" type="Button" parent="vbox_salir"]
+layout_mode = 2
+text = "
+
+
+
+"
+flat = true
+
+[node name="lbl_nombre_juego" type="Label" parent="."]
+offset_left = 411.0
+offset_top = 560.0
+offset_right = 769.0
+offset_bottom = 624.0
+text = "Arcane Hunter"
+label_settings = SubResource("LabelSettings_q6h11")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="vbox_menu/btn_start" to="." method="_on_btn_start_pressed"]
+[connection signal="pressed" from="vbox_salir/btn_salir" to="." method="_on_btn_salir_pressed"]

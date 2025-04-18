@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://2e8qpv1lbpfg"]
+
+[ext_resource type="Script" path="res://environment/object_resources/counters/scripts/contador_runas.gd" id="1_y0c8a"]
+[ext_resource type="Texture2D" uid="uid://sobxl3n1vn0g" path="res://environment/object_resources/tileset/4 Animated objects/img/Rune.png" id="2_1kglv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbirw"]
+atlas = ExtResource("2_1kglv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rv0b4"]
+atlas = ExtResource("2_1kglv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dykd"]
+atlas = ExtResource("2_1kglv")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ka5r"]
+atlas = ExtResource("2_1kglv")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g8bs6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbirw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rv0b4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dykd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ka5r")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="contador_runa" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y0c8a")
+
+[node name="hbox_runa" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 152.0
+offset_bottom = 95.0
+
+[node name="lbl_runa" type="Label" parent="hbox_runa"]
+layout_mode = 2
+text = "
+"
+
+[node name="ani_runa" type="AnimatedSprite2D" parent="hbox_runa"]
+texture_repeat = 2
+position = Vector2(11, 14)
+scale = Vector2(2.5, 2.125)
+sprite_frames = SubResource("SpriteFrames_g8bs6")
+animation = &"idle"
+frame_progress = 0.232012

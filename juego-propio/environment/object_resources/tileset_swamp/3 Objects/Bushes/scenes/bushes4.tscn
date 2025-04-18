@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwds4dmh8uf4g"]
+
+[ext_resource type="Texture2D" uid="uid://k0m6kqqjrds2" path="res://environment/object_resources/tileset/3 Objects/Bushes/img/4.png" id="1_0rj1e"]
+
+[node name="bushe4" type="Node2D"]
+
+[node name="img_bushe" type="Sprite2D" parent="."]
+texture = ExtResource("1_0rj1e")

@@ -1,0 +1,42 @@
+Characters
+----------
+Generic animals: https://craftpix.net/freebies/free-street-animal-pixel-art-asset-pack/?num=33&count=719&sq=pixel&pos=0 ******************************
+Cave skeleton enemies: https://craftpix.net/freebies/free-skeleton-pixel-art-sprite-sheets/?num=26&count=719&sq=pixel&pos=4 ******************************
+Desert enemies: https://craftpix.net/freebies/free-desert-enemy-sprite-sheets-pixel-art/ ******************************
+Snow enemies: https://craftpix.net/product/snow-enemy-character-sprites-pixel-art/?num=1&count=364&sq=snow%20enemies&pos=1 ******************************
+Water enemies: https://craftpix.net/freebies/octopus-jellyfish-shark-and-turtle-free-sprite-pixel-art/ ******************************
+Water stones enemies: https://craftpix.net/freebies/free-underwater-enemies-pixel-art-character-pack/ ******************************
+Swamp enemies: https://craftpix.net/product/swamp-enemies-sprite-sheets-pixel-art/ ******************************
+Fishing village: https://craftpix.net/freebies/free-fishing-game-assets-pixel-art-pack/ ******************************
+Main characters: https://craftpix.net/freebies/free-3-character-sprite-sheets-pixel-art/ ******************************
+Bosses_swamp: https://craftpix.net/freebies/free-swamp-bosses-pixel-art-character-pack/ ******************************
+Bosses_ocean: https://craftpix.net/product/water-monsters-pixel-art-sprite-sheet-pack/ ******************************
+Bosses_snow: https://craftpix.net/product/snow-bosses-game-character-pixel-art-pack/?num=1&count=70&sq=snow%20bosses&pos=0 ******************************
+Bosses_cave: https://craftpix.net/product/cave-bosses-pixel-art-game-sprites/?num=1&count=69&sq=cave%20bosses&pos=0 ******************************
+Bosses_desert: https://craftpix.net/product/desert-bosses-pixel-art-character-pack/?num=1&count=69&sq=desert%20bosses&pos=0
+******************************
+
+Tilesets
+--------
+Desert: https://craftpix.net/product/desert-2d-tileset-pixel-art/?num=1&count=210&sq=tileset%20desert&pos=0 ******************************
+Ocean: https://craftpix.net/product/water-pack-tileset-for-platformer-pixel-art/?num=1&count=194&sq=tileset%20ocean&pos=2 ******************************
+Snow: https://craftpix.net/product/snow-2d-game-tileset-pixel-art/?num=1&count=209&sq=tileset%20snow&pos=0 ******************************
+Cave: https://craftpix.net/product/platformer-pixel-art-cave-2d-tileset/?num=1&count=204&sq=tileset%20castle&pos=1 ******************************
+Swamp: https://craftpix.net/freebies/free-swamp-game-tileset-pixel-art/?num=1&count=228&sq=tileset%20forest&pos=11 ******************************
+
+Portraits
+---------
+Bosses_cave: https://craftpix.net/product/bosses-portraits-for-dialogues-pixel-art/?num=1&count=87&sq=bosses%20portraits&pos=1
+Bosses_snow: https://craftpix.net/freebies/free-boss-portrait-pack-6/
+Bosses_desert: https://craftpix.net/product/monster-portraits-pixel-art/?num=1&count=87&sq=bosses%20portraits&pos=0
+Bosses_swamp: https://craftpix.net/product/monster-portraits-with-emotions/
+
+Effects
+-------
+Explosion effects: https://craftpix.net/freebies/11-free-pixel-art-explosion-sprites/?num=32&count=719&sq=pixel&pos=10 ******************************
+
+Interface
+---------
+Interface: https://craftpix.net/product/game-user-interface-pixel-art/ ******************************
+Health bar: https://danopix.itch.io/health-bar-by-dano (Author: DanoPix) ******************************
+Font: https://www.dafont.com/pixellari.font ******************************
