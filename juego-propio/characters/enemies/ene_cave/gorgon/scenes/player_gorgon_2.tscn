@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://u5xkaygt2ix6"]
+[gd_scene load_steps=41 format=3 uid="uid://u5xkaygt2ix6"]
 
 [ext_resource type="Texture2D" uid="uid://btxxa3gxj1ji0" path="res://characters/enemies/ene_cave/gorgon/Gorgon_2/Attack_2.png" id="1_2fjba"]
 [ext_resource type="Script" path="res://characters/enemies/ene_cave/gorgon/scripts/player_gorgon_2.gd" id="1_jxq3k"]
@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://c2kg4ojy6qnux" path="res://characters/enemies/ene_cave/gorgon/Gorgon_2/Hurt.png" id="3_m1lwc"]
 [ext_resource type="Texture2D" uid="uid://c5l5a4u5h8wwu" path="res://characters/enemies/ene_cave/gorgon/Gorgon_2/Idle.png" id="4_ng460"]
 [ext_resource type="Texture2D" uid="uid://bqrpjrf4keo2y" path="res://characters/enemies/ene_cave/gorgon/Gorgon_2/Run.png" id="5_sd7f4"]
+[ext_resource type="AudioStream" uid="uid://d1d8wl680g41d" path="res://characters/enemies/ene_cave/gorgon/sounds/monster-death-grunt-131480.mp3" id="7_m1y87"]
+[ext_resource type="Texture2D" uid="uid://qhfmd1m6x53l" path="res://characters/player/img/Under.png" id="8_gi4bt"]
+[ext_resource type="Texture2D" uid="uid://dgp20hdd774br" path="res://characters/player/img/Over.png" id="9_ixsgx"]
+[ext_resource type="Texture2D" uid="uid://b5tuyxluli5q5" path="res://characters/player/img/Progress.png" id="10_fhkwy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7gbep"]
 atlas = ExtResource("1_2fjba")
@@ -153,7 +157,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bdroh")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead",
 "speed": 4.0
 }, {
@@ -167,7 +171,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ha5tj")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 4.0
 }, {
@@ -230,7 +234,7 @@ size = Vector2(31, 56)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_blkoo"]
 size = Vector2(58, 84)
 
-[node name="player_gorgon2" type="CharacterBody2D"]
+[node name="player_gorgon2" type="CharacterBody2D" groups=["enemigos"]]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_jxq3k")
 metadata/_edit_group_ = true
@@ -257,6 +261,32 @@ target_position = Vector2(0, 63)
 position = Vector2(14, 0)
 target_position = Vector2(0, 64)
 
-[node name="time" type="Timer" parent="."]
+[node name="timer_dead" type="Timer" parent="."]
+
+[node name="timer_bar" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="timer_attack" type="Timer" parent="."]
+
+[node name="audio_gorgon" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_m1y87")
+
+[node name="bar_health" type="Node2D" parent="."]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="bar_health"]
+offset_left = -84.0
+offset_top = -78.0
+offset_right = 45.0
+offset_bottom = 32.0
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("8_gi4bt")
+texture_over = ExtResource("9_ixsgx")
+texture_progress = ExtResource("10_fhkwy")
+tint_under = Color(0, 0, 0, 1)
+tint_over = Color(0.0627451, 0.588235, 0.345098, 1)
+metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="gorgon_area" to="." method="_on_gorgon_area_body_entered"]
+[connection signal="timeout" from="timer_bar" to="." method="_on_timer_bar_timeout"]
+[connection signal="timeout" from="timer_attack" to="." method="_on_timer_attack_timeout"]

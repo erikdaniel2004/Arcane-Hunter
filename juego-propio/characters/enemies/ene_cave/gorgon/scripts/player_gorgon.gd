@@ -57,6 +57,12 @@ func iniciar_ataque():
 	is_attacking = true
 	puede_atacar = false  # Se desactiva el permiso de atacar hasta que el jugador se salga
 	velocity.x = 0
+	
+	if jugador_detectado.global_position.x < global_position.x:
+		ani_gorgon.flip_h = true
+	else:
+		ani_gorgon.flip_h = false
+		
 	ani_gorgon.play("attack")
 
 	# Si el jugador tiene el método recibir_dano, se le inflige daño

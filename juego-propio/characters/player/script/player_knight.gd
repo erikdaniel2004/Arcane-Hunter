@@ -8,6 +8,8 @@ extends CharacterBody2D
 @export var air_acceleration = 1500
 @export var air_friction = 700
 @export var max_health := 100
+@export var death_limit_stop_x := 1800
+@export var death_limit_stop_y := 1500
 
 
 @onready var ani_player = $ani_player
@@ -22,6 +24,9 @@ extends CharacterBody2D
 
 # Referencia al contador de runas
 @onready var contador2: Control = $CanvasLayer2/contador_runa
+
+# Variable para desactivar la muerte por caida tras pasar un punto de control
+var muerte_por_caida_desactivada := false
 
 # Contadores
 var monedas = 0
@@ -56,14 +61,17 @@ func handle_acceleration(input_axis, delta):
 		velocity.x = move_toward(velocity.x, speed * input_axis, acceleration * delta)
 
 func _physics_process(delta: float) -> void:
+	if not muerte_por_caida_desactivada and global_position.x >= death_limit_stop_x and global_position.y >= death_limit_stop_y:
+		muerte_por_caida_desactivada = true
+
 	if esta_herido:
 		move_and_slide()
 		return
 
 	var input_axis = Input.get_axis("mover_izquierda", "mover_derecha")
 
-	# Si cae por debajo del límite, muere
-	if global_position.y > death_y_threshold:
+	# Si cae por debajo del límite y no ha pasado el punto donde se desactiva la caída
+	if not muerte_por_caida_desactivada and global_position.y > death_y_threshold:
 		morir()
 
 	apply_gravity(delta)

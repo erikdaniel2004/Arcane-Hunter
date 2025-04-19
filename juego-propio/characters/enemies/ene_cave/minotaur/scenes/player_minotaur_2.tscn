@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://ue26kux2kaoe"]
+[gd_scene load_steps=49 format=3 uid="uid://ue26kux2kaoe"]
 
 [ext_resource type="Script" path="res://characters/enemies/ene_cave/minotaur/scripts/player_minotaur_2.gd" id="1_ji72s"]
 [ext_resource type="Texture2D" uid="uid://cqe3sybeyyhvk" path="res://characters/enemies/ene_cave/minotaur/Minotaur_2/Attack.png" id="1_r0mo6"]
@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://c2vfbge4f1gbf" path="res://characters/enemies/ene_cave/minotaur/Minotaur_2/Hurt.png" id="3_rdn58"]
 [ext_resource type="Texture2D" uid="uid://hy68d51bqny" path="res://characters/enemies/ene_cave/minotaur/Minotaur_2/Idle.png" id="4_cbxbi"]
 [ext_resource type="Texture2D" uid="uid://b74yo6iwis5wo" path="res://characters/enemies/ene_cave/minotaur/Minotaur_2/Walk.png" id="5_t1umo"]
+[ext_resource type="AudioStream" uid="uid://cc0c7a4tl0l4d" path="res://characters/enemies/ene_cave/minotaur/sounds/monster-growl-140377.mp3" id="7_1lasn"]
+[ext_resource type="Texture2D" uid="uid://qhfmd1m6x53l" path="res://characters/player/img/Under.png" id="8_rnlfv"]
+[ext_resource type="Texture2D" uid="uid://dgp20hdd774br" path="res://characters/player/img/Over.png" id="9_ewoul"]
+[ext_resource type="Texture2D" uid="uid://b5tuyxluli5q5" path="res://characters/player/img/Progress.png" id="10_25eak"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5vr7u"]
 atlas = ExtResource("1_r0mo6")
@@ -185,7 +189,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_81bh1")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead",
 "speed": 6.0
 }, {
@@ -199,7 +203,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2rvrf")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 4.0
 }, {
@@ -276,7 +280,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_k7q23")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"run",
 "speed": 13.0
 }]
 
@@ -286,14 +290,14 @@ size = Vector2(24, 68)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vc21t"]
 size = Vector2(60, 84)
 
-[node name="player_minotaur2" type="CharacterBody2D"]
+[node name="player_minotaur2" type="CharacterBody2D" groups=["enemigos"]]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_ji72s")
 metadata/_edit_group_ = true
 
 [node name="ani_minotaur" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8nd02")
-animation = &"walk"
+animation = &"run"
 
 [node name="col_minotaur" type="CollisionShape2D" parent="."]
 position = Vector2(2, 30)
@@ -313,6 +317,33 @@ target_position = Vector2(0, 82)
 position = Vector2(-28, -16)
 target_position = Vector2(0, 82)
 
-[node name="time" type="Timer" parent="."]
+[node name="timer_dead" type="Timer" parent="."]
+
+[node name="timer_bar" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="timer_attack" type="Timer" parent="."]
+
+[node name="audio_minotaur" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_1lasn")
+
+[node name="bar_health" type="Node2D" parent="."]
+position = Vector2(10, 0)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="bar_health"]
+offset_left = -84.0
+offset_top = -78.0
+offset_right = 45.0
+offset_bottom = 32.0
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("8_rnlfv")
+texture_over = ExtResource("9_ewoul")
+texture_progress = ExtResource("10_25eak")
+tint_under = Color(0, 0, 0, 1)
+tint_over = Color(0.0627451, 0.588235, 0.345098, 1)
+metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="minotaur_area" to="." method="_on_minotaur_area_body_entered"]
+[connection signal="timeout" from="timer_bar" to="." method="_on_timer_bar_timeout"]
+[connection signal="timeout" from="timer_attack" to="." method="_on_timer_attack_timeout"]

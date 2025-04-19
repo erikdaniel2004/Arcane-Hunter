@@ -40,3 +40,4 @@ Interface
 Interface: https://craftpix.net/product/game-user-interface-pixel-art/ ******************************
 Health bar: https://danopix.itch.io/health-bar-by-dano (Author: DanoPix) ******************************
 Font: https://www.dafont.com/pixellari.font ******************************
+Sounds: https://pixabay.com/es/sound-effects/search/ ******************************

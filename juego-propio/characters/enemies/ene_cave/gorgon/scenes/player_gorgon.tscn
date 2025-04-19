@@ -228,10 +228,10 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_naqgp"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_olgqy"]
 size = Vector2(31, 56)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnnu6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8s6pf"]
 size = Vector2(58, 84)
 
 [node name="player_gorgon" type="CharacterBody2D" groups=["enemigos"]]
@@ -241,19 +241,17 @@ metadata/_edit_group_ = true
 
 [node name="ani_gorgon" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_x4qd7")
-animation = &"attack"
-frame = 6
-frame_progress = 1.0
+animation = &"run"
 
 [node name="col_gorgon" type="CollisionShape2D" parent="."]
 position = Vector2(41.5, 32)
-shape = SubResource("RectangleShape2D_naqgp")
+shape = SubResource("RectangleShape2D_olgqy")
 
 [node name="gorgon_area" type="Area2D" parent="."]
 
 [node name="col_area" type="CollisionShape2D" parent="gorgon_area"]
 position = Vector2(43, 25)
-shape = SubResource("RectangleShape2D_bnnu6")
+shape = SubResource("RectangleShape2D_8s6pf")
 
 [node name="detector_right" type="RayCast2D" parent="."]
 position = Vector2(72, 0)
@@ -264,7 +262,6 @@ position = Vector2(14, 0)
 target_position = Vector2(0, 64)
 
 [node name="timer_dead" type="Timer" parent="."]
-wait_time = 2.0
 
 [node name="timer_bar" type="Timer" parent="."]
 wait_time = 3.0
@@ -288,7 +285,7 @@ texture_over = ExtResource("9_1kf52")
 texture_progress = ExtResource("10_wflu2")
 tint_under = Color(0, 0, 0, 1)
 tint_over = Color(0.0627451, 0.588235, 0.345098, 1)
+metadata/_edit_use_anchors_ = true
 
-[connection signal="body_entered" from="gorgon_area" to="." method="_on_gorgon_area_body_entered"]
 [connection signal="timeout" from="timer_bar" to="." method="_on_timer_bar_timeout"]
 [connection signal="timeout" from="timer_attack" to="." method="_on_timer_attack_timeout"]
