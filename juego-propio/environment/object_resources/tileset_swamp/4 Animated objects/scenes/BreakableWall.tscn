@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtjxmsyd8rse5"]
+
+[ext_resource type="Script" path="res://environment/object_resources/tileset_swamp/4 Animated objects/scripts/breakable_wall.gd" id="1_68al1"]
+[ext_resource type="Texture2D" uid="uid://c2kwrevegttj4" path="res://environment/object_resources/tileset_swamp/4 Animated objects/img/wall.png" id="2_2utg7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m7j3l"]
+size = Vector2(15, 131)
+
+[node name="BreakableWall" type="StaticBody2D" groups=["breakable_wall"]]
+script = ExtResource("1_68al1")
+
+[node name="image" type="Sprite2D" parent="."]
+position = Vector2(7.5, 62.75)
+scale = Vector2(0.5, 0.511673)
+texture = ExtResource("2_2utg7")
+
+[node name="particles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 1000
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 4
+emission_points = PackedVector2Array(5, 2, 5, 2, 5, 2)
+emission_colors = PackedColorArray(0, 0.658824, 0, 1, 0, 0, 0, 1, 0.155157, 0.46476, 0.432798, 1)
+particle_flag_align_y = true
+spread = 180.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 200.0
+initial_velocity_max = 308.22
+scale_amount_max = 2.5
+
+[node name="col_wall" type="CollisionShape2D" parent="."]
+position = Vector2(7.5, 62.5)
+shape = SubResource("RectangleShape2D_m7j3l")

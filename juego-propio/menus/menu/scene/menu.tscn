@@ -1,29 +1,24 @@
-[gd_scene load_steps=11 format=3 uid="uid://bf310qhl7at8o"]
+[gd_scene load_steps=18 format=3 uid="uid://bf310qhl7at8o"]
 
 [ext_resource type="Script" path="res://menus/menu/script/menu.gd" id="1_hphn0"]
 [ext_resource type="AudioStream" uid="uid://cjm2xyolltbqj" path="res://menus/menu/music/medieval-adventure-270566.mp3" id="2_adlgu"]
 [ext_resource type="Texture2D" uid="uid://cj862apvtrktv" path="res://menus/menu/img/menu.jpg" id="3_5fvo0"]
-[ext_resource type="Texture2D" uid="uid://6dmy4wp2a215" path="res://menus/menu/img/marco_menu.png" id="4_nqurh"]
-[ext_resource type="Texture2D" uid="uid://b3boye3ex5ps1" path="res://menus/menu/img/sprite_botones_menu.png" id="5_t6lnh"]
-[ext_resource type="FontFile" uid="uid://ctpxvfa6lk3p7" path="res://menus/menu/text_resource/fuente.otf" id="6_c8eer"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gu15q"]
-atlas = ExtResource("5_t6lnh")
-region = Rect2(0, 0, 183, 68)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ota3u"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gu15q")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://cvpiqbckk7gv" path="res://interface/5 Logo/Logo.png" id="4_t7282"]
+[ext_resource type="Texture2D" uid="uid://cx7gdagkveevd" path="res://interface/2 Bars/Button3.png" id="5_a6ihc"]
+[ext_resource type="FontFile" uid="uid://cek71hj6bulak" path="res://interface/7 General Font/Pixellari.ttf" id="6_uhv57"]
+[ext_resource type="FontFile" uid="uid://b0ovcqsgsdr2m" path="res://interface/6 Font/CraftPixNet Survival Kit.otf" id="7_jeblv"]
+[ext_resource type="Texture2D" uid="uid://7jw6a7aa7gih" path="res://interface/3 Icons/Icon with back/Icon_01.png" id="8_kocx4"]
+[ext_resource type="Texture2D" uid="uid://mxt5b82iph4j" path="res://interface/3 Icons/Icon with back/Icon_13.png" id="9_bxvom"]
+[ext_resource type="Texture2D" uid="uid://crumik5o8afto" path="res://interface/3 Icons/Icons yellow/Icon_30.png" id="10_2sbbi"]
+[ext_resource type="Texture2D" uid="uid://dn1jog0cqt3sd" path="res://interface/3 Icons/Icons yellow/Icon_40.png" id="11_qn7tj"]
+[ext_resource type="Texture2D" uid="uid://gt17kvokulyt" path="res://interface/3 Icons/Icons yellow/Icon_23.png" id="12_c14ik"]
+[ext_resource type="Texture2D" uid="uid://csad01mh457bb" path="res://interface/3 Icons/Icons yellow/Icon_17.png" id="13_8aecd"]
+[ext_resource type="Texture2D" uid="uid://dub84sg1dvik1" path="res://interface/3 Icons/Icons yellow/Icon_19.png" id="14_eg2h8"]
+[ext_resource type="Texture2D" uid="uid://bm2786usuoowh" path="res://interface/3 Icons/Icons yellow/Icon_39.png" id="15_x2uku"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4iuve"]
-font = ExtResource("6_c8eer")
+line_spacing = 0.0
+font = ExtResource("6_uhv57")
 font_size = 48
 outline_size = 9
 outline_color = Color(0, 0, 0, 1)
@@ -31,8 +26,8 @@ shadow_size = 15
 shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_l2dhr"]
-font = ExtResource("6_c8eer")
-font_size = 48
+font = ExtResource("6_uhv57")
+font_size = 70
 outline_size = 9
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 15
@@ -53,32 +48,35 @@ stream = ExtResource("2_adlgu")
 autoplay = true
 parameters/looping = true
 
-[node name="imagen_menu" type="Sprite2D" parent="."]
-position = Vector2(575, 316)
-scale = Vector2(3.84, 3.7619)
+[node name="image_menu" type="Sprite2D" parent="."]
+position = Vector2(575.5, 323.5)
+scale = Vector2(3.84333, 3.85119)
 texture = ExtResource("3_5fvo0")
 
-[node name="marco_menu" type="Sprite2D" parent="."]
-position = Vector2(568.5, 268.5)
-scale = Vector2(5.50813, 4.26829)
-texture = ExtResource("4_nqurh")
+[node name="mark_menu" type="Sprite2D" parent="."]
+texture_filter = 5
+position = Vector2(571, 205)
+scale = Vector2(3.33333, 3.68414)
+texture = ExtResource("4_t7282")
 
-[node name="marco_opcion" type="AnimatedSprite2D" parent="."]
-position = Vector2(566, 224)
-scale = Vector2(1.70219, 2)
-sprite_frames = SubResource("SpriteFrames_ota3u")
+[node name="button_enter" type="Sprite2D" parent="."]
+texture_filter = 5
+position = Vector2(566, 427)
+scale = Vector2(2.53333, 2.14286)
+texture = ExtResource("5_a6ihc")
 
-[node name="marco_opcion2" type="AnimatedSprite2D" parent="."]
-position = Vector2(566, 320)
-scale = Vector2(1.70219, 2)
-sprite_frames = SubResource("SpriteFrames_ota3u")
+[node name="button_exit" type="Sprite2D" parent="."]
+texture_filter = 5
+position = Vector2(566, 552)
+scale = Vector2(2.53333, 2.07143)
+texture = ExtResource("5_a6ihc")
 
 [node name="vbox_menu" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 478.0
-offset_top = 96.0
-offset_right = 665.0
-offset_bottom = 396.0
+offset_left = 450.0
+offset_top = 278.0
+offset_right = 681.0
+offset_bottom = 580.0
 theme_override_constants/separation = 66
 
 [node name="lbl_opciones" type="Label" parent="vbox_menu"]
@@ -90,26 +88,95 @@ horizontal_alignment = 1
 uppercase = true
 
 [node name="btn_start" type="Button" parent="vbox_menu"]
+self_modulate = Color(1, 1, 0, 1)
+texture_filter = 5
 layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_jeblv")
+theme_override_font_sizes/font_size = 50
+theme_override_icons/icon = ExtResource("8_kocx4")
 text = "Iniciar
 "
+icon = ExtResource("8_kocx4")
 flat = true
+expand_icon = true
 
 [node name="btn_exit" type="Button" parent="vbox_menu"]
+self_modulate = Color(1, 1, 0, 1)
+texture_filter = 5
 layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_jeblv")
+theme_override_font_sizes/font_size = 50
 text = "Salir
 "
+icon = ExtResource("9_bxvom")
 flat = true
+expand_icon = true
 
-[node name="lbl_nombre_juego" type="Label" parent="."]
+[node name="lbl_name_game" type="Label" parent="."]
 layout_mode = 2
-offset_left = 411.0
-offset_top = 560.0
-offset_right = 769.0
-offset_bottom = 624.0
+offset_left = 289.0
+offset_top = 149.0
+offset_right = 841.0
+offset_bottom = 220.0
 text = "Arcane Hunter"
 label_settings = SubResource("LabelSettings_l2dhr")
 horizontal_alignment = 1
+
+[node name="information" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 0.392157, 1)
+texture_filter = 5
+position = Vector2(44, 43)
+scale = Vector2(4, 4)
+texture = ExtResource("10_2sbbi")
+
+[node name="like" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 0.392157, 1)
+texture_filter = 5
+position = Vector2(1111, 42)
+scale = Vector2(4, 4)
+texture = ExtResource("11_qn7tj")
+
+[node name="settings" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 0.392157, 1)
+texture_filter = 5
+position = Vector2(43, 607)
+scale = Vector2(4, 4)
+texture = ExtResource("12_c14ik")
+
+[node name="selecction_levels" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 0.392157, 1)
+texture_filter = 5
+position = Vector2(146, 607)
+scale = Vector2(4, 4)
+texture = ExtResource("13_8aecd")
+
+[node name="achievements" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 0.392157, 1)
+texture_filter = 5
+position = Vector2(1111, 607)
+scale = Vector2(4, 4)
+texture = ExtResource("14_eg2h8")
+
+[node name="Icon39" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 0.392157, 1)
+texture_filter = 5
+position = Vector2(1012, 606)
+scale = Vector2(4, 4)
+texture = ExtResource("15_x2uku")
 
 [connection signal="pressed" from="vbox_menu/btn_start" to="." method="_on_btn_start_pressed"]
 [connection signal="pressed" from="vbox_menu/btn_exit" to="." method="_on_btn_end_pressed"]

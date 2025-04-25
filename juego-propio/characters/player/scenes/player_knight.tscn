@@ -217,7 +217,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hurt",
-"speed": 3.0
+"speed": 50.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -329,12 +329,12 @@ data = PackedByteArray("//PkZAAfNhCcBmGPioAAA0gAAAAACBNm/Yl8YgNsTDVOU+1iNLeiAYah
 [node name="player_knight" type="CharacterBody2D"]
 script = ExtResource("1_640oc")
 metadata/_edit_group_ = true
+metadata/_edit_horizontal_guides_ = [-67.0]
 
 [node name="ani_player" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_87fik")
-animation = &"dead"
-frame = 5
-frame_progress = 1.0
+animation = &"idle"
+speed_scale = 1.25
 
 [node name="col_player" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 10)
@@ -399,6 +399,21 @@ one_shot = true
 [node name="timer_bar" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="particles_blood" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.75
+particle_flag_align_y = true
+spread = 180.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 150.0
+initial_velocity_max = 308.0
+angular_velocity_min = 9.86
+angular_velocity_max = 720.0
+color = Color(0.92549, 0.145098, 0.133333, 1)
 
 [connection signal="timeout" from="timer_invincible" to="." method="_on_timer_invincible_timeout"]
 [connection signal="timeout" from="timer_bar" to="." method="_on_timer_bar_timeout"]

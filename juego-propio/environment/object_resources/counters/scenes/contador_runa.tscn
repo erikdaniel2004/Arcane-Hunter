@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://2e8qpv1lbpfg"]
 
 [ext_resource type="Script" path="res://environment/object_resources/counters/scripts/contador_runas.gd" id="1_y0c8a"]
-[ext_resource type="Texture2D" uid="uid://sobxl3n1vn0g" path="res://environment/object_resources/tileset/4 Animated objects/img/Rune.png" id="2_1kglv"]
+[ext_resource type="Texture2D" uid="uid://sobxl3n1vn0g" path="res://environment/object_resources/tileset_swamp/4 Animated objects/img/Rune.png" id="2_1kglv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kbirw"]
 atlas = ExtResource("2_1kglv")

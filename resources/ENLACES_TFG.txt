@@ -34,6 +34,7 @@ Bosses_swamp: https://craftpix.net/product/monster-portraits-with-emotions/
 Effects
 -------
 Explosion effects: https://craftpix.net/freebies/11-free-pixel-art-explosion-sprites/?num=32&count=719&sq=pixel&pos=10 ******************************
+Weather effects: https://craftpix.net/product/weather-effects-pixel-art-assets-pack/
 
 Interface
 ---------

@@ -287,5 +287,21 @@ tint_under = Color(0, 0, 0, 1)
 tint_over = Color(0.0627451, 0.588235, 0.345098, 1)
 metadata/_edit_use_anchors_ = true
 
+[node name="particles_blood" type="CPUParticles2D" parent="."]
+position = Vector2(42, 0)
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.75
+particle_flag_align_y = true
+spread = 180.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 150.0
+initial_velocity_max = 308.0
+angular_velocity_min = 9.86
+angular_velocity_max = 720.0
+color = Color(0.92549, 0.145098, 0.133333, 1)
+
 [connection signal="timeout" from="timer_bar" to="." method="_on_timer_bar_timeout"]
 [connection signal="timeout" from="timer_attack" to="." method="_on_timer_attack_timeout"]

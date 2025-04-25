@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3 uid="uid://tm0q505163wm"]
+
+[ext_resource type="Script" path="res://environment/effects/scripts/thunder.gd" id="1_pqyqv"]
+[ext_resource type="Texture2D" uid="uid://b0p5llg5ruhmq" path="res://environment/effects/4 Thunder/Thunder.png" id="2_kdc03"]
+[ext_resource type="AudioStream" uid="uid://dtx5r4agqmnfr" path="res://environment/effects/sounds/loud-thunder-192165.mp3" id="3_d1cj6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4mlf"]
+atlas = ExtResource("2_kdc03")
+region = Rect2(0, 0, 96, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppkjw"]
+atlas = ExtResource("2_kdc03")
+region = Rect2(96, 0, 96, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjm7g"]
+atlas = ExtResource("2_kdc03")
+region = Rect2(192, 0, 96, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75ku4"]
+atlas = ExtResource("2_kdc03")
+region = Rect2(288, 0, 96, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hs7i6"]
+atlas = ExtResource("2_kdc03")
+region = Rect2(384, 0, 96, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gh5h7"]
+atlas = ExtResource("2_kdc03")
+region = Rect2(480, 0, 96, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r5xln"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4mlf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppkjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjm7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75ku4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hs7i6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gh5h7")
+}],
+"loop": false,
+"name": &"thunder",
+"speed": 10.0
+}]
+
+[node name="Thunder" type="Node2D"]
+position = Vector2(29, -24)
+script = ExtResource("1_pqyqv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="flash_rect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1158.0
+offset_bottom = 642.0
+color = Color(1, 1, 1, 0)
+
+[node name="thunder" type="AnimatedSprite2D" parent="."]
+position = Vector2(298.125, 619.031)
+scale = Vector2(5.01823, 6.18718)
+sprite_frames = SubResource("SpriteFrames_r5xln")
+animation = &"thunder"
+frame = 5
+frame_progress = 1.0
+
+[node name="audio_thunder" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(60, -9)
+stream = ExtResource("3_d1cj6")
+
+[node name="timer_thunder" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true

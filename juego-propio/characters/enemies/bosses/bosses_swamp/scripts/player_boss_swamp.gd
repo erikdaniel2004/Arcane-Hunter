@@ -1,78 +1,82 @@
 extends CharacterBody2D
 
-@onready var ani_boss = $ani_boss
-@onready var col_boss = $col_boss
-@onready var audio_boss = $audio_boss
+# Referencias a nodos
+@onready var ani_boss = $ani_boss # Animaciones del jefe
+@onready var col_boss = $col_boss # Colisiones del jefe
+@onready var area_ataque = $boss_area # Area de ataque del jefe
+@onready var audio_boss = $audio_boss # Reproductor de sonido del jefe
 @onready var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
-@onready var detector_right = $detector_right
-@onready var detector_left = $detector_left
-@onready var area_ataque = $boss_area
-@onready var bar_health = $bar_health/TextureProgressBar
-@onready var timer_bar = $timer_bar
-@onready var timer_dead = $timer_dead
-@onready var timer_attack = $timer_attack
+@onready var detector_right = $detector_right # Detector de suelo a la derecha
+@onready var detector_left = $detector_left # Detector de suelo a la izquierda
+@onready var bar_health = $bar_health/TextureProgressBar # Barra de salud
+@onready var timer_bar = $timer_bar # Tiempo que tarda en desaparecer la barra de salud
+@onready var timer_dead = $timer_dead # Tiempo que tarda en morir
+@onready var timer_attack = $timer_attack # Tiempo que tarda en realizar otro ataque
+@onready var timer_invulnerable = Timer.new() # Tiempo en el que el jefe se hace invulnerable
+@onready var particles_blood = $particles_blood # Particulas de sangre
 
-@export var max_health := 1000
-@export var speed := 80
+# Export variables
+@export var speed := 100
 @export var charge_speed := 300
-@export var x_activar := 925  # Coordenada X en la que empieza
-@export var y_activar := 1775  # Coordenada Y en la que empieza
+@export var max_health := 1000
+@export var x_activar := 450
+@export var y_activar := 1743
 
+# Estado
 var current_health := max_health
-var is_dead = false
 var is_attacking = false
-var is_burlando = false
+var esta_herido = false
+var is_dead = false
 var puede_atacar = true
-var jugador_detectado: Node2D = null
+var is_burlando = false
+var ha_comenzado = false
+var jugador_detectado: Node = null
 var ultima_pos_jugador = Vector2.ZERO
-var ha_comenzado = false  # Para evitar que el jefe empiece antes de tiempo
+var sentido := 1
 
+var golpes_recibidos_seguidos = 0
+var es_invulnerable = false
 
 func _ready():
+	ani_boss.play("idle")
+	bar_health.visible = false
 	add_to_group("enemigos")
+	area_ataque.body_entered.connect(_on_boss_area_body_entered)
+	add_child(timer_invulnerable)
+	timer_invulnerable.wait_time = 2.0
+	timer_invulnerable.one_shot = true
+	timer_invulnerable.timeout.connect(_reset_invulnerabilidad)
+
 	var jugadores = get_tree().get_nodes_in_group("player_knight")
 	if jugadores.size() > 0:
 		jugador_detectado = jugadores[0]
 
-
-func _physics_process(delta: float) -> void:
+func _physics_process(delta):
 	if is_dead:
 		return
 
-	if not ha_comenzado:
-		ani_boss.play("idle")
+	velocity.y += gravity * delta
 
-		if jugador_detectado != null and jugador_detectado.global_position.x >= x_activar and jugador_detectado.global_position.y >= y_activar:
+	if not ha_comenzado and jugador_detectado:
+		if jugador_detectado.global_position.x >= x_activar and jugador_detectado.global_position.y >= y_activar:
 			iniciar_combate()
-		
-		# Mover al menos para que el boss no esté congelado del todo
-		velocity = Vector2.ZERO
-		move_and_slide()
+		else:
+			ani_boss.play("idle")
 		return
-		
-	if is_attacking or is_burlando:
+
+	if is_attacking or esta_herido or is_burlando:
 		move_and_slide()
 		return
 
 	if jugador_detectado:
-		var distancia = global_position.distance_to(jugador_detectado.global_position)
 		var direccion = (jugador_detectado.global_position - global_position).normalized()
-
-		ani_boss.flip_h = jugador_detectado.global_position.x < global_position.x
-
-		if puede_atacar:
-			if distancia < 100:
-				realizar_ataque("attack1")
-			elif distancia < 200:
-				realizar_ataque("attack2")
-			elif distancia < 300:
-				realizar_ataque("attack3")
-			else:
-				realizar_ataque("attack4")
-		else:
-			velocity = direccion * speed
+		velocity.x = direccion.x * speed
+		ani_boss.flip_h = jugador_detectado.global_position.x > global_position.x
+		if !ani_boss.is_playing() or ani_boss.animation != "run":
+			ani_boss.play("run")
 	else:
-		velocity = Vector2.ZERO
+		velocity.x = 0
+		ani_boss.play("idle")
 
 	move_and_slide()
 
@@ -84,64 +88,104 @@ func iniciar_combate():
 	is_burlando = false
 	puede_atacar = true
 
-func realizar_ataque(tipo: String) -> void:
+func iniciar_ataque():
+	if jugador_detectado == null or is_attacking or esta_herido or is_dead:
+		return
+
+	var distancia = global_position.distance_to(jugador_detectado.global_position)
+	if distancia < 100:
+		realizar_ataque("attack1")
+	elif distancia < 200:
+		realizar_ataque("attack2")
+	elif distancia < 300:
+		realizar_ataque("attack3")
+	else:
+		realizar_ataque("attack4")
+
+func realizar_ataque(tipo: String):
 	is_attacking = true
 	puede_atacar = false
-	velocity = Vector2.ZERO
+	velocity.x = 0
+	ani_boss.flip_h = jugador_detectado.global_position.x > global_position.x
 	ani_boss.play(tipo)
-
-	# Guardamos la posición del jugador para el ataque de carga
 	ultima_pos_jugador = jugador_detectado.global_position
+
+	if tipo in ["attack1", "attack2", "attack3"]:
+		if jugador_detectado and jugador_detectado.has_method("recibir_dano"):
+			jugador_detectado.last_attacker = self
+			jugador_detectado.recibir_dano(25)
 
 	match tipo:
 		"attack1", "attack2", "attack3":
 			await ani_boss.animation_finished
 			iniciar_burla()
 		"attack4":
-			# Cargar en línea recta
 			await ataque_carga()
 
-	timer_attack.start()  # Para reactivar ataques tras enfriamiento
+	timer_attack.start()
 	is_attacking = false
 
-func ataque_carga() -> void:
-	var direccion = (ultima_pos_jugador - global_position).normalized()
-	var tiempo_carga = 0.5  # Duración en segundos de la carga
-
-	var tiempo_transcurrido = 0.0
-	while tiempo_transcurrido < tiempo_carga:
-		velocity = direccion * charge_speed
-		move_and_slide()
-		await get_tree().create_timer(0.05).timeout
-		tiempo_transcurrido += 0.05
-
+func ataque_carga():
+	ani_boss.play("attack4")
+	await get_tree().create_timer(1.0).timeout
+	var direccion = (jugador_detectado.global_position - global_position).normalized()
+	while true:
+		var collision = move_and_collide(direccion * charge_speed * get_process_delta_time())
+		if collision:
+			var collider = collision.get_collider()
+			if collider.is_in_group("player_knight") and collider.has_method("recibir_dano"):
+				jugador_detectado.last_attacker = self
+				collider.recibir_dano(50)
+			velocity = Vector2.ZERO
+			iniciar_burla()
+			return
+		await get_tree().process_frame
 	velocity = Vector2.ZERO
 	await ani_boss.animation_finished
 	iniciar_burla()
 
-func iniciar_burla() -> void:
+func iniciar_burla():
 	is_burlando = true
 	ani_boss.play("sneer")
+	var tiempo = 3.0
+	while tiempo > 0 and is_burlando:
+		await get_tree().create_timer(0.1).timeout
+		tiempo -= 0.1
+	is_burlando = false
 
-	await get_tree().create_timer(3).timeout
-	if is_burlando:  # No fue interrumpida
-		is_burlando = false
-
-func recibir_dano(cantidad: int) -> void:
-	if is_dead:
+func recibir_dano(cantidad):
+	if is_dead or es_invulnerable:
 		return
 
+	golpes_recibidos_seguidos += 1
+	timer_invulnerable.start()
+
+	if golpes_recibidos_seguidos >= 3:
+		es_invulnerable = true
+		golpes_recibidos_seguidos = 0
+		return
+
+	# Resta vida y actualiza la barra
 	current_health -= cantidad
+	
+	# Activa partículas de sangre
+	particles_blood.restart()
+	particles_blood.emitting = true
+
+	# Si quieres que se orienten hacia el jugador
+	if jugador_detectado and jugador_detectado.global_position.x < global_position.x:
+		particles_blood.rotation_degrees = 180
+	else:
+		particles_blood.rotation_degrees = 0
+		
 	bar_health.visible = true
 	bar_health.value = current_health
 	timer_bar.start()
 
-	# Cancelar burla si estaba burlándose
 	if is_burlando:
 		is_burlando = false
-		await get_tree().create_timer(2).timeout  # Espera de 2s tras ser interrumpido
+		await get_tree().create_timer(0.5).timeout
 
-	# CURACIÓN AL JUGADOR POR CADA 100 DE DAÑO
 	var vidas_a_recuperar = int((max_health - current_health) / 100) * 50
 	var jugadores = get_tree().get_nodes_in_group("player_knight")
 	if jugadores.size() > 0:
@@ -151,16 +195,38 @@ func recibir_dano(cantidad: int) -> void:
 
 	if current_health <= 0:
 		morir()
+		return
+
+	ani_boss.play("hurt")
+
+func _reset_invulnerabilidad():
+	es_invulnerable = false
+	golpes_recibidos_seguidos = 0
 
 func morir():
 	is_dead = true
+	audio_boss.play()
 	ani_boss.play("death")
 	col_boss.set_deferred("disabled", true)
-	area_ataque.set_monitoring(false)
+	set_physics_process(false)
 	await ani_boss.animation_finished
 	timer_dead.start()
 	await timer_dead.timeout
+	
+	# Buscar la pared por nombre o grupo
+	var pared = get_tree().get_nodes_in_group("breakable_wall")
+	if pared.size() > 0:
+		pared[0].romper_pared()
 	queue_free()
+
+func _on_boss_area_body_entered(body):
+	if body.is_in_group("player_knight") and puede_atacar and not is_attacking and not esta_herido and not is_dead:
+		jugador_detectado = body
+		var ataque_random = randi_range(1, 4)
+		realizar_ataque("attack" + str(ataque_random))
+
+func _on_timer_bar_timeout():
+	bar_health.visible = false
 
 func _on_timer_attack_timeout():
 	puede_atacar = true

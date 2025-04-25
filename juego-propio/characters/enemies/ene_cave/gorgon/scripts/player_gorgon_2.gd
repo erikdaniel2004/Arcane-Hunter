@@ -11,6 +11,7 @@ extends CharacterBody2D
 @onready var timer_dead = $timer_dead  # Temporizador tras la muerte
 @onready var timer_attack = $timer_attack  # Temporizador de ataque para limitar el ataque continuo
 @onready var area_ataque = $gorgon_area  # Área de detección del jugador
+@onready var particles_blood = $particles_blood # Partículas de sangre
 
 # Variables exportables
 @export var speed = 100  # Velocidad de movimiento
@@ -67,6 +68,7 @@ func iniciar_ataque():
 
 	# Si el jugador tiene el método recibir_dano, se le inflige daño
 	if jugador_detectado.has_method("recibir_dano"):
+		jugador_detectado.last_attacker = self
 		jugador_detectado.recibir_dano(25)
 
 	timer_attack.start()  # Comienza el tiempo de recuperación del ataque
@@ -115,6 +117,17 @@ func recibir_dano(cantidad):
 
 	# Resta vida y actualiza la barra
 	current_health -= cantidad
+	
+	# Activa partículas de sangre
+	particles_blood.restart()
+	particles_blood.emitting = true
+
+	# Si quieres que se orienten hacia el jugador
+	if jugador_detectado and jugador_detectado.global_position.x < global_position.x:
+		particles_blood.rotation_degrees = 180
+	else:
+		particles_blood.rotation_degrees = 0
+		
 	bar_health.value = current_health
 	bar_health.visible = true
 	timer_bar.start()

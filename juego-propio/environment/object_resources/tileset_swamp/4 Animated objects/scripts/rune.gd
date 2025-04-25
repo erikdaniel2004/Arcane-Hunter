@@ -12,7 +12,7 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.is_in_group("player_knight"):
-		body.sumar_monedas(valor_runa)
+		body.obtener_runa(valor_runa)
 		
 		# Desvincular el audio de la moneda antes de eliminarla
 		remove_child(audio_runa)  

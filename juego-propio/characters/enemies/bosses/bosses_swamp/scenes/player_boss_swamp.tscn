@@ -15,9 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://ba3mos3bylli" path="res://characters/enemies/bosses/bosses_swamp/1 Centipede/Centipede_walk.png" id="9_uag7a"]
 [ext_resource type="Texture2D" uid="uid://bbtqfho6g0ofb" path="res://characters/enemies/bosses/bosses_swamp/1 Centipede/Centipede_sneer.png" id="10_lfk5k"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_naqgp"]
-size = Vector2(88, 70)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ys5ol"]
 atlas = ExtResource("2_3gyfc")
 region = Rect2(0, 0, 72, 72)
@@ -346,38 +343,41 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_naqgp"]
+size = Vector2(88, 70)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bnnu6"]
-size = Vector2(140, 70)
+size = Vector2(182, 70)
 
 [node name="player_boss_swamp" type="CharacterBody2D" groups=["enemigos"]]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_ferr7")
 metadata/_edit_group_ = true
 
-[node name="col_boss" type="CollisionShape2D" parent="."]
-position = Vector2(-16, 27)
-shape = SubResource("RectangleShape2D_naqgp")
-
 [node name="ani_boss" type="AnimatedSprite2D" parent="."]
 position = Vector2(-36, -11)
 scale = Vector2(1.83333, 2.02778)
 sprite_frames = SubResource("SpriteFrames_fgc5t")
-animation = &"attack1"
+animation = &"attack4"
+
+[node name="col_boss" type="CollisionShape2D" parent="."]
+position = Vector2(-16, 27)
+shape = SubResource("RectangleShape2D_naqgp")
 
 [node name="boss_area" type="Area2D" parent="."]
 position = Vector2(-52, -6)
 
 [node name="col_area" type="CollisionShape2D" parent="boss_area"]
-position = Vector2(36, 33)
+position = Vector2(37, 33)
 shape = SubResource("RectangleShape2D_bnnu6")
 
 [node name="detector_right" type="RayCast2D" parent="."]
 position = Vector2(28, 0)
-target_position = Vector2(0, 63)
+target_position = Vector2(0, 62)
 
 [node name="detector_left" type="RayCast2D" parent="."]
-position = Vector2(-58, 0)
-target_position = Vector2(0, 62)
+position = Vector2(-60, 2)
+target_position = Vector2(0, 60)
 
 [node name="timer_dead" type="Timer" parent="."]
 wait_time = 2.0
@@ -397,7 +397,8 @@ offset_left = -84.0
 offset_top = -78.0
 offset_right = 45.0
 offset_bottom = 32.0
-value = 100.0
+max_value = 1000.0
+value = 1000.0
 nine_patch_stretch = true
 texture_under = ExtResource("4_qqnvg")
 texture_over = ExtResource("5_ba8be")
@@ -405,6 +406,21 @@ texture_progress = ExtResource("6_20tq0")
 tint_under = Color(0, 0, 0, 1)
 tint_over = Color(0.0627451, 0.588235, 0.345098, 1)
 metadata/_edit_use_anchors_ = true
+
+[node name="particles_blood" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 200
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.75
+particle_flag_align_y = true
+spread = 180.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 150.0
+initial_velocity_max = 308.0
+angular_velocity_min = 9.86
+angular_velocity_max = 720.0
+color = Color(0.92549, 0.145098, 0.133333, 1)
 
 [connection signal="body_entered" from="boss_area" to="." method="_on_gorgon_area_body_entered"]
 [connection signal="timeout" from="timer_bar" to="." method="_on_timer_bar_timeout"]
