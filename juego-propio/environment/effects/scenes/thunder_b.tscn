@@ -77,6 +77,8 @@ flip_h = true
 [node name="audio_thunder" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(60, -9)
 stream = ExtResource("3_3f01d")
+volume_db = 5.0
+max_distance = 10000.0
 
 [node name="timer_thunder" type="Timer" parent="."]
 wait_time = 6.0

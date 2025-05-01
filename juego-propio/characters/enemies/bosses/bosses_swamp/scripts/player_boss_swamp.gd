@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+#region Variables
 # Referencias a nodos
 @onready var ani_boss = $ani_boss # Animaciones del jefe
 @onready var col_boss = $col_boss # Colisiones del jefe
@@ -22,7 +23,7 @@ extends CharacterBody2D
 @export var x_activar := 450
 @export var y_activar := 1743
 
-# Estado
+# Estados
 var current_health := max_health
 var is_attacking = false
 var esta_herido = false
@@ -36,7 +37,9 @@ var sentido := 1
 
 var golpes_recibidos_seguidos = 0
 var es_invulnerable = false
+#endregion
 
+#region Ready
 func _ready():
 	ani_boss.play("idle")
 	bar_health.visible = false
@@ -50,7 +53,9 @@ func _ready():
 	var jugadores = get_tree().get_nodes_in_group("player_knight")
 	if jugadores.size() > 0:
 		jugador_detectado = jugadores[0]
+#endregion
 
+#region Physics Process
 func _physics_process(delta):
 	if is_dead:
 		return
@@ -79,7 +84,11 @@ func _physics_process(delta):
 		ani_boss.play("idle")
 
 	move_and_slide()
+#endregion
 
+#region Generic Functions
+
+#region Attack
 func iniciar_combate():
 	ha_comenzado = true
 	is_burlando = true
@@ -143,7 +152,9 @@ func ataque_carga():
 	velocity = Vector2.ZERO
 	await ani_boss.animation_finished
 	iniciar_burla()
+#endregion
 
+#region Sneer
 func iniciar_burla():
 	is_burlando = true
 	ani_boss.play("sneer")
@@ -152,7 +163,9 @@ func iniciar_burla():
 		await get_tree().create_timer(0.1).timeout
 		tiempo -= 0.1
 	is_burlando = false
+#endregion
 
+#region Damage/Death
 func recibir_dano(cantidad):
 	if is_dead or es_invulnerable:
 		return
@@ -218,7 +231,9 @@ func morir():
 	if pared.size() > 0:
 		pared[0].romper_pared()
 	queue_free()
+#endregion
 
+#region Nodes Connections
 func _on_boss_area_body_entered(body):
 	if body.is_in_group("player_knight") and puede_atacar and not is_attacking and not esta_herido and not is_dead:
 		jugador_detectado = body
@@ -230,3 +245,5 @@ func _on_timer_bar_timeout():
 
 func _on_timer_attack_timeout():
 	puede_atacar = true
+#endregion
+#endregion

@@ -1,5 +1,6 @@
-[gd_scene load_steps=63 format=4 uid="uid://jeo3on8k4c1i"]
+[gd_scene load_steps=65 format=4 uid="uid://jeo3on8k4c1i"]
 
+[ext_resource type="Script" path="res://environment/scripts/environment.gd" id="1_sty8x"]
 [ext_resource type="PackedScene" uid="uid://bptd4qrmqc0nj" path="res://environment/scenes/background.tscn" id="1_t6eer"]
 [ext_resource type="PackedScene" uid="uid://dyuagm625c2ss" path="res://environment/scenes/floor.tscn" id="2_7sxbg"]
 [ext_resource type="PackedScene" uid="uid://cm5886jx43ye6" path="res://environment/object_resources/tileset_swamp/4 Animated objects/scenes/checkpoint.tscn" id="3_2ed6j"]
@@ -62,13 +63,12 @@
 [ext_resource type="PackedScene" uid="uid://cqa3jcie2tg6x" path="res://characters/enemies/bosses/bosses_swamp/scenes/player_boss_swamp.tscn" id="53_hc4eg"]
 [ext_resource type="PackedScene" uid="uid://dpe1fjhi42sv3" path="res://environment/scenes/end_level.tscn" id="61_uj6f4"]
 [ext_resource type="PackedScene" uid="uid://dtjxmsyd8rse5" path="res://environment/object_resources/tileset_swamp/4 Animated objects/scenes/BreakableWall.tscn" id="62_muhp8"]
+[ext_resource type="PackedScene" uid="uid://4ulrtgfiee7u" path="res://menus/menu_options/scene/menu_options.tscn" id="64_v12b5"]
 
 [node name="level_1" type="Node2D"]
+script = ExtResource("1_sty8x")
 
 [node name="background" parent="." instance=ExtResource("1_t6eer")]
-
-[node name="BreakableWall" parent="." instance=ExtResource("62_muhp8")]
-position = Vector2(129, 1650)
 
 [node name="floor" parent="." instance=ExtResource("2_7sxbg")]
 position = Vector2(18, 272)
@@ -1620,16 +1620,9 @@ position = Vector2(2036, 1411)
 [node name="box11" parent="boxes" instance=ExtResource("6_q1ip2")]
 position = Vector2(2036, 1386)
 
-[node name="ambient_audio" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(1272, 818)
-stream = ExtResource("11_vly7i")
-autoplay = true
-parameters/looping = true
+[node name="effects" type="Node2D" parent="."]
 
-[node name="end_level" parent="." instance=ExtResource("61_uj6f4")]
-position = Vector2(41, 1669)
-
-[node name="rain" type="CPUParticles2D" parent="."]
+[node name="rain" type="CPUParticles2D" parent="effects"]
 position = Vector2(1187, 462)
 amount = 2000
 lifetime = 2.0
@@ -1640,3 +1633,17 @@ initial_velocity_max = 20.55
 scale_amount_min = 0.0
 scale_amount_max = 2.5
 color = Color(0, 0.686275, 1, 1)
+
+[node name="end_level" parent="effects" instance=ExtResource("61_uj6f4")]
+position = Vector2(41, 1669)
+
+[node name="ambient_audio" type="AudioStreamPlayer2D" parent="effects"]
+position = Vector2(1272, 818)
+stream = ExtResource("11_vly7i")
+autoplay = true
+parameters/looping = true
+
+[node name="BreakableWall" parent="effects" instance=ExtResource("62_muhp8")]
+position = Vector2(129, 1650)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("64_v12b5")]

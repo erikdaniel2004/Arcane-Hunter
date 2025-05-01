@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+#region Variables
 # Propiedades del jugador sobre el terreno
 @export var gravity_scale = 2
 @export var speed = 200
@@ -35,37 +36,34 @@ extends CharacterBody2D
 
 # Variable que guarda el último atacante del jugador
 var last_attacker: Node = null
+
 # Variable para desactivar la muerte por caida tras pasar un punto de control
 var muerte_por_caida_desactivada := false
+
 # Contadores
 var monedas = 0
 var runas = 0
+
 # Variable que determina si la gorgona ha sido herida
 var esta_herido = false
+
 # Variable con la que contabilizar la vida de la gorgona
 var current_health := max_health
+
 # Variable con la que hacer invulnerable al jugador cuando reciba un ataque
 var is_invulnerable := false
+#endregion
 
+#region Ready
 # Función que establece unos parámetros al cargar el jugador
 func _ready():
 	add_to_group("player_knight")
 	contador.actualizar(0)
 	contador2.actualizar(0)
 	bar_health.visible = false
+#endregion
 
-# Función con la que se aplican las propiedades de la gravedad
-func apply_gravity(delta):
-	if not is_on_floor():
-		velocity += get_gravity() * delta * gravity_scale
-
-# Función que aplica una aceleración al jugador
-func handle_acceleration(input_axis, delta):
-	if not is_on_floor():
-		return
-	if input_axis != 0:
-		velocity.x = move_toward(velocity.x, speed * input_axis, acceleration * delta)
-
+#region Physics Process
 # Función que procesa la física del jugador sobre sus atributos y terreno
 func _physics_process(delta: float) -> void:
 	if not muerte_por_caida_desactivada and global_position.x >= death_limit_stop_x and global_position.y >= death_limit_stop_y:
@@ -91,6 +89,20 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("atacar"):
 		atacar()
 	update_attack_area_direction()
+#endregion
+
+#region Physics Functions
+# Función con la que se aplican las propiedades de la gravedad
+func apply_gravity(delta):
+	if not is_on_floor():
+		velocity += get_gravity() * delta * gravity_scale
+
+# Función que aplica una aceleración al jugador
+func handle_acceleration(input_axis, delta):
+	if not is_on_floor():
+		return
+	if input_axis != 0:
+		velocity.x = move_toward(velocity.x, speed * input_axis, acceleration * delta)
 
 # Función que aplica fricción
 func apply_friction(input_axis, delta):
@@ -123,7 +135,10 @@ func update_animation(input_axis):
 	else:
 		ani_player.speed_scale = 1
 		ani_player.play("idle")
-	
+#endregion
+
+#region Generic Functions
+#region Collectibles
 # Función para sumar monedas
 func sumar_monedas(valor):
 	monedas += valor
@@ -133,7 +148,9 @@ func sumar_monedas(valor):
 func obtener_runa(valor):
 	runas += valor
 	contador2.actualizar(runas)
+#endregion
 
+#region Damage/Death
 # Función para la muerte del jugador
 func morir():
 	audio_player.play() 
@@ -181,11 +198,9 @@ func recibir_dano(cantidad):
 func hacer_invulnerable_temporalmente():
 	is_invulnerable = true
 	timer_invincible.start()
+#endregion
 
-# Función que devuelve la vulnerabilidad al jugador cuando el tiempo ha pasado
-func _on_timer_invincible_timeout():
-	is_invulnerable = false
-
+#region Attack
 # Función que contiene la lógica al hacer click para atacar
 func atacar():
 	ani_player.play("attack")
@@ -195,13 +210,17 @@ func atacar():
 		if cuerpo.is_in_group("enemigos"):
 			if cuerpo.has_method("recibir_dano"):
 				cuerpo.recibir_dano(25)
+#endregion
 
+#region Health Bar
 # Función que recupera parte de la salud de jugador
 func recuperar_vida(cantidad):
 	current_health += cantidad
 	current_health = clamp(current_health, 0, max_health)
 	bar_health.value = current_health
+#endregion
 
+#region Direction
 # Función con la que se gestiona la dirección de los ataques
 func update_attack_area_direction():
 	var offset = 20
@@ -209,7 +228,15 @@ func update_attack_area_direction():
 		attack_area.position.x = -offset
 	else:
 		attack_area.position.x = offset
+#endregion
 
+#region Nodes Connections
 # Función que hace invisible la barra de salud del jugador tras un periodo corto de tiempo 
 func _on_timer_bar_timeout():
 	bar_health.visible = false
+	
+# Función que devuelve la vulnerabilidad al jugador cuando el tiempo ha pasado
+func _on_timer_invincible_timeout():
+	is_invulnerable = false
+#endregion
+#endregion

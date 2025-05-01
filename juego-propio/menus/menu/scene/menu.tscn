@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bf310qhl7at8o"]
+[gd_scene load_steps=19 format=3 uid="uid://bf310qhl7at8o"]
 
 [ext_resource type="Script" path="res://menus/menu/script/menu.gd" id="1_hphn0"]
 [ext_resource type="AudioStream" uid="uid://cjm2xyolltbqj" path="res://menus/menu/music/medieval-adventure-270566.mp3" id="2_adlgu"]
@@ -33,6 +33,14 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 15
 shadow_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_nb265"]
+font = ExtResource("6_uhv57")
+font_size = 30
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 1)
+
 [node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -43,33 +51,77 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hphn0")
 
-[node name="audio_menu" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_adlgu")
-autoplay = true
-parameters/looping = true
+[node name="images" type="Node2D" parent="."]
 
-[node name="image_menu" type="Sprite2D" parent="."]
+[node name="image_menu" type="Sprite2D" parent="images"]
 position = Vector2(575.5, 323.5)
 scale = Vector2(3.84333, 3.85119)
 texture = ExtResource("3_5fvo0")
 
-[node name="mark_menu" type="Sprite2D" parent="."]
+[node name="mark_menu" type="Sprite2D" parent="images"]
 texture_filter = 5
 position = Vector2(571, 205)
 scale = Vector2(3.33333, 3.68414)
 texture = ExtResource("4_t7282")
 
-[node name="button_enter" type="Sprite2D" parent="."]
+[node name="button_enter" type="Sprite2D" parent="images"]
 texture_filter = 5
 position = Vector2(566, 427)
 scale = Vector2(2.53333, 2.14286)
 texture = ExtResource("5_a6ihc")
 
-[node name="button_exit" type="Sprite2D" parent="."]
+[node name="button_exit" type="Sprite2D" parent="images"]
 texture_filter = 5
 position = Vector2(566, 552)
 scale = Vector2(2.53333, 2.07143)
 texture = ExtResource("5_a6ihc")
+
+[node name="information" type="Sprite2D" parent="images"]
+self_modulate = Color(1, 1, 0.392157, 1)
+texture_filter = 5
+position = Vector2(44, 43)
+scale = Vector2(4, 4)
+texture = ExtResource("10_2sbbi")
+
+[node name="like" type="Sprite2D" parent="images"]
+self_modulate = Color(1, 1, 0.392157, 1)
+texture_filter = 5
+position = Vector2(1111, 42)
+scale = Vector2(4, 4)
+texture = ExtResource("11_qn7tj")
+
+[node name="settings" type="Sprite2D" parent="images"]
+self_modulate = Color(1, 1, 0.392157, 1)
+texture_filter = 5
+position = Vector2(43, 607)
+scale = Vector2(4, 4)
+texture = ExtResource("12_c14ik")
+
+[node name="selecction_levels" type="Sprite2D" parent="images"]
+self_modulate = Color(1, 1, 0.392157, 1)
+texture_filter = 5
+position = Vector2(146, 607)
+scale = Vector2(4, 4)
+texture = ExtResource("13_8aecd")
+
+[node name="achievements" type="Sprite2D" parent="images"]
+self_modulate = Color(1, 1, 0.392157, 1)
+texture_filter = 5
+position = Vector2(1111, 607)
+scale = Vector2(4, 4)
+texture = ExtResource("14_eg2h8")
+
+[node name="Icon39" type="Sprite2D" parent="images"]
+self_modulate = Color(1, 1, 0.392157, 1)
+texture_filter = 5
+position = Vector2(1012, 606)
+scale = Vector2(4, 4)
+texture = ExtResource("15_x2uku")
+
+[node name="audio_menu" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_adlgu")
+autoplay = true
+parameters/looping = true
 
 [node name="vbox_menu" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -80,6 +132,7 @@ offset_bottom = 580.0
 theme_override_constants/separation = 66
 
 [node name="lbl_opciones" type="Label" parent="vbox_menu"]
+texture_filter = 5
 layout_mode = 2
 text = "Opciones
 "
@@ -127,6 +180,7 @@ flat = true
 expand_icon = true
 
 [node name="lbl_name_game" type="Label" parent="."]
+texture_filter = 5
 layout_mode = 2
 offset_left = 289.0
 offset_top = 149.0
@@ -136,47 +190,15 @@ text = "Arcane Hunter"
 label_settings = SubResource("LabelSettings_l2dhr")
 horizontal_alignment = 1
 
-[node name="information" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 0.392157, 1)
+[node name="lbl_version" type="Label" parent="."]
 texture_filter = 5
-position = Vector2(44, 43)
-scale = Vector2(4, 4)
-texture = ExtResource("10_2sbbi")
-
-[node name="like" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 0.392157, 1)
-texture_filter = 5
-position = Vector2(1111, 42)
-scale = Vector2(4, 4)
-texture = ExtResource("11_qn7tj")
-
-[node name="settings" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 0.392157, 1)
-texture_filter = 5
-position = Vector2(43, 607)
-scale = Vector2(4, 4)
-texture = ExtResource("12_c14ik")
-
-[node name="selecction_levels" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 0.392157, 1)
-texture_filter = 5
-position = Vector2(146, 607)
-scale = Vector2(4, 4)
-texture = ExtResource("13_8aecd")
-
-[node name="achievements" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 0.392157, 1)
-texture_filter = 5
-position = Vector2(1111, 607)
-scale = Vector2(4, 4)
-texture = ExtResource("14_eg2h8")
-
-[node name="Icon39" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 0.392157, 1)
-texture_filter = 5
-position = Vector2(1012, 606)
-scale = Vector2(4, 4)
-texture = ExtResource("15_x2uku")
+layout_mode = 0
+offset_left = 906.0
+offset_top = 289.0
+offset_right = 985.0
+offset_bottom = 320.0
+text = "V1.01"
+label_settings = SubResource("LabelSettings_nb265")
 
 [connection signal="pressed" from="vbox_menu/btn_start" to="." method="_on_btn_start_pressed"]
 [connection signal="pressed" from="vbox_menu/btn_exit" to="." method="_on_btn_end_pressed"]

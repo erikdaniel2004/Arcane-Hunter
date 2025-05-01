@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+#region Variables
 # Referencias a nodos de la escena
 @onready var ani_gorgon = $ani_gorgon  # Animaciones de la gorgona
 @onready var audio_gorgon = $audio_gorgon  # Reproductor de sonido para la gorgona
@@ -25,7 +26,9 @@ var esta_herido = false  # Indica si está recibiendo daño
 var is_dead = false  # Indica si está muerto
 var puede_atacar = true  # Controla si puede atacar nuevamente
 var jugador_detectado: Node = null  # Referencia al jugador detectado
+#endregion
 
+#region Ready
 func _ready() -> void:
 	# Al iniciar, se reproduce la animación de caminar y se oculta la barra de vida
 	ani_gorgon.play("run")
@@ -34,45 +37,9 @@ func _ready() -> void:
 	# Se conectan las señales del área de ataque para detectar entrada y salida del jugador
 	area_ataque.body_entered.connect(_on_gorgon_area_body_entered)
 	area_ataque.body_exited.connect(_on_gorgon_area_body_exited)
+#endregion
 
-# Función que se ejecuta cuando un cuerpo entra en el área de ataque
-func _on_gorgon_area_body_entered(body):
-	# Si el cuerpo es un jugador y puede atacar, inicia el ataque
-	if body.is_in_group("player_knight") and not is_attacking and puede_atacar:
-		jugador_detectado = body
-		iniciar_ataque()
-
-# Función que se ejecuta cuando un cuerpo sale del área de ataque
-func _on_gorgon_area_body_exited(body):
-	# Solo si el jugador que salió es el que estaba detectado, se vuelve a permitir el ataque
-	if body == jugador_detectado:
-		puede_atacar = true
-		jugador_detectado = null
-
-# Lógica del ataque
-func iniciar_ataque():
-	# Se evita atacar si está en medio de otra acción importante
-	if jugador_detectado == null or is_attacking or esta_herido or is_dead:
-		return
-
-	is_attacking = true
-	puede_atacar = false  # Se desactiva el permiso de atacar hasta que el jugador se salga
-	velocity.x = 0
-	
-	if jugador_detectado.global_position.x < global_position.x:
-		ani_gorgon.flip_h = true
-	else:
-		ani_gorgon.flip_h = false
-		
-	ani_gorgon.play("attack")
-
-	# Si el jugador tiene el método recibir_dano, se le inflige daño
-	if jugador_detectado.has_method("recibir_dano"):
-		jugador_detectado.last_attacker = self
-		jugador_detectado.recibir_dano(25)
-
-	timer_attack.start()  # Comienza el tiempo de recuperación del ataque
-
+#region Physics Process
 # Función principal que se ejecuta cada frame de física
 func _physics_process(delta: float) -> void:
 	# Si está muerta, no hace nada
@@ -108,7 +75,36 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0  # Si está atacando, no se mueve
 
 	move_and_slide()  # Mueve al personaje
+#endregion
 
+#region Generic Functions
+#region Attack
+# Lógica del ataque
+func iniciar_ataque():
+	# Se evita atacar si está en medio de otra acción importante
+	if jugador_detectado == null or is_attacking or esta_herido or is_dead:
+		return
+
+	is_attacking = true
+	puede_atacar = false  # Se desactiva el permiso de atacar hasta que el jugador se salga
+	velocity.x = 0
+	
+	if jugador_detectado.global_position.x < global_position.x:
+		ani_gorgon.flip_h = true
+	else:
+		ani_gorgon.flip_h = false
+		
+	ani_gorgon.play("attack")
+
+	# Si el jugador tiene el método recibir_dano, se le inflige daño
+	if jugador_detectado.has_method("recibir_dano"):
+		jugador_detectado.last_attacker = self
+		jugador_detectado.recibir_dano(25)
+
+	timer_attack.start()  # Comienza el tiempo de recuperación del ataque
+#endregion
+
+#region Damage/Death
 # Función para recibir daño
 func recibir_dano(cantidad):
 	# Si está herida o muerta, no puede recibir más daño
@@ -158,7 +154,23 @@ func morir():
 	timer_dead.start()
 	await timer_dead.timeout
 	queue_free()  # Elimina la gorgona de la escena
+#endregion
 
+#region Nodes Connection
+# Función que se ejecuta cuando un cuerpo entra en el área de ataque
+func _on_gorgon_area_body_entered(body):
+	# Si el cuerpo es un jugador y puede atacar, inicia el ataque
+	if body.is_in_group("player_knight") and not is_attacking and puede_atacar:
+		jugador_detectado = body
+		iniciar_ataque()
+
+# Función que se ejecuta cuando un cuerpo sale del área de ataque
+func _on_gorgon_area_body_exited(body):
+	# Solo si el jugador que salió es el que estaba detectado, se vuelve a permitir el ataque
+	if body == jugador_detectado:
+		puede_atacar = true
+		jugador_detectado = null
+		
 # Oculta la barra de vida tras un tiempo
 func _on_timer_bar_timeout():
 	bar_health.visible = false
@@ -166,3 +178,5 @@ func _on_timer_bar_timeout():
 # Finaliza el estado de ataque tras el temporizador
 func _on_timer_attack_timeout():
 	is_attacking = false
+#endregion
+#endregion

@@ -1,5 +1,6 @@
 extends Node2D
 
+#region Variables
 @onready var sprite = $ani_chest
 @onready var area = $area_chest
 
@@ -9,7 +10,9 @@ extends Node2D
 @export var max_monedas: int = 6  # Número máximo de monedas
 
 var abierto = false  # Evita que se abra más de una vez
+#endregion
 
+#region Ready
 func _ready():
 	if moneda_escena == null:
 		moneda_escena = load("res://environment/object_resources/tileset_swamp/4 Animated objects/scenes/coin.tscn")
@@ -18,18 +21,10 @@ func _ready():
 	sprite.play("close")
 	area.body_entered.connect(_on_body_entered)
 	area.body_exited.connect(_on_body_exited)
+#endregion
 
-func _on_body_entered(body):
-	if body.is_in_group("player_knight") and not abierto:
-		sprite.play("open")
-		soltar_monedas()
-		soltar_runa()
-		abierto = true  # Evitar que se abra varias veces
-
-func _on_body_exited(body):
-	if body.is_in_group("player_knight") and abierto:
-		sprite.play("close")
-
+#region Generic Functions
+#region Drops
 func soltar_monedas():
 	var cantidad = randi_range(min_monedas, max_monedas)
 	
@@ -46,3 +41,18 @@ func soltar_runa():
 		get_tree().current_scene.add_child(runa)
 		runa.global_position = global_position + Vector2(randf_range(-10, 10), -10)
 		runa.apply_impulse(Vector2(randf_range(-100, 100), -150))
+#endregion
+
+#region Nodes Connections
+func _on_body_entered(body):
+	if body.is_in_group("player_knight") and not abierto:
+		sprite.play("open")
+		soltar_monedas()
+		soltar_runa()
+		abierto = true  # Evitar que se abra varias veces
+
+func _on_body_exited(body):
+	if body.is_in_group("player_knight") and abierto:
+		sprite.play("close")
+#endregion
+#endregion

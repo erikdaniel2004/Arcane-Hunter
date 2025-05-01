@@ -1829,7 +1829,7 @@ texture = ExtResource("55_iovsd")
 [sub_resource type="TileSet" id="TileSet_vgbuc"]
 sources/0 = SubResource("TileSetAtlasSource_bkld0")
 
-[node name="MapLevels" type="Node2D"]
+[node name="map_levels" type="Node2D"]
 
 [node name="map" type="Node2D" parent="."]
 

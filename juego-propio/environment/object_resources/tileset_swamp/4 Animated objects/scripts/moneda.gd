@@ -1,15 +1,21 @@
 extends RigidBody2D
 
+#region Variables
 @export var valor_moneda: int = 1
 
 @onready var sprite = $ani_moneda
 @onready var area = $area_moneda
 @onready var audio_moneda = $audio_moneda  # Nodo de audio dentro de la moneda
+#endregion
 
+#region Ready
 func _ready():
 	sprite.play("idle")
 	area.body_entered.connect(_on_body_entered)
+#endregion
 
+#region Generic Functions
+#region Nodes Connections
 func _on_body_entered(body):
 	if body.is_in_group("player_knight"):
 		body.sumar_monedas(valor_moneda)
@@ -20,3 +26,5 @@ func _on_body_entered(body):
 		
 		audio_moneda.play()
 		queue_free()
+#endregion
+#endregion

@@ -76,6 +76,8 @@ frame_progress = 1.0
 [node name="audio_thunder" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(60, -9)
 stream = ExtResource("3_d1cj6")
+volume_db = 5.0
+max_distance = 10000.0
 
 [node name="timer_thunder" type="Timer" parent="."]
 wait_time = 4.0
