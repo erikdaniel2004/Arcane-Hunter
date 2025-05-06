@@ -37,6 +37,9 @@ var sentido := 1
 
 var golpes_recibidos_seguidos = 0
 var es_invulnerable = false
+
+# Señal para determinar la muerte del enemigo
+signal enemigo_muerto(es_jefe: bool)
 #endregion
 
 #region Ready
@@ -222,6 +225,7 @@ func morir():
 	ani_boss.play("death")
 	col_boss.set_deferred("disabled", true)
 	set_physics_process(false)
+	emit_signal("enemigo_muerto", true)
 	await ani_boss.animation_finished
 	timer_dead.start()
 	await timer_dead.timeout

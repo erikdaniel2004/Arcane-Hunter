@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3dwv2i7pf23h"]
+
+[ext_resource type="Script" path="res://environment/object_resources/counters/scripts/contador_tiempo.gd" id="1_xlfyc"]
+
+[node name="ContadorTiempo" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xlfyc")
+
+[node name="lbl_tiempo" type="Label" parent="."]
+texture_filter = 5
+layout_mode = 0
+offset_right = 135.0
+offset_bottom = 39.0

@@ -85,6 +85,7 @@ runa_escena = ExtResource("3_cwj8n")
 metadata/_edit_group_ = true
 
 [node name="ani_chest" type="AnimatedSprite2D" parent="."]
+texture_filter = 5
 scale = Vector2(1.25, 1.25)
 sprite_frames = SubResource("SpriteFrames_pwgnl")
 animation = &"close"

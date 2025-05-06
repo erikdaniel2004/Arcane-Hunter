@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 #region Generic Functions
 #region Nodes Connections

@@ -27,6 +27,9 @@ var esta_herido = false  # Indica si está recibiendo daño
 var is_dead = false  # Indica si está muerto
 var puede_atacar = true  # Controla si puede atacar nuevamente
 var jugador_detectado: Node = null  # Referencia al jugador detectado
+
+# Señal para determinar la muerte del enemigo
+signal enemigo_muerto(es_jefe: bool)
 #endregion
 
 #region Ready
@@ -151,6 +154,7 @@ func morir():
 	area_ataque.set_monitoring(false)  # Desactiva el área de ataque
 	col_minotaur.set_deferred("disabled", true)  # Desactiva el collider
 	set_physics_process(false)  # Detiene el procesamiento
+	emit_signal("enemigo_muerto", false)
 	await ani_minotaur.animation_finished  # Espera a que termine la animación
 	timer_dead.start()
 	await timer_dead.timeout

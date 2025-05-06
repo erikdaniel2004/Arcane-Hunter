@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=4 uid="uid://dy1vuuibqhx2l"]
+[gd_scene load_steps=57 format=4 uid="uid://dy1vuuibqhx2l"]
 
 [ext_resource type="Script" path="res://characters/player/script/player_knight.gd" id="1_640oc"]
 [ext_resource type="Texture2D" uid="uid://ccp0im4tk10bq" path="res://characters/player/object_resources/Knight_1/Attack 1.png" id="1_qviks"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bjlhtov7m6bwa" path="res://characters/player/object_resources/Knight_1/Run+Attack.png" id="8_rqwys"]
 [ext_resource type="PackedScene" uid="uid://dxlfqhpqjsa8u" path="res://environment/object_resources/counters/scenes/contador_moneda.tscn" id="10_4lqct"]
 [ext_resource type="PackedScene" uid="uid://2e8qpv1lbpfg" path="res://environment/object_resources/counters/scenes/contador_runa.tscn" id="11_jn56i"]
+[ext_resource type="PackedScene" uid="uid://c3dwv2i7pf23h" path="res://environment/object_resources/counters/scenes/contador_tiempo.tscn" id="12_7atts"]
 [ext_resource type="Texture2D" uid="uid://qhfmd1m6x53l" path="res://characters/player/img/Under.png" id="12_iuor6"]
 [ext_resource type="Texture2D" uid="uid://dgp20hdd774br" path="res://characters/player/img/Over.png" id="13_g47vx"]
 [ext_resource type="Texture2D" uid="uid://b5tuyxluli5q5" path="res://characters/player/img/Progress.png" id="14_yuc0g"]
@@ -362,16 +363,24 @@ shape = SubResource("RectangleShape2D_6eey0")
 [node name="contador_moneda" parent="CanvasLayer" instance=ExtResource("10_4lqct")]
 offset_left = 39.0
 offset_top = 2.0
-offset_right = 37.0
-offset_bottom = 2.0
+offset_right = 1.0
+offset_bottom = 1.0
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
 [node name="contador_runa" parent="CanvasLayer2" instance=ExtResource("11_jn56i")]
-offset_left = 81.0
-offset_top = 2.0
-offset_right = 81.0
-offset_bottom = 2.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+
+[node name="contador_tiempo" parent="CanvasLayer3" instance=ExtResource("12_7atts")]
+offset_left = 495.0
+offset_top = 14.0
+offset_right = 495.0
+offset_bottom = 14.0
 
 [node name="bar_health" type="Node2D" parent="."]
 
@@ -390,6 +399,7 @@ tint_over = Color(0.0627451, 0.588235, 0.345098, 1)
 
 [node name="audio_player" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamMP3_te8td")
+bus = &"SFX"
 
 [node name="time" type="Timer" parent="."]
 one_shot = true

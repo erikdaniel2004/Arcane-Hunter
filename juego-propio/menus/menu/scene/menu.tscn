@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bf310qhl7at8o"]
+[gd_scene load_steps=18 format=3 uid="uid://bf310qhl7at8o"]
 
 [ext_resource type="Script" path="res://menus/menu/script/menu.gd" id="1_hphn0"]
 [ext_resource type="AudioStream" uid="uid://cjm2xyolltbqj" path="res://menus/menu/music/medieval-adventure-270566.mp3" id="2_adlgu"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://dn1jog0cqt3sd" path="res://interface/3 Icons/Icons yellow/Icon_40.png" id="11_qn7tj"]
 [ext_resource type="Texture2D" uid="uid://gt17kvokulyt" path="res://interface/3 Icons/Icons yellow/Icon_23.png" id="12_c14ik"]
 [ext_resource type="Texture2D" uid="uid://csad01mh457bb" path="res://interface/3 Icons/Icons yellow/Icon_17.png" id="13_8aecd"]
-[ext_resource type="Texture2D" uid="uid://dub84sg1dvik1" path="res://interface/3 Icons/Icons yellow/Icon_19.png" id="14_eg2h8"]
 [ext_resource type="Texture2D" uid="uid://bm2786usuoowh" path="res://interface/3 Icons/Icons yellow/Icon_39.png" id="15_x2uku"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4iuve"]
@@ -27,7 +26,7 @@ shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_l2dhr"]
 font = ExtResource("6_uhv57")
-font_size = 70
+font_size = 100
 outline_size = 9
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 15
@@ -41,97 +40,111 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 15
 shadow_color = Color(0, 0, 0, 1)
 
-[node name="Menu" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="menu" type="CanvasLayer"]
 script = ExtResource("1_hphn0")
 
-[node name="images" type="Node2D" parent="."]
+[node name="resources" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 21.0
+offset_top = 20.0
+offset_right = 21.0
+offset_bottom = 20.0
 
-[node name="image_menu" type="Sprite2D" parent="images"]
+[node name="images" type="Control" parent="resources"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -21.0
+offset_top = -19.0
+offset_right = -21.0
+offset_bottom = -19.0
+
+[node name="image_menu" type="Sprite2D" parent="resources/images"]
 position = Vector2(575.5, 323.5)
 scale = Vector2(3.84333, 3.85119)
 texture = ExtResource("3_5fvo0")
 
-[node name="mark_menu" type="Sprite2D" parent="images"]
+[node name="mark_menu" type="Sprite2D" parent="resources/images"]
 texture_filter = 5
 position = Vector2(571, 205)
 scale = Vector2(3.33333, 3.68414)
 texture = ExtResource("4_t7282")
 
-[node name="button_enter" type="Sprite2D" parent="images"]
+[node name="button_enter" type="Sprite2D" parent="resources/images"]
 texture_filter = 5
 position = Vector2(566, 427)
 scale = Vector2(2.53333, 2.14286)
 texture = ExtResource("5_a6ihc")
 
-[node name="button_exit" type="Sprite2D" parent="images"]
+[node name="button_exit" type="Sprite2D" parent="resources/images"]
 texture_filter = 5
 position = Vector2(566, 552)
 scale = Vector2(2.53333, 2.07143)
 texture = ExtResource("5_a6ihc")
 
-[node name="information" type="Sprite2D" parent="images"]
+[node name="information" type="Sprite2D" parent="resources/images"]
 self_modulate = Color(1, 1, 0.392157, 1)
 texture_filter = 5
 position = Vector2(44, 43)
 scale = Vector2(4, 4)
 texture = ExtResource("10_2sbbi")
 
-[node name="like" type="Sprite2D" parent="images"]
+[node name="like" type="Sprite2D" parent="resources/images"]
 self_modulate = Color(1, 1, 0.392157, 1)
 texture_filter = 5
 position = Vector2(1111, 42)
 scale = Vector2(4, 4)
 texture = ExtResource("11_qn7tj")
 
-[node name="settings" type="Sprite2D" parent="images"]
+[node name="settings" type="Sprite2D" parent="resources/images"]
 self_modulate = Color(1, 1, 0.392157, 1)
 texture_filter = 5
 position = Vector2(43, 607)
 scale = Vector2(4, 4)
 texture = ExtResource("12_c14ik")
 
-[node name="selecction_levels" type="Sprite2D" parent="images"]
+[node name="selecction_levels" type="Sprite2D" parent="resources/images"]
 self_modulate = Color(1, 1, 0.392157, 1)
 texture_filter = 5
 position = Vector2(146, 607)
 scale = Vector2(4, 4)
 texture = ExtResource("13_8aecd")
 
-[node name="achievements" type="Sprite2D" parent="images"]
+[node name="stats" type="Sprite2D" parent="resources/images"]
 self_modulate = Color(1, 1, 0.392157, 1)
 texture_filter = 5
-position = Vector2(1111, 607)
-scale = Vector2(4, 4)
-texture = ExtResource("14_eg2h8")
-
-[node name="Icon39" type="Sprite2D" parent="images"]
-self_modulate = Color(1, 1, 0.392157, 1)
-texture_filter = 5
-position = Vector2(1012, 606)
+position = Vector2(1109, 606)
 scale = Vector2(4, 4)
 texture = ExtResource("15_x2uku")
 
-[node name="audio_menu" type="AudioStreamPlayer2D" parent="."]
+[node name="audio" type="Control" parent="resources"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="audio_menu" type="AudioStreamPlayer2D" parent="resources/audio"]
 stream = ExtResource("2_adlgu")
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
-[node name="vbox_menu" type="VBoxContainer" parent="."]
-layout_mode = 0
+[node name="boxes" type="Control" parent="resources"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -21.0
+offset_top = -19.0
+offset_right = 19.0
+offset_bottom = 21.0
+
+[node name="vbox_menu" type="VBoxContainer" parent="resources/boxes"]
 offset_left = 450.0
 offset_top = 278.0
 offset_right = 681.0
 offset_bottom = 580.0
 theme_override_constants/separation = 66
 
-[node name="lbl_opciones" type="Label" parent="vbox_menu"]
+[node name="lbl_opciones" type="Label" parent="resources/boxes/vbox_menu"]
 texture_filter = 5
 layout_mode = 2
 text = "Opciones
@@ -140,7 +153,7 @@ label_settings = SubResource("LabelSettings_4iuve")
 horizontal_alignment = 1
 uppercase = true
 
-[node name="btn_start" type="Button" parent="vbox_menu"]
+[node name="btn_start" type="Button" parent="resources/boxes/vbox_menu"]
 self_modulate = Color(1, 1, 0, 1)
 texture_filter = 5
 layout_mode = 2
@@ -160,7 +173,7 @@ icon = ExtResource("8_kocx4")
 flat = true
 expand_icon = true
 
-[node name="btn_exit" type="Button" parent="vbox_menu"]
+[node name="btn_exit" type="Button" parent="resources/boxes/vbox_menu"]
 self_modulate = Color(1, 1, 0, 1)
 texture_filter = 5
 layout_mode = 2
@@ -179,20 +192,26 @@ icon = ExtResource("9_bxvom")
 flat = true
 expand_icon = true
 
-[node name="lbl_name_game" type="Label" parent="."]
+[node name="labels" type="Control" parent="resources"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -28.0
+offset_top = -17.0
+offset_right = 12.0
+offset_bottom = 23.0
+
+[node name="lbl_name_game" type="Label" parent="resources/labels"]
 texture_filter = 5
-layout_mode = 2
-offset_left = 289.0
-offset_top = 149.0
-offset_right = 841.0
-offset_bottom = 220.0
+offset_left = 216.0
+offset_top = 136.0
+offset_right = 927.0
+offset_bottom = 236.0
 text = "Arcane Hunter"
 label_settings = SubResource("LabelSettings_l2dhr")
 horizontal_alignment = 1
 
-[node name="lbl_version" type="Label" parent="."]
+[node name="lbl_version" type="Label" parent="resources/labels"]
 texture_filter = 5
-layout_mode = 0
 offset_left = 906.0
 offset_top = 289.0
 offset_right = 985.0
@@ -200,5 +219,20 @@ offset_bottom = 320.0
 text = "V1.01"
 label_settings = SubResource("LabelSettings_nb265")
 
-[connection signal="pressed" from="vbox_menu/btn_start" to="." method="_on_btn_start_pressed"]
-[connection signal="pressed" from="vbox_menu/btn_exit" to="." method="_on_btn_end_pressed"]
+[node name="buttons" type="Control" parent="resources"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -2.0
+offset_right = 40.0
+offset_bottom = 38.0
+
+[node name="btn_settings" type="Button" parent="resources/buttons"]
+offset_left = -12.0
+offset_top = 556.0
+offset_right = 57.0
+offset_bottom = 625.0
+flat = true
+
+[connection signal="pressed" from="resources/boxes/vbox_menu/btn_start" to="." method="_on_btn_start_pressed"]
+[connection signal="pressed" from="resources/boxes/vbox_menu/btn_exit" to="." method="_on_btn_end_pressed"]
+[connection signal="pressed" from="resources/buttons/btn_settings" to="." method="_on_btn_settings_pressed"]

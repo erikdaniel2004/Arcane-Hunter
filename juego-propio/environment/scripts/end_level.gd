@@ -1,7 +1,7 @@
 extends Area2D
 
 #region Variables
-@export var siguiente_nivel: String = "res://menus/menu_selection/scene/menu_selection.tscn"
+@export var environment_path: NodePath = "../.."
 #endregion
 
 #region Ready
@@ -13,6 +13,18 @@ func _ready():
 #region Nodes Connections
 func _on_body_entered(body):
 	if body.is_in_group("player_knight"):
-		get_tree().change_scene_to_file(siguiente_nivel)
+		# Obtener el script del jugador
+		var player = body
+		var environment = get_node(environment_path)
+		
+		if environment:
+			var data = {
+				"tiempo": player.contador3.obtener_tiempo(),
+				"monedas": player.monedas,
+				"runas": player.runas,
+				"enemigos": 0, # puedes ajustarlo más adelante
+				"jefes": 0     # si has matado algún jefe, también lo añades
+			}
+			environment._on_jugador_muerto(data, true) # true = nivel completado
 #endregion
 #endregion

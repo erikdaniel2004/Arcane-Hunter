@@ -7,6 +7,7 @@
 size = Vector2(15, 131)
 
 [node name="BreakableWall" type="StaticBody2D" groups=["breakable_wall"]]
+texture_filter = 5
 script = ExtResource("1_68al1")
 
 [node name="image" type="Sprite2D" parent="."]

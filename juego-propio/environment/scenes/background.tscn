@@ -17,8 +17,8 @@ motion_mirroring = Vector2(1152, 0)
 metadata/_edit_group_ = true
 
 [node name="sprite_fondo" type="Sprite2D" parent="layer_fondo"]
-position = Vector2(547.5, 383.5)
-scale = Vector2(2.00868, 2.36111)
+position = Vector2(547.5, 436)
+scale = Vector2(2.00868, 2.68518)
 texture = ExtResource("1_bb4mj")
 
 [node name="layer_medio1" type="ParallaxLayer" parent="."]
@@ -28,8 +28,8 @@ motion_mirroring = Vector2(1152, 0)
 metadata/_edit_group_ = true
 
 [node name="sprite_medio1" type="Sprite2D" parent="layer_medio1"]
-position = Vector2(546.499, 378.5)
-scale = Vector2(2.01216, 2.32408)
+position = Vector2(546.499, 434.5)
+scale = Vector2(2.01216, 2.66976)
 texture = ExtResource("2_jsvkf")
 
 [node name="layer_thunder" type="ParallaxLayer" parent="."]
@@ -47,8 +47,8 @@ motion_mirroring = Vector2(1152, 0)
 metadata/_edit_group_ = true
 
 [node name="sprite_medio2" type="Sprite2D" parent="layer_medio2"]
-position = Vector2(551.5, 379.999)
-scale = Vector2(2.00173, 2.37037)
+position = Vector2(551.5, 432.5)
+scale = Vector2(2.00173, 2.69445)
 texture = ExtResource("3_rxp30")
 
 [node name="layer_thunder2" type="ParallaxLayer" parent="."]
@@ -67,8 +67,8 @@ motion_mirroring = Vector2(1152, 0)
 metadata/_edit_group_ = true
 
 [node name="sprite_medio3" type="Sprite2D" parent="layer_medio3"]
-position = Vector2(549.499, 322)
-scale = Vector2(2.00174, 2.7037)
+position = Vector2(549.499, 378)
+scale = Vector2(2.00174, 3.04938)
 texture = ExtResource("4_dirof")
 
 [node name="layer_primer_plano" type="ParallaxLayer" parent="."]
@@ -78,6 +78,6 @@ motion_mirroring = Vector2(1152, 0)
 metadata/_edit_group_ = true
 
 [node name="sprite_primer_plano" type="Sprite2D" parent="layer_primer_plano"]
-position = Vector2(546.001, 372)
-scale = Vector2(2, 2.42593)
+position = Vector2(546.001, 425.5)
+scale = Vector2(2, 2.75617)
 texture = ExtResource("5_cej31")

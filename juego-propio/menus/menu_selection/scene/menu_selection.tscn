@@ -23,32 +23,45 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 6
 shadow_color = Color(0, 0, 0, 1)
 
-[node name="menu_selection" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 1.0
-offset_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="menu_selection" type="CanvasLayer"]
 script = ExtResource("1_qpvc5")
 
 [node name="MapLevels" parent="." instance=ExtResource("2_ffvps")]
 position = Vector2(1, -5)
 
-[node name="audio_menu" type="AudioStreamPlayer2D" parent="."]
+[node name="resources" type="Node2D" parent="."]
+
+[node name="audio" type="Control" parent="resources"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="audio_menu" type="AudioStreamPlayer2D" parent="resources/audio"]
 stream = ExtResource("1_r1j1n")
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
-[node name="MapFrame" type="Sprite2D" parent="."]
+[node name="images" type="Control" parent="resources"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="mark_levels" type="Sprite2D" parent="resources/images"]
 texture_filter = 5
 position = Vector2(601.5, 606.5)
 scale = Vector2(2.02778, 0.404412)
 texture = ExtResource("4_3lbvi")
 
-[node name="lbl_opciones" type="Label" parent="."]
+[node name="labels" type="Control" parent="resources"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="lbl_levels" type="Label" parent="resources/labels"]
 layout_mode = 2
 offset_left = 20.0
 offset_top = 582.0
@@ -61,7 +74,7 @@ label_settings = SubResource("LabelSettings_opalg")
 horizontal_alignment = 1
 uppercase = true
 
-[node name="lbl_level1" type="Label" parent="."]
+[node name="lbl_level1" type="Label" parent="resources/labels"]
 layout_mode = 2
 offset_left = 486.0
 offset_top = 248.0
@@ -74,7 +87,7 @@ label_settings = SubResource("LabelSettings_el0bc")
 horizontal_alignment = 1
 uppercase = true
 
-[node name="lbl_level2" type="Label" parent="."]
+[node name="lbl_level2" type="Label" parent="resources/labels"]
 layout_mode = 2
 offset_left = 734.0
 offset_top = 290.0
@@ -88,7 +101,7 @@ label_settings = SubResource("LabelSettings_el0bc")
 horizontal_alignment = 1
 uppercase = true
 
-[node name="lbl_level3" type="Label" parent="."]
+[node name="lbl_level3" type="Label" parent="resources/labels"]
 layout_mode = 2
 offset_left = 1015.0
 offset_top = 297.0
@@ -102,25 +115,13 @@ label_settings = SubResource("LabelSettings_el0bc")
 horizontal_alignment = 1
 uppercase = true
 
-[node name="vbox_menu" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 482.0
-offset_top = 234.0
-offset_right = 568.0
-offset_bottom = 334.0
-scale = Vector2(0.5, 0.5)
-theme_override_constants/separation = 66
+[node name="boxs" type="Control" parent="resources"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="btn_start" type="Button" parent="vbox_menu"]
-layout_mode = 2
-text = "
-
-
-
-"
-flat = true
-
-[node name="vbox_salir" type="VBoxContainer" parent="."]
+[node name="vbox_salir" type="VBoxContainer" parent="resources/boxs"]
 layout_mode = 0
 offset_left = 1077.0
 offset_top = 557.0
@@ -128,7 +129,7 @@ offset_right = 1152.0
 offset_bottom = 663.0
 theme_override_constants/separation = 66
 
-[node name="btn_salir" type="Button" parent="vbox_salir"]
+[node name="btn_salir" type="Button" parent="resources/boxs/vbox_salir"]
 self_modulate = Color(1, 1, 0.054902, 1)
 texture_filter = 5
 layout_mode = 2
@@ -142,7 +143,23 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
-[node name="levels_frame" type="Sprite2D" parent="."]
+[node name="vbox_menu" type="VBoxContainer" parent="resources/boxs"]
+layout_mode = 0
+offset_left = 482.0
+offset_top = 234.0
+offset_right = 568.0
+offset_bottom = 334.0
+scale = Vector2(0.5, 0.5)
+theme_override_constants/separation = 66
 
-[connection signal="pressed" from="vbox_menu/btn_start" to="." method="_on_btn_start_pressed"]
-[connection signal="pressed" from="vbox_salir/btn_salir" to="." method="_on_btn_salir_pressed"]
+[node name="btn_start" type="Button" parent="resources/boxs/vbox_menu"]
+layout_mode = 2
+text = "
+
+
+
+"
+flat = true
+
+[connection signal="pressed" from="resources/boxs/vbox_salir/btn_salir" to="." method="_on_btn_salir_pressed"]
+[connection signal="pressed" from="resources/boxs/vbox_menu/btn_start" to="." method="_on_btn_start_pressed"]

@@ -43,6 +43,7 @@ animations = [{
 script = ExtResource("1_lmgt8")
 
 [node name="ani_flag" type="AnimatedSprite2D" parent="."]
+texture_filter = 5
 sprite_frames = SubResource("SpriteFrames_vwlw3")
 animation = &"move"
 frame_progress = 0.563918

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dxlfqhpqjsa8u"]
 
 [ext_resource type="Script" path="res://environment/object_resources/counters/scripts/contador_moneda.gd" id="1_4aymb"]
-[ext_resource type="Texture2D" uid="uid://c76rnnqryykwh" path="res://environment/object_resources/tileset/4 Animated objects/img/Coin.png" id="2_qgnoa"]
+[ext_resource type="Texture2D" uid="uid://c76rnnqryykwh" path="res://environment/object_resources/tileset_swamp/4 Animated objects/img/Coin.png" id="2_qgnoa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0owff"]
 atlas = ExtResource("2_qgnoa")
@@ -59,6 +59,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="ani_moneda" type="AnimatedSprite2D" parent="hbox_moneda"]
+texture_filter = 5
 texture_repeat = 2
 position = Vector2(13.5, 14.5)
 scale = Vector2(3.7, 3.9)

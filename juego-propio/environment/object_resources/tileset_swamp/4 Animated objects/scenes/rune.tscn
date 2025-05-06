@@ -51,6 +51,7 @@ radius = 16.0312
 script = ExtResource("1_db4ok")
 
 [node name="ani_runa" type="AnimatedSprite2D" parent="."]
+texture_filter = 5
 sprite_frames = SubResource("SpriteFrames_bhodb")
 animation = &"idle"
 
@@ -66,3 +67,4 @@ shape = SubResource("CircleShape2D_0q5ot")
 [node name="audio_runa" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(541, 297)
 stream = ExtResource("3_wgxam")
+bus = &"SFX"

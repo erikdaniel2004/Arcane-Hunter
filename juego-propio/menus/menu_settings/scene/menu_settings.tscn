@@ -1,5 +1,1476 @@
-[gd_scene format=3 uid="uid://cf5kjrn7ofocp"]
+[gd_scene load_steps=43 format=3 uid="uid://cf5kjrn7ofocp"]
 
-[node name="menu_settings" type="Control"]
+[ext_resource type="Script" path="res://menus/menu_settings/script/menu_settings.gd" id="1_8ewbs"]
+[ext_resource type="Texture2D" uid="uid://c7r5nqcrhcuej" path="res://interface/1 Frames/Back3.png" id="2_tb0iy"]
+[ext_resource type="Texture2D" uid="uid://bot4ewjqhtffc" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_01.png" id="3_wal4u"]
+[ext_resource type="Texture2D" uid="uid://bntmx2nsknr6m" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_02.png" id="4_8g3e7"]
+[ext_resource type="Texture2D" uid="uid://bomh8u4nf44vp" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_03.png" id="5_3evff"]
+[ext_resource type="Texture2D" uid="uid://fwbgxlp7wb6q" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_04.png" id="6_x08gc"]
+[ext_resource type="Texture2D" uid="uid://bclehm701a7xd" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_05.png" id="7_de2nt"]
+[ext_resource type="Texture2D" uid="uid://brovvq4a7d87g" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_06.png" id="8_3osrw"]
+[ext_resource type="Texture2D" uid="uid://bjt3qcj8bt75t" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_07.png" id="9_38ho2"]
+[ext_resource type="Texture2D" uid="uid://cqt3q4akfn7ii" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_11_2.png" id="10_frp3r"]
+[ext_resource type="Texture2D" uid="uid://b14usfrsjwxss" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_21.png" id="11_5rlp6"]
+[ext_resource type="Texture2D" uid="uid://d0bxdm0455jr0" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_22.png" id="12_3gnj4"]
+[ext_resource type="Texture2D" uid="uid://bax6kvlobfn7y" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_23.png" id="13_ls11n"]
+[ext_resource type="Texture2D" uid="uid://bueweghnhyn6e" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_24.png" id="14_lbvm4"]
+[ext_resource type="Texture2D" uid="uid://48npa6k07hmu" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_25.png" id="15_fak15"]
+[ext_resource type="Texture2D" uid="uid://b21jafah7haqi" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_26.png" id="16_pyk2h"]
+[ext_resource type="Texture2D" uid="uid://b6x8w2f15giln" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_13.png" id="17_5e52g"]
+[ext_resource type="Texture2D" uid="uid://bgrc2ei8vwat8" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_12.png" id="18_h4s7a"]
+[ext_resource type="Texture2D" uid="uid://bnkexe1p8h8lq" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_14.png" id="19_ygnib"]
+[ext_resource type="Texture2D" uid="uid://6x15dh40ibrh" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_17.png" id="20_u7s27"]
+[ext_resource type="Texture2D" uid="uid://wekbdt5tpwa0" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_27.png" id="21_4i3m8"]
+[ext_resource type="Texture2D" uid="uid://clj6incu46oke" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_31.png" id="22_ca5eo"]
+[ext_resource type="Texture2D" uid="uid://cfa0jy6hgmix4" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_32.png" id="23_gjal0"]
+[ext_resource type="Texture2D" uid="uid://bnvggarfa6qln" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_33.png" id="24_clw3n"]
+[ext_resource type="Texture2D" uid="uid://bbufuf5rvnth3" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_34.png" id="25_8hpis"]
+[ext_resource type="Texture2D" uid="uid://0bcxvi42ci5i" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_35.png" id="26_g8f6l"]
+[ext_resource type="Texture2D" uid="uid://cvax8kk64r0pn" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_36.png" id="27_kt08c"]
+[ext_resource type="Texture2D" uid="uid://dmeetgq82fyps" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_37.png" id="28_rob31"]
+[ext_resource type="Texture2D" uid="uid://bxc6aqfrovyh7" path="res://interface/1 Frames/Frame1.png" id="29_lq3x0"]
+[ext_resource type="Texture2D" uid="uid://bkno638orwh0d" path="res://interface/3 Icons/Icons yellow/Icon_13.png" id="30_dvk2u"]
+[ext_resource type="Texture2D" uid="uid://cpgpj8c0aqlon" path="res://interface/3 Icons/Icons yellow/Icon_07.png" id="31_jj2at"]
+[ext_resource type="Texture2D" uid="uid://c6lgurhdtka41" path="res://interface/3 Icons/Icons yellow/Icon_14.png" id="31_rsm6w"]
+[ext_resource type="FontFile" uid="uid://b0ovcqsgsdr2m" path="res://interface/6 Font/CraftPixNet Survival Kit.otf" id="31_uaaav"]
+[ext_resource type="FontFile" uid="uid://cek71hj6bulak" path="res://interface/7 General Font/Pixellari.ttf" id="32_cakif"]
+[ext_resource type="Texture2D" uid="uid://b2ts62frbq8x3" path="res://interface/3 Icons/Icons yellow/Icon_31.png" id="32_l2h0i"]
+[ext_resource type="Texture2D" uid="uid://5vptp5lu0ud2" path="res://interface/2 Bars/Button1.png" id="34_o6g4q"]
+[ext_resource type="Texture2D" uid="uid://c7igfbm4tdwj5" path="res://interface/2 Bars/Loading_bar2.png" id="35_a6q61"]
+[ext_resource type="Texture2D" uid="uid://di2xf6njw4c4l" path="res://interface/2 Bars/Loading_bar1.png" id="36_qr51m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_q8mu5"]
+font = ExtResource("31_uaaav")
+font_size = 35
+font_color = Color(1, 0.835294, 0.411765, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ptvcd"]
+font = ExtResource("32_cakif")
+font_size = 27
+font_color = Color(0.803922, 0.494118, 0.0823529, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3yj8t"]
+font = ExtResource("32_cakif")
+font_size = 27
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sxynl"]
+font = ExtResource("32_cakif")
+font_size = 27
+font_color = Color(0.803922, 0.494118, 0.0823529, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="menu_settings" type="CanvasLayer"]
+process_mode = 3
+scale = Vector2(1.45, 1.45)
+transform = Transform2D(1.45, 0, 0, 1.45, 0, 0)
+script = ExtResource("1_8ewbs")
+
+[node name="color_rect" type="ColorRect" parent="."]
+anchors_preset = -1
+anchor_right = 1.99913
+anchor_bottom = 2.42284
+offset_right = -355.0
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.105882, 0.105882, 0.105882, 0.470588)
+metadata/_edit_use_anchors_ = true
+
+[node name="resources" type="Control" parent="."]
+texture_filter = 5
 layout_mode = 3
-anchors_preset = 0
+anchor_left = -7.9857e-05
+anchor_top = -0.000212855
+anchor_right = 0.268149
+anchor_bottom = 0.539911
+offset_left = 208.575
+offset_top = 4.82759
+offset_right = 208.575
+offset_bottom = 4.82761
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.25, 1.25)
+metadata/_edit_use_anchors_ = true
+
+[node name="design" type="Control" parent="resources"]
+texture_filter = 5
+layout_mode = 1
+anchor_left = -7.9857e-05
+anchor_top = -0.000212855
+anchor_right = 0.267281
+anchor_bottom = 0.538367
+offset_left = 0.0246758
+offset_top = -0.477229
+offset_right = 0.0246887
+offset_bottom = -0.477188
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="GridContainer" type="GridContainer" parent="resources/design"]
+layout_mode = 0
+offset_left = -27.0
+offset_top = 5.0
+offset_right = 261.0
+offset_bottom = 56.0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+
+[node name="Back3" type="Sprite2D" parent="resources/design/GridContainer"]
+texture_filter = 5
+position = Vector2(180.208, 9)
+scale = Vector2(1.24761, 1)
+texture = ExtResource("2_tb0iy")
+
+[node name="Back4" type="Sprite2D" parent="resources/design/GridContainer"]
+texture_filter = 5
+position = Vector2(180.208, 36.0345)
+scale = Vector2(1.24761, 1)
+texture = ExtResource("2_tb0iy")
+flip_v = true
+
+[node name="Back5" type="Sprite2D" parent="resources/design/GridContainer"]
+texture_filter = 5
+position = Vector2(180.208, 63.069)
+scale = Vector2(1.24761, 1)
+texture = ExtResource("2_tb0iy")
+
+[node name="Back6" type="Sprite2D" parent="resources/design/GridContainer"]
+texture_filter = 5
+position = Vector2(180.208, 89.5517)
+scale = Vector2(1.24761, 1)
+texture = ExtResource("2_tb0iy")
+flip_v = true
+
+[node name="Back7" type="Sprite2D" parent="resources/design/GridContainer"]
+texture_filter = 5
+position = Vector2(180.208, 114.931)
+scale = Vector2(1.24761, 1)
+texture = ExtResource("2_tb0iy")
+
+[node name="Back8" type="Sprite2D" parent="resources/design/GridContainer"]
+texture_filter = 5
+position = Vector2(180.208, 141.966)
+scale = Vector2(1.24761, 1)
+texture = ExtResource("2_tb0iy")
+flip_v = true
+
+[node name="Back9" type="Sprite2D" parent="resources/design/GridContainer"]
+texture_filter = 5
+position = Vector2(180.208, 169)
+scale = Vector2(1.24761, 1)
+texture = ExtResource("2_tb0iy")
+
+[node name="Back10" type="Sprite2D" parent="resources/design/GridContainer"]
+texture_filter = 5
+position = Vector2(180.208, 196.034)
+scale = Vector2(1.24761, 1)
+texture = ExtResource("2_tb0iy")
+flip_v = true
+
+[node name="Back11" type="Sprite2D" parent="resources/design/GridContainer"]
+texture_filter = 5
+position = Vector2(180.208, 221.966)
+scale = Vector2(1.24761, 1)
+texture = ExtResource("2_tb0iy")
+
+[node name="Back12" type="Sprite2D" parent="resources/design/GridContainer"]
+texture_filter = 5
+position = Vector2(180.208, 249)
+scale = Vector2(1.24761, 1)
+texture = ExtResource("2_tb0iy")
+flip_v = true
+
+[node name="Back13" type="Sprite2D" parent="resources/design/GridContainer"]
+texture_filter = 5
+position = Vector2(180.208, 276.035)
+scale = Vector2(1.24761, 1)
+texture = ExtResource("2_tb0iy")
+
+[node name="Back14" type="Sprite2D" parent="resources/design/GridContainer"]
+texture_filter = 5
+position = Vector2(180.208, 302.517)
+scale = Vector2(1.24761, 1)
+texture = ExtResource("2_tb0iy")
+flip_v = true
+
+[node name="Back15" type="Sprite2D" parent="resources/design/GridContainer"]
+texture_filter = 5
+position = Vector2(180.208, 327.897)
+scale = Vector2(1.24761, 1)
+texture = ExtResource("2_tb0iy")
+
+[node name="GridContaine2" type="GridContainer" parent="resources/design"]
+texture_filter = 5
+layout_mode = 0
+offset_right = 224.0
+offset_bottom = 352.0
+scale = Vector2(1.4, 1)
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 14
+
+[node name="TextureRect" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("3_wal4u")
+
+[node name="TextureRect2" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("4_8g3e7")
+
+[node name="TextureRect3" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("5_3evff")
+
+[node name="TextureRect4" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("6_x08gc")
+
+[node name="TextureRect5" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("7_de2nt")
+
+[node name="TextureRect6" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("8_3osrw")
+
+[node name="TextureRect7" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("9_38ho2")
+
+[node name="TextureRect14" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("9_38ho2")
+flip_h = true
+
+[node name="TextureRect13" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("8_3osrw")
+flip_h = true
+
+[node name="TextureRect12" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("7_de2nt")
+flip_h = true
+
+[node name="TextureRect11" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("6_x08gc")
+flip_h = true
+
+[node name="TextureRect10" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("5_3evff")
+flip_h = true
+
+[node name="TextureRect9" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("4_8g3e7")
+flip_h = true
+
+[node name="TextureRect8" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("3_wal4u")
+flip_h = true
+
+[node name="TextureRect15" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+
+[node name="TextureRect16" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect17" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect18" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect19" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect20" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect21" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect22" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect23" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect24" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect25" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect26" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect27" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect28" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+flip_h = true
+
+[node name="TextureRect29" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+
+[node name="TextureRect30" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect31" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect32" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect33" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect34" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect35" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect36" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect37" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect38" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect39" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect40" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect41" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect42" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+flip_h = true
+
+[node name="TextureRect43" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("11_5rlp6")
+
+[node name="TextureRect44" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("12_3gnj4")
+
+[node name="TextureRect49" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("12_3gnj4")
+
+[node name="TextureRect45" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("13_ls11n")
+
+[node name="TextureRect46" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("14_lbvm4")
+
+[node name="TextureRect47" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("15_fak15")
+
+[node name="TextureRect48" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("16_pyk2h")
+
+[node name="TextureRect55" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("16_pyk2h")
+flip_h = true
+
+[node name="TextureRect56" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("15_fak15")
+flip_h = true
+
+[node name="TextureRect54" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("14_lbvm4")
+flip_h = true
+
+[node name="TextureRect53" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("13_ls11n")
+flip_h = true
+
+[node name="TextureRect51" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("12_3gnj4")
+
+[node name="TextureRect52" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("12_3gnj4")
+
+[node name="TextureRect50" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("11_5rlp6")
+flip_h = true
+
+[node name="TextureRect57" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+
+[node name="TextureRect58" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect59" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect60" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect61" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect62" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect63" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect64" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect65" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect66" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect67" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect68" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect69" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect70" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+flip_h = true
+
+[node name="TextureRect71" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+
+[node name="TextureRect72" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect73" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect74" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect75" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect76" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect77" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("17_5e52g")
+flip_h = true
+
+[node name="TextureRect78" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("18_h4s7a")
+
+[node name="TextureRect79" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("18_h4s7a")
+
+[node name="TextureRect80" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("18_h4s7a")
+
+[node name="TextureRect81" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("18_h4s7a")
+
+[node name="TextureRect82" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("18_h4s7a")
+
+[node name="TextureRect83" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("17_5e52g")
+
+[node name="TextureRect84" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+flip_h = true
+
+[node name="TextureRect85" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+
+[node name="TextureRect86" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect87" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect88" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect89" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect90" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect91" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("19_ygnib")
+
+[node name="TextureRect92" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+flip_h = true
+
+[node name="TextureRect93" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect94" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect95" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect96" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect97" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("19_ygnib")
+flip_h = true
+
+[node name="TextureRect98" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+flip_h = true
+
+[node name="TextureRect99" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+
+[node name="TextureRect100" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect101" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect102" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect103" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect104" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect105" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("20_u7s27")
+
+[node name="TextureRect106" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("21_4i3m8")
+
+[node name="TextureRect107" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("21_4i3m8")
+
+[node name="TextureRect108" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("21_4i3m8")
+
+[node name="TextureRect109" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("21_4i3m8")
+
+[node name="TextureRect110" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("21_4i3m8")
+
+[node name="TextureRect111" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("20_u7s27")
+flip_h = true
+
+[node name="TextureRect112" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+flip_h = true
+
+[node name="TextureRect113" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+
+[node name="TextureRect114" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect115" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect116" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect117" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect118" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect119" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("17_5e52g")
+flip_h = true
+
+[node name="TextureRect120" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("18_h4s7a")
+
+[node name="TextureRect121" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("18_h4s7a")
+
+[node name="TextureRect122" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("18_h4s7a")
+
+[node name="TextureRect123" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("18_h4s7a")
+
+[node name="TextureRect124" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("18_h4s7a")
+
+[node name="TextureRect125" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("17_5e52g")
+
+[node name="TextureRect126" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+flip_h = true
+
+[node name="TextureRect127" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+
+[node name="TextureRect128" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect129" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect130" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect131" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect132" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect133" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("19_ygnib")
+
+[node name="TextureRect134" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect135" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect136" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect137" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect138" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect139" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("19_ygnib")
+flip_h = true
+
+[node name="TextureRect140" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+flip_h = true
+
+[node name="TextureRect141" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+
+[node name="TextureRect142" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect143" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect144" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect145" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect146" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect147" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("20_u7s27")
+
+[node name="TextureRect148" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("21_4i3m8")
+
+[node name="TextureRect149" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("21_4i3m8")
+
+[node name="TextureRect150" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("21_4i3m8")
+
+[node name="TextureRect151" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("21_4i3m8")
+
+[node name="TextureRect152" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("21_4i3m8")
+
+[node name="TextureRect153" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("20_u7s27")
+flip_h = true
+
+[node name="TextureRect154" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+flip_h = true
+
+[node name="TextureRect155" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+
+[node name="TextureRect156" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect157" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect158" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect159" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect160" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect161" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect162" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect163" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect164" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect165" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect166" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect167" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect168" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+flip_h = true
+
+[node name="TextureRect169" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+
+[node name="TextureRect170" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect171" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect172" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect173" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect174" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect175" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect176" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect177" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect178" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect179" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect180" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect181" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect182" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+flip_h = true
+
+[node name="TextureRect183" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+
+[node name="TextureRect184" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect185" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect186" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect187" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect188" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect189" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect190" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect191" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect192" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect193" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect194" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect195" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect196" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+flip_h = true
+
+[node name="TextureRect197" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+
+[node name="TextureRect198" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect199" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect200" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect201" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect202" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect203" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect204" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect205" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect206" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect207" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect208" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect209" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect210" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+flip_h = true
+
+[node name="TextureRect211" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+
+[node name="TextureRect212" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect213" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect214" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect215" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect216" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect217" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect218" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect219" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect220" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect221" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect222" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect223" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect224" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+flip_h = true
+
+[node name="TextureRect225" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+
+[node name="TextureRect226" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect227" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect228" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect229" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect230" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect231" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect232" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect233" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect234" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect235" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect236" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect237" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect238" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+flip_h = true
+
+[node name="TextureRect239" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+
+[node name="TextureRect240" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect241" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect242" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect243" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect244" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect245" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect246" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect247" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect248" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect249" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect250" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect251" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect252" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+flip_h = true
+
+[node name="TextureRect253" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+
+[node name="TextureRect254" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect255" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect256" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect257" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect258" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect259" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect260" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect261" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect262" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect263" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect264" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect265" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect266" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+flip_h = true
+
+[node name="TextureRect267" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+
+[node name="TextureRect268" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect269" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect270" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect271" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect272" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect273" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect274" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect275" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect276" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect277" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect278" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect279" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect280" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+flip_h = true
+
+[node name="TextureRect281" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+
+[node name="TextureRect282" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect283" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect284" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect285" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect286" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect287" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect288" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect289" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect290" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect291" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect292" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect293" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+
+[node name="TextureRect294" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("10_frp3r")
+flip_h = true
+
+[node name="TextureRect295" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("22_ca5eo")
+
+[node name="TextureRect296" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("23_gjal0")
+
+[node name="TextureRect297" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("24_clw3n")
+
+[node name="TextureRect298" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("25_8hpis")
+
+[node name="TextureRect299" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("26_g8f6l")
+
+[node name="TextureRect300" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("27_kt08c")
+
+[node name="TextureRect301" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("28_rob31")
+
+[node name="TextureRect302" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("28_rob31")
+
+[node name="TextureRect303" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("27_kt08c")
+flip_h = true
+
+[node name="TextureRect304" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("26_g8f6l")
+flip_h = true
+
+[node name="TextureRect305" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("25_8hpis")
+flip_h = true
+
+[node name="TextureRect306" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("24_clw3n")
+flip_h = true
+
+[node name="TextureRect307" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("23_gjal0")
+flip_h = true
+
+[node name="TextureRect308" type="TextureRect" parent="resources/design/GridContaine2"]
+layout_mode = 2
+texture = ExtResource("22_ca5eo")
+flip_h = true
+
+[node name="images" type="Node2D" parent="resources"]
+texture_filter = 5
+position = Vector2(1.5136, 1.15864)
+
+[node name="mark_cross" type="Sprite2D" parent="resources/images"]
+position = Vector2(281.052, 26.0731)
+scale = Vector2(1.45455, 1.47826)
+texture = ExtResource("29_lq3x0")
+
+[node name="mark_tick" type="Sprite2D" parent="resources/images"]
+position = Vector2(260.086, 205.383)
+scale = Vector2(1, 1.016)
+texture = ExtResource("29_lq3x0")
+
+[node name="icon_cross" type="Sprite2D" parent="resources/images"]
+position = Vector2(281.052, 26.0731)
+scale = Vector2(1.45455, 1.47826)
+texture = ExtResource("30_dvk2u")
+
+[node name="icon_tick" type="Sprite2D" parent="resources/images"]
+texture_filter = 5
+position = Vector2(260.39, 204.745)
+texture = ExtResource("31_rsm6w")
+
+[node name="mark_music1" type="Sprite2D" parent="resources/images"]
+position = Vector2(138.734, 102.952)
+scale = Vector2(1.12853, 0.983508)
+texture = ExtResource("29_lq3x0")
+
+[node name="mark_sounds" type="Sprite2D" parent="resources/images"]
+position = Vector2(138.734, 150.952)
+scale = Vector2(1.12853, 0.983508)
+texture = ExtResource("29_lq3x0")
+
+[node name="icon_music" type="Sprite2D" parent="resources/images"]
+texture_filter = 5
+position = Vector2(138.648, 102.314)
+scale = Vector2(1.02108, 0.95977)
+texture = ExtResource("31_jj2at")
+
+[node name="icon_sounds" type="Sprite2D" parent="resources/images"]
+texture_filter = 5
+position = Vector2(138.648, 150.314)
+scale = Vector2(1.02108, 0.95977)
+texture = ExtResource("32_l2h0i")
+
+[node name="image_apply" type="Sprite2D" parent="resources/images"]
+self_modulate = Color(0.779673, 1, 0.338428, 1)
+texture_filter = 5
+position = Vector2(151.148, 289.71)
+scale = Vector2(2.82759, 1.54286)
+texture = ExtResource("34_o6g4q")
+
+[node name="labels" type="Node2D" parent="resources"]
+
+[node name="lbl_settings" type="Label" parent="resources/labels"]
+offset_left = 41.0
+offset_top = 4.03448
+offset_right = 263.0
+offset_bottom = 42.0345
+text = "Ajustes"
+label_settings = SubResource("LabelSettings_q8mu5")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="lbl_music" type="Label" parent="resources/labels"]
+offset_left = 38.8276
+offset_top = 90.5517
+offset_right = 119.828
+offset_bottom = 118.552
+text = "Musica"
+label_settings = SubResource("LabelSettings_ptvcd")
+
+[node name="lbl_sounds" type="Label" parent="resources/labels"]
+offset_left = 27.2414
+offset_top = 138.0
+offset_right = 120.242
+offset_bottom = 166.0
+text = "Sonidos"
+label_settings = SubResource("LabelSettings_ptvcd")
+
+[node name="lbl_apply" type="Label" parent="resources/labels"]
+texture_filter = 5
+offset_left = 91.0
+offset_top = 272.0
+offset_right = 216.0
+offset_bottom = 300.0
+text = "Aplicar"
+label_settings = SubResource("LabelSettings_3yj8t")
+horizontal_alignment = 1
+
+[node name="lbl_fullscreen" type="Label" parent="resources/labels"]
+offset_left = 42.069
+offset_top = 192.793
+offset_right = 246.069
+offset_bottom = 220.793
+text = "Pantalla completa"
+label_settings = SubResource("LabelSettings_sxynl")
+
+[node name="progress_bars" type="Node2D" parent="resources"]
+position = Vector2(-166.786, -3.75173)
+scale = Vector2(0.8, 0.8)
+
+[node name="progressbar_music" type="TextureProgressBar" parent="resources/progress_bars"]
+texture_filter = 5
+offset_left = 403.69
+offset_top = 124.0
+offset_right = 471.69
+offset_bottom = 140.0
+scale = Vector2(2.06, 1.25)
+max_value = 1.0
+step = 0.05
+value = 0.5
+texture_under = ExtResource("35_a6q61")
+texture_progress = ExtResource("36_qr51m")
+
+[node name="progressbar_sounds" type="TextureProgressBar" parent="resources/progress_bars"]
+texture_filter = 5
+offset_left = 403.69
+offset_top = 184.0
+offset_right = 471.69
+offset_bottom = 200.0
+scale = Vector2(2.06, 1.25)
+max_value = 1.0
+step = 0.05
+value = 0.5
+texture_under = ExtResource("35_a6q61")
+texture_progress = ExtResource("36_qr51m")
+
+[node name="sliders" type="Node2D" parent="resources"]
+position = Vector2(-166.786, -3.75173)
+scale = Vector2(0.8, 0.8)
+
+[node name="slider_music" type="HSlider" parent="resources/sliders"]
+offset_left = 403.0
+offset_top = 121.0
+offset_right = 548.0
+offset_bottom = 147.0
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="slider_sounds" type="HSlider" parent="resources/sliders"]
+offset_left = 402.0
+offset_top = 181.0
+offset_right = 548.0
+offset_bottom = 207.0
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="buttons" type="Node2D" parent="resources"]
+
+[node name="btn_close" type="Button" parent="resources/buttons"]
+offset_left = 266.0
+offset_top = 10.0
+offset_right = 299.0
+offset_bottom = 43.0
+flat = true
+
+[node name="btn_apply" type="Button" parent="resources/buttons"]
+offset_left = 86.0
+offset_top = 268.448
+offset_right = 218.0
+offset_bottom = 306.448
+flat = true
+
+[node name="btn_fullscreen" type="Button" parent="resources/buttons"]
+offset_left = 250.0
+offset_top = 195.0
+offset_right = 273.0
+offset_bottom = 217.0
+flat = true
+
+[connection signal="pressed" from="resources/buttons/btn_close" to="." method="_on_btn_close_pressed"]
+[connection signal="pressed" from="resources/buttons/btn_apply" to="." method="_on_btn_apply_pressed"]
+[connection signal="pressed" from="resources/buttons/btn_fullscreen" to="." method="_on_btn_fullscreen_pressed"]

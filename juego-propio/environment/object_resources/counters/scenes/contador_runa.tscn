@@ -60,6 +60,7 @@ text = "
 "
 
 [node name="ani_runa" type="AnimatedSprite2D" parent="hbox_runa"]
+texture_filter = 5
 texture_repeat = 2
 position = Vector2(11, 14)
 scale = Vector2(2.5, 2.125)

@@ -34,6 +34,9 @@ extends CharacterBody2D
 # Referencia al contador de runas
 @onready var contador2: Control = $CanvasLayer2/contador_runa
 
+# Referencia al contador de tiempo
+@onready var contador3: Control = $CanvasLayer3/contador_tiempo
+
 # Variable que guarda el último atacante del jugador
 var last_attacker: Node = null
 
@@ -43,6 +46,8 @@ var muerte_por_caida_desactivada := false
 # Contadores
 var monedas = 0
 var runas = 0
+var enemigos_muertos := 0
+var jefes_muertos := 0
 
 # Variable que determina si la gorgona ha sido herida
 var esta_herido = false
@@ -52,6 +57,9 @@ var current_health := max_health
 
 # Variable con la que hacer invulnerable al jugador cuando reciba un ataque
 var is_invulnerable := false
+
+# Señal para indicar cuando el jugador ha muerto
+signal jugador_muerto(data: Dictionary, completado: bool)
 #endregion
 
 #region Ready
@@ -60,6 +68,7 @@ func _ready():
 	add_to_group("player_knight")
 	contador.actualizar(0)
 	contador2.actualizar(0)
+	contador3.iniciar()
 	bar_health.visible = false
 #endregion
 
@@ -153,13 +162,25 @@ func obtener_runa(valor):
 #region Damage/Death
 # Función para la muerte del jugador
 func morir():
-	audio_player.play() 
+	audio_player.play()
 	ani_player.play("dead")
 	set_physics_process(false)
 	time.start()
 	await time.timeout
-	get_tree().reload_current_scene()
 	
+	# Detener el juego y mostrar el menú de estadísticas
+	get_tree().paused = true
+	
+	# Emitir la señal con los datos
+	var data = {
+		"tiempo": contador3.obtener_tiempo(),
+		"monedas": monedas,
+		"runas": runas,
+		"enemigos": enemigos_muertos,
+		"jefes": jefes_muertos
+	}
+	emit_signal("jugador_muerto", data, false)
+
 # Función que aplica una reducción de salud al personaje
 func recibir_dano(cantidad):
 	if is_invulnerable:
@@ -238,5 +259,17 @@ func _on_timer_bar_timeout():
 # Función que devuelve la vulnerabilidad al jugador cuando el tiempo ha pasado
 func _on_timer_invincible_timeout():
 	is_invulnerable = false
+	
+
+func conectar_enemigo(enemy: Node):
+	if enemy.has_signal("enemigo_muerto"):
+		enemy.connect("enemigo_muerto", Callable(self, "_on_enemigo_muerto"))
+
+func _on_enemigo_muerto(es_jefe: bool):
+	if es_jefe:
+		jefes_muertos += 1
+	else:
+		enemigos_muertos += 1
+
 #endregion
 #endregion

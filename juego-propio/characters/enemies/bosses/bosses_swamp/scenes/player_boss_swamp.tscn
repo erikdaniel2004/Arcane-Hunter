@@ -389,6 +389,7 @@ wait_time = 3.0
 
 [node name="audio_boss" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_g8v2k")
+bus = &"SFX"
 
 [node name="bar_health" type="Node2D" parent="."]
 
