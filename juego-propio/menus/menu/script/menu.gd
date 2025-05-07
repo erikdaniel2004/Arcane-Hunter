@@ -46,6 +46,15 @@ func _on_btn_settings_pressed():
 	self.hide()
 #endregion
 
+#region Stats
+func _on_btn_stats_pressed():
+	var menu_stats = preload("res://menus/menu_stats/scene/menu_stats.tscn").instantiate()
+	add_child(menu_stats)
+	await get_tree().process_frame
+	menu_stats.cargar_estadisticas()
+	hide()
+#endregion
+
 #region Exit
 func _on_btn_end_pressed():
 	get_tree().quit()

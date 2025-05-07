@@ -9,7 +9,7 @@ const BAR_EMPTY = preload("res://interface/2 Bars/Loading_bar2.png")
 @onready var sounds_slider = $resources/sliders/slider_sounds
 @onready var music_bar = $resources/progress_bars/progressbar_music
 @onready var sounds_bar = $resources/progress_bars/progressbar_sounds
-@onready var tick_fullscreen = $resources/images/icon_tick
+@onready var tick_effects = $resources/images/icon_tick
 @onready var btn_close = $resources/buttons/btn_close
 @onready var btn_apply = $resources/buttons/btn_apply
 var menu_padre: Node = null
@@ -17,30 +17,29 @@ var menu_padre: Node = null
 
 #region Ready
 func _ready():
-	# Inicialmente está oculto para que este menú no aparezca por pantalla
-	hide()
-	
+	var path = "user://JSON/config.json"
+	if FileAccess.file_exists(path):
+		var file = FileAccess.open(path, FileAccess.READ)
+		var config = JSON.parse_string(file.get_as_text())
+		if config:
+			music_slider.value = config.get("musica", 0.5)
+			sounds_slider.value = config.get("sonidos", 0.5)
+			tick_effects.visible = config.get("efectos_visuales", true)
+
 	# Sliders invisibles pero activos
 	music_slider.modulate.a = 0
 	sounds_slider.modulate.a = 0
 
-	# Texturas personalizadas
 	_set_bar_style(music_bar)
 	_set_bar_style(sounds_bar)
-	
-	music_slider.connect("value_changed", Callable(self, "_on_slider_music_value_changed"))
-	sounds_slider.connect("value_changed", Callable(self, "_on_slider_sounds_value_changed"))
 
-	# Volumen inicial (temporal)
-	var default_volume := 0.5
-	music_slider.value = default_volume
-	sounds_slider.value = default_volume
-	music_bar.value = default_volume
-	sounds_bar.value = default_volume
+	music_bar.value = music_slider.value
+	sounds_bar.value = sounds_slider.value
 	_update_audio_volumes()
 
-	# Ocultar tick si no está en pantalla completa
-	tick_fullscreen.visible = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
+	music_slider.connect("value_changed", Callable(self, "_on_slider_music_value_changed"))
+	sounds_slider.connect("value_changed", Callable(self, "_on_slider_sounds_value_changed"))
+	hide()
 #endregion
 
 #region Options
@@ -58,19 +57,22 @@ func _on_btn_close_pressed():
 		menu_padre.show()
 
 func _on_btn_apply_pressed():
+	var path = "user://JSON/config.json"
+	var config = {
+		"musica": music_slider.value,
+		"sonidos": sounds_slider.value,
+		"efectos_visuales": tick_effects.visible
+	}
+
+	var file = FileAccess.open(path, FileAccess.WRITE)
+	file.store_string(JSON.stringify(config))
+
 	self.hide()
 	if menu_padre:
 		menu_padre.show()
 
-
 func _on_btn_fullscreen_pressed():
-	var is_fullscreen = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
-	if is_fullscreen:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		tick_fullscreen.visible = false
-	else:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		tick_fullscreen.visible = true
+	tick_effects.visible = !tick_effects.visible
 
 func linear_to_db(value: float) -> float:
 	return -80 if value == 0 else 20 * log(value) / log(10)

@@ -8,6 +8,7 @@ var pause_menu_instance: Node = null
 var menu_levels_instance: Node = null
 
 func _ready():
+	mover_a_user_si_no_existe()
 	# Menú de pausa
 	pause_menu_instance = pause_menu_scene.instantiate()
 	add_child(pause_menu_instance)
@@ -37,4 +38,60 @@ func _input(event):
 func _on_jugador_muerto(data: Dictionary, completado: bool):
 	get_tree().paused = true
 	menu_levels_instance.mostrar_estadisticas(data, completado, get_scene_file_path())
+	guardar_estadisticas(data, completado)
 	menu_levels_instance.show()
+
+func guardar_estadisticas(data: Dictionary, completado: bool):
+	var path = "user://JSON/stats.json"
+	var estadisticas_totales = {
+		"monedas": 0,
+		"runas": 0,
+		"tiempo": 0.0,
+		"enemigos": 0,
+		"jefes": 0,
+		"muertes": 0
+	}
+
+	if FileAccess.file_exists(path):
+		var archivo_lectura = FileAccess.open(path, FileAccess.READ)
+		var existentes = JSON.parse_string(archivo_lectura.get_as_text())
+		if existentes is Dictionary:
+			estadisticas_totales = existentes
+
+	# Suma totales
+	estadisticas_totales.monedas += data.monedas
+	estadisticas_totales.runas += data.runas
+	estadisticas_totales.tiempo += data.tiempo
+	estadisticas_totales.enemigos += data.enemigos
+	estadisticas_totales.jefes += data.jefes
+	if not completado:
+		estadisticas_totales.muertes += 1
+
+	var archivo_escritura = FileAccess.open(path, FileAccess.WRITE)
+	archivo_escritura.store_string(JSON.stringify(estadisticas_totales))
+
+func mover_a_user_si_no_existe():
+	var origen_directorio := "res://JSON"
+	var destino_directorio := "user://JSON"
+
+	# Asegurar que exista el directorio destino
+	if not DirAccess.dir_exists_absolute(destino_directorio):
+		var dir_user = DirAccess.open("user://")
+		dir_user.make_dir("JSON")
+
+	var dir_origen = DirAccess.open(origen_directorio)
+	if dir_origen:
+		dir_origen.list_dir_begin()
+		var archivo := dir_origen.get_next()
+		while archivo != "":
+			if not dir_origen.current_is_dir() and archivo.ends_with(".json"):
+				var ruta_origen = origen_directorio + "/" + archivo
+				var ruta_destino = destino_directorio + "/" + archivo
+
+				if not FileAccess.file_exists(ruta_destino):
+					var archivo_origen = FileAccess.open(ruta_origen, FileAccess.READ)
+					var contenido = archivo_origen.get_as_text()
+					var archivo_destino = FileAccess.open(ruta_destino, FileAccess.WRITE)
+					archivo_destino.store_string(contenido)
+			archivo = dir_origen.get_next()
+		dir_origen.list_dir_end()

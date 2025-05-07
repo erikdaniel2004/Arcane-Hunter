@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bf310qhl7at8o"]
+[gd_scene load_steps=17 format=3 uid="uid://bf310qhl7at8o"]
 
 [ext_resource type="Script" path="res://menus/menu/script/menu.gd" id="1_hphn0"]
 [ext_resource type="AudioStream" uid="uid://cjm2xyolltbqj" path="res://menus/menu/music/medieval-adventure-270566.mp3" id="2_adlgu"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://crumik5o8afto" path="res://interface/3 Icons/Icons yellow/Icon_30.png" id="10_2sbbi"]
 [ext_resource type="Texture2D" uid="uid://dn1jog0cqt3sd" path="res://interface/3 Icons/Icons yellow/Icon_40.png" id="11_qn7tj"]
 [ext_resource type="Texture2D" uid="uid://gt17kvokulyt" path="res://interface/3 Icons/Icons yellow/Icon_23.png" id="12_c14ik"]
-[ext_resource type="Texture2D" uid="uid://csad01mh457bb" path="res://interface/3 Icons/Icons yellow/Icon_17.png" id="13_8aecd"]
 [ext_resource type="Texture2D" uid="uid://bm2786usuoowh" path="res://interface/3 Icons/Icons yellow/Icon_39.png" id="15_x2uku"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4iuve"]
@@ -103,13 +102,6 @@ position = Vector2(43, 607)
 scale = Vector2(4, 4)
 texture = ExtResource("12_c14ik")
 
-[node name="selecction_levels" type="Sprite2D" parent="resources/images"]
-self_modulate = Color(1, 1, 0.392157, 1)
-texture_filter = 5
-position = Vector2(146, 607)
-scale = Vector2(4, 4)
-texture = ExtResource("13_8aecd")
-
 [node name="stats" type="Sprite2D" parent="resources/images"]
 self_modulate = Color(1, 1, 0.392157, 1)
 texture_filter = 5
@@ -138,6 +130,7 @@ offset_right = 19.0
 offset_bottom = 21.0
 
 [node name="vbox_menu" type="VBoxContainer" parent="resources/boxes"]
+layout_mode = 0
 offset_left = 450.0
 offset_top = 278.0
 offset_right = 681.0
@@ -202,6 +195,7 @@ offset_bottom = 23.0
 
 [node name="lbl_name_game" type="Label" parent="resources/labels"]
 texture_filter = 5
+layout_mode = 0
 offset_left = 216.0
 offset_top = 136.0
 offset_right = 927.0
@@ -212,6 +206,7 @@ horizontal_alignment = 1
 
 [node name="lbl_version" type="Label" parent="resources/labels"]
 texture_filter = 5
+layout_mode = 0
 offset_left = 906.0
 offset_top = 289.0
 offset_right = 985.0
@@ -227,12 +222,22 @@ offset_right = 40.0
 offset_bottom = 38.0
 
 [node name="btn_settings" type="Button" parent="resources/buttons"]
+layout_mode = 0
 offset_left = -12.0
 offset_top = 556.0
 offset_right = 57.0
 offset_bottom = 625.0
 flat = true
 
+[node name="btn_stats" type="Button" parent="resources/buttons"]
+layout_mode = 0
+offset_left = 1056.0
+offset_top = 565.0
+offset_right = 1121.0
+offset_bottom = 622.0
+flat = true
+
 [connection signal="pressed" from="resources/boxes/vbox_menu/btn_start" to="." method="_on_btn_start_pressed"]
 [connection signal="pressed" from="resources/boxes/vbox_menu/btn_exit" to="." method="_on_btn_end_pressed"]
 [connection signal="pressed" from="resources/buttons/btn_settings" to="." method="_on_btn_settings_pressed"]
+[connection signal="pressed" from="resources/buttons/btn_stats" to="." method="_on_btn_stats_pressed"]

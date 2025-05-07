@@ -1388,13 +1388,14 @@ text = "Aplicar"
 label_settings = SubResource("LabelSettings_3yj8t")
 horizontal_alignment = 1
 
-[node name="lbl_fullscreen" type="Label" parent="resources/labels"]
-offset_left = 42.069
-offset_top = 192.793
-offset_right = 246.069
-offset_bottom = 220.793
-text = "Pantalla completa"
+[node name="lbl_effects" type="Label" parent="resources/labels"]
+offset_left = 162.0
+offset_top = 193.0
+offset_right = 246.0
+offset_bottom = 221.0
+text = "Effects"
 label_settings = SubResource("LabelSettings_sxynl")
+horizontal_alignment = 2
 
 [node name="progress_bars" type="Node2D" parent="resources"]
 position = Vector2(-166.786, -3.75173)
@@ -1464,7 +1465,7 @@ offset_right = 218.0
 offset_bottom = 306.448
 flat = true
 
-[node name="btn_fullscreen" type="Button" parent="resources/buttons"]
+[node name="btn_effects" type="Button" parent="resources/buttons"]
 offset_left = 250.0
 offset_top = 195.0
 offset_right = 273.0
@@ -1473,4 +1474,4 @@ flat = true
 
 [connection signal="pressed" from="resources/buttons/btn_close" to="." method="_on_btn_close_pressed"]
 [connection signal="pressed" from="resources/buttons/btn_apply" to="." method="_on_btn_apply_pressed"]
-[connection signal="pressed" from="resources/buttons/btn_fullscreen" to="." method="_on_btn_fullscreen_pressed"]
+[connection signal="pressed" from="resources/buttons/btn_effects" to="." method="_on_btn_fullscreen_pressed"]
