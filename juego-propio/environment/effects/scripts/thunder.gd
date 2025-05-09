@@ -6,6 +6,8 @@ extends Node2D
 @onready var timer_trueno = $timer_thunder
 @onready var audio_thunder = $audio_thunder
 @onready var tween = create_tween()
+
+var efectos_visuales_activos: bool = true
 #endregion
 
 #region Ready
@@ -23,7 +25,6 @@ func _ready():
 	thunder_sprite.frame = 0
 	thunder_sprite.hide()
 
-
 	# Evita mostrar el rayo desde el inicio
 	thunder_sprite.stop()
 	thunder_sprite.frame = 0
@@ -33,6 +34,9 @@ func _ready():
 #region Generic Functions
 #region Render
 func reproducir_trueno():
+	if not efectos_visuales_activos:
+		return
+		
 	thunder_sprite.show()
 	thunder_sprite.play("thunder")
 
@@ -59,6 +63,8 @@ func reproducir_trueno():
 
 #region Nodes Connections
 func _on_timer_trueno_timeout():
+	if not efectos_visuales_activos:
+		return
 	await get_tree().create_timer(0.1).timeout
 	reproducir_trueno()
 

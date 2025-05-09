@@ -1389,11 +1389,11 @@ label_settings = SubResource("LabelSettings_3yj8t")
 horizontal_alignment = 1
 
 [node name="lbl_effects" type="Label" parent="resources/labels"]
-offset_left = 162.0
+offset_left = 152.069
 offset_top = 193.0
-offset_right = 246.0
+offset_right = 240.069
 offset_bottom = 221.0
-text = "Effects"
+text = "Efectos"
 label_settings = SubResource("LabelSettings_sxynl")
 horizontal_alignment = 2
 

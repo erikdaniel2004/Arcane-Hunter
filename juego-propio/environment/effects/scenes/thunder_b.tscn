@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bdwmvs348g1ek"]
 
-[ext_resource type="Script" path="res://environment/effects/scripts/thunder_b.gd" id="1_hthml"]
+[ext_resource type="Script" path="res://environment/effects/scripts/thunder.gd" id="1_tosmy"]
 [ext_resource type="Texture2D" uid="uid://b0p5llg5ruhmq" path="res://environment/effects/4 Thunder/Thunder.png" id="2_46xka"]
 [ext_resource type="AudioStream" uid="uid://dtx5r4agqmnfr" path="res://environment/effects/sounds/loud-thunder-192165.mp3" id="3_3f01d"]
 
@@ -54,9 +54,9 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Thunder" type="Node2D"]
+[node name="Thunder" type="Node2D" groups=["efectos_visuales"]]
 position = Vector2(29, -24)
-script = ExtResource("1_hthml")
+script = ExtResource("1_tosmy")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -13,6 +13,7 @@ const BAR_EMPTY = preload("res://interface/2 Bars/Loading_bar2.png")
 @onready var btn_close = $resources/buttons/btn_close
 @onready var btn_apply = $resources/buttons/btn_apply
 var menu_padre: Node = null
+var entorno_nivel: Node = null
 #endregion
 
 #region Ready
@@ -58,14 +59,34 @@ func _on_btn_close_pressed():
 
 func _on_btn_apply_pressed():
 	var path = "user://JSON/config.json"
-	var config = {
+	var config_actual := {
 		"musica": music_slider.value,
 		"sonidos": sounds_slider.value,
 		"efectos_visuales": tick_effects.visible
 	}
 
-	var file = FileAccess.open(path, FileAccess.WRITE)
-	file.store_string(JSON.stringify(config))
+	# Leer configuración previa para comparar
+	var efectos_visuales_anterior : bool = tick_effects.visible
+	if FileAccess.file_exists(path):
+		var file_lectura = FileAccess.open(path, FileAccess.READ)
+		var config_previa = JSON.parse_string(file_lectura.get_as_text())
+		if config_previa is Dictionary and config_previa.has("efectos_visuales"):
+			efectos_visuales_anterior = config_previa["efectos_visuales"]
+
+	# Guardar configuración nueva
+	var file_escritura = FileAccess.open(path, FileAccess.WRITE)
+	file_escritura.store_string(JSON.stringify(config_actual))
+
+	# Si ha cambiado efectos_visuales, reiniciar el nivel
+	if efectos_visuales_anterior != config_actual["efectos_visuales"]:
+		var current_scene = get_tree().current_scene.scene_file_path
+		get_tree().paused = false
+		get_tree().change_scene_to_file(current_scene)
+	else:
+		# No reiniciar, solo cerrar el menú
+		self.hide()
+		if menu_padre:
+			menu_padre.show()
 
 	self.hide()
 	if menu_padre:

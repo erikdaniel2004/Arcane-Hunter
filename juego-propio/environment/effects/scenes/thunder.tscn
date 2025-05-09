@@ -54,7 +54,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Thunder" type="Node2D"]
+[node name="Thunder" type="Node2D" groups=["efectos_visuales"]]
 position = Vector2(29, -24)
 script = ExtResource("1_pqyqv")
 

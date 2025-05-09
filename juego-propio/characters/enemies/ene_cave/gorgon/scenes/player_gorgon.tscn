@@ -288,7 +288,7 @@ tint_under = Color(0, 0, 0, 1)
 tint_over = Color(0.0627451, 0.588235, 0.345098, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="particles_blood" type="CPUParticles2D" parent="."]
+[node name="particles_blood" type="CPUParticles2D" parent="." groups=["efectos_visuales"]]
 position = Vector2(42, 0)
 emitting = false
 amount = 20

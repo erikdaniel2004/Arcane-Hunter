@@ -1,13 +1,18 @@
 extends Node2D
 
+#region Variables
 @onready var pause_menu_scene := preload("res://menus/menu_options/scene/menu_options.tscn")
 @onready var player = get_node("player_knight") # o tu ruta real
 @onready var menu_levels_scene = preload("res://menus/menu_levels/scene/menu_levels.tscn")
 
 var pause_menu_instance: Node = null
 var menu_levels_instance: Node = null
+#endregion
 
+#region Ready
 func _ready():
+	add_to_group("nivel")
+	aplicar_configuracion_visual()
 	mover_a_user_si_no_existe()
 	# Menú de pausa
 	pause_menu_instance = pause_menu_scene.instantiate()
@@ -25,7 +30,9 @@ func _ready():
 		
 	# Conectar señal de muerte del jugador
 	player.connect("jugador_muerto", Callable(self, "_on_jugador_muerto"))
+#endregion
 
+#region Input
 func _input(event):
 	if event.is_action_pressed("pausa"):
 		if get_tree().paused:
@@ -34,13 +41,18 @@ func _input(event):
 		else:
 			get_tree().paused = true
 			pause_menu_instance.show()
+#endregion
 
+#region Generic Functions
+#region Nodes Connection
 func _on_jugador_muerto(data: Dictionary, completado: bool):
 	get_tree().paused = true
 	menu_levels_instance.mostrar_estadisticas(data, completado, get_scene_file_path())
 	guardar_estadisticas(data, completado)
 	menu_levels_instance.show()
+#endregion
 
+#region Save Stats
 func guardar_estadisticas(data: Dictionary, completado: bool):
 	var path = "user://JSON/stats.json"
 	var estadisticas_totales = {
@@ -69,7 +81,9 @@ func guardar_estadisticas(data: Dictionary, completado: bool):
 
 	var archivo_escritura = FileAccess.open(path, FileAccess.WRITE)
 	archivo_escritura.store_string(JSON.stringify(estadisticas_totales))
+#endregion
 
+#region Settings JSON
 func mover_a_user_si_no_existe():
 	var origen_directorio := "res://JSON"
 	var destino_directorio := "user://JSON"
@@ -95,3 +109,22 @@ func mover_a_user_si_no_existe():
 					archivo_destino.store_string(contenido)
 			archivo = dir_origen.get_next()
 		dir_origen.list_dir_end()
+
+func aplicar_configuracion_visual():
+	var path = "user://JSON/config.json"
+	if FileAccess.file_exists(path):
+		var file = FileAccess.open(path, FileAccess.READ)
+		var resultado = JSON.parse_string(file.get_as_text())
+		if resultado is Dictionary:
+			var config: Dictionary = resultado
+			var activar_efectos : bool = config.get("efectos_visuales", true)
+
+			for nodo in get_tree().get_nodes_in_group("efectos_visuales"):
+				if nodo is Node:
+					nodo.visible = activar_efectos
+				if nodo.has_method("emitting"):
+					nodo.emitting = activar_efectos
+				if "efectos_visuales_activos" in nodo:
+					nodo.efectos_visuales_activos = activar_efectos
+#endregion
+#endregion

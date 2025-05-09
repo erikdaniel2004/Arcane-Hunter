@@ -410,7 +410,7 @@ one_shot = true
 wait_time = 3.0
 one_shot = true
 
-[node name="particles_blood" type="CPUParticles2D" parent="."]
+[node name="particles_blood" type="CPUParticles2D" parent="." groups=["efectos_visuales"]]
 emitting = false
 amount = 20
 lifetime = 0.5

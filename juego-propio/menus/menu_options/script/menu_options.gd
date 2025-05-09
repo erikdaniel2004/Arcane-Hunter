@@ -48,6 +48,10 @@ func _on_btn_levels_pressed():
 func _on_btn_settings_pressed():
 	var ajustes = preload("res://menus/menu_settings/scene/menu_settings.tscn").instantiate()
 	ajustes.menu_padre = self
+	for nodo in get_tree().get_nodes_in_group("nivel"):
+		if nodo.has_method("aplicar_configuracion_visual"):
+			ajustes.entorno_nivel = nodo
+			break
 	add_child(ajustes)
 	ajustes.show()
 	self.hide()

@@ -66,7 +66,7 @@
 [ext_resource type="PackedScene" uid="uid://4ulrtgfiee7u" path="res://menus/menu_options/scene/menu_options.tscn" id="64_o2a5v"]
 [ext_resource type="PackedScene" uid="uid://cf5kjrn7ofocp" path="res://menus/menu_settings/scene/menu_settings.tscn" id="65_qd4dh"]
 
-[node name="level_1" type="Node2D"]
+[node name="level_1" type="Node2D" groups=["nivel"]]
 script = ExtResource("1_sty8x")
 
 [node name="background" parent="." instance=ExtResource("1_t6eer")]
@@ -1623,7 +1623,7 @@ position = Vector2(2036, 1386)
 
 [node name="effects" type="Node2D" parent="."]
 
-[node name="rain" type="CPUParticles2D" parent="effects"]
+[node name="rain" type="CPUParticles2D" parent="effects" groups=["efectos_visuales"]]
 position = Vector2(1187, 462)
 amount = 2000
 lifetime = 2.0
@@ -1645,7 +1645,7 @@ autoplay = true
 bus = &"Music"
 parameters/looping = true
 
-[node name="BreakableWall" parent="effects" instance=ExtResource("62_muhp8")]
+[node name="BreakableWall" parent="effects" groups=["efectos_visuales"] instance=ExtResource("62_muhp8")]
 position = Vector2(129, 1650)
 
 [node name="menu_option" parent="." instance=ExtResource("64_o2a5v")]
