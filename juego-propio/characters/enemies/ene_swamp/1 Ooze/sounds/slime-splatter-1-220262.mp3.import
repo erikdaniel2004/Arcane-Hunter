@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://deom1ymkrhkhp"
+path="res://.godot/imported/slime-splatter-1-220262.mp3-4966ab97eb0573bd12853cdc064d01a1.mp3str"
+
+[deps]
+
+source_file="res://characters/enemies/ene_swamp/1 Ooze/sounds/slime-splatter-1-220262.mp3"
+dest_files=["res://.godot/imported/slime-splatter-1-220262.mp3-4966ab97eb0573bd12853cdc064d01a1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=4 uid="uid://jeo3on8k4c1i"]
+[gd_scene load_steps=65 format=4 uid="uid://jeo3on8k4c1i"]
 
 [ext_resource type="Script" path="res://environment/scripts/environment.gd" id="1_sty8x"]
 [ext_resource type="PackedScene" uid="uid://bptd4qrmqc0nj" path="res://environment/scenes/background.tscn" id="1_t6eer"]
@@ -56,15 +56,14 @@
 [ext_resource type="PackedScene" uid="uid://d2veqyjiqjgm5" path="res://environment/object_resources/tileset_swamp/3 Objects/Stones/scenes/stone3.tscn" id="47_pqs8k"]
 [ext_resource type="PackedScene" uid="uid://nxgc647cxanl" path="res://environment/object_resources/tileset_swamp/3 Objects/Stones/scenes/stone4.tscn" id="48_7vn3i"]
 [ext_resource type="PackedScene" uid="uid://cxc2om4kqnl7w" path="res://environment/object_resources/tileset_swamp/3 Objects/Stones/scenes/stone5.tscn" id="49_80764"]
-[ext_resource type="PackedScene" uid="uid://dwykw44qlawi5" path="res://characters/enemies/ene_cave/gorgon/scenes/player_gorgon.tscn" id="49_yxm4m"]
-[ext_resource type="PackedScene" uid="uid://u5xkaygt2ix6" path="res://characters/enemies/ene_cave/gorgon/scenes/player_gorgon_2.tscn" id="50_p8o6n"]
-[ext_resource type="PackedScene" uid="uid://02tebis2kuvw" path="res://characters/enemies/ene_cave/minotaur/scenes/player_minotaur.tscn" id="52_so58a"]
-[ext_resource type="PackedScene" uid="uid://ue26kux2kaoe" path="res://characters/enemies/ene_cave/minotaur/scenes/player_minotaur_2.tscn" id="53_g6qq6"]
+[ext_resource type="PackedScene" uid="uid://dggj8qjtr5vb7" path="res://characters/enemies/ene_swamp/2 Larva/scene/player_larva.tscn" id="51_7ng0h"]
+[ext_resource type="PackedScene" uid="uid://c0piytr1fgv27" path="res://characters/enemies/ene_swamp/3 Turtle/scene/player_turtle.tscn" id="52_1quli"]
 [ext_resource type="PackedScene" uid="uid://cqa3jcie2tg6x" path="res://characters/enemies/bosses/bosses_swamp/scenes/player_boss_swamp.tscn" id="53_hc4eg"]
 [ext_resource type="PackedScene" uid="uid://dpe1fjhi42sv3" path="res://environment/scenes/end_level.tscn" id="61_uj6f4"]
 [ext_resource type="PackedScene" uid="uid://dtjxmsyd8rse5" path="res://environment/object_resources/tileset_swamp/4 Animated objects/scenes/BreakableWall.tscn" id="62_muhp8"]
 [ext_resource type="PackedScene" uid="uid://4ulrtgfiee7u" path="res://menus/menu_options/scene/menu_options.tscn" id="64_o2a5v"]
 [ext_resource type="PackedScene" uid="uid://cf5kjrn7ofocp" path="res://menus/menu_settings/scene/menu_settings.tscn" id="65_qd4dh"]
+[ext_resource type="PackedScene" uid="uid://bogvj4wsr47b7" path="res://characters/enemies/ene_swamp/1 Ooze/scene/player_ooze.tscn" id="66_qs3en"]
 
 [node name="level_1" type="Node2D" groups=["nivel"]]
 script = ExtResource("1_sty8x")
@@ -1547,29 +1546,23 @@ scale = Vector2(0.75, 0.75)
 
 [node name="enemies" type="Node2D" parent="."]
 
-[node name="player_gorgon" parent="enemies" instance=ExtResource("49_yxm4m")]
-position = Vector2(423, 242)
+[node name="player_ooze" parent="enemies" instance=ExtResource("66_qs3en")]
+position = Vector2(639, 240)
 
-[node name="player_gorgon2" parent="enemies" instance=ExtResource("49_yxm4m")]
-position = Vector2(2072, 496)
+[node name="player_ooze2" parent="enemies" instance=ExtResource("66_qs3en")]
+position = Vector2(1932, 751)
 
-[node name="player_gorgon3" parent="enemies" instance=ExtResource("50_p8o6n")]
-position = Vector2(136, 608)
+[node name="player_larva" parent="enemies" instance=ExtResource("51_7ng0h")]
+position = Vector2(2021, 493)
 
-[node name="player_gorgon4" parent="enemies" instance=ExtResource("50_p8o6n")]
-position = Vector2(603, 752)
+[node name="player_larva2" parent="enemies" instance=ExtResource("51_7ng0h")]
+position = Vector2(832, 493)
 
-[node name="player_minotaur" parent="enemies" instance=ExtResource("52_so58a")]
-position = Vector2(2000, 991)
+[node name="player_turtle" parent="enemies" instance=ExtResource("52_1quli")]
+position = Vector2(612, 734)
 
-[node name="player_minotaur3" parent="enemies" instance=ExtResource("52_so58a")]
-position = Vector2(1621, 1423)
-
-[node name="player_minotaur2" parent="enemies" instance=ExtResource("53_g6qq6")]
-position = Vector2(1608, 1169)
-
-[node name="player_minotaur4" parent="enemies" instance=ExtResource("53_g6qq6")]
-position = Vector2(258, 1168)
+[node name="player_turtle2" parent="enemies" instance=ExtResource("52_1quli")]
+position = Vector2(1741, 1151)
 
 [node name="player_boss_swamp" parent="." instance=ExtResource("53_hc4eg")]
 position = Vector2(211, 1746)

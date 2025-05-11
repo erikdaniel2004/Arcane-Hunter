@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dwb0y1m3eg6xr"
+path="res://.godot/imported/cute-animal-squeak-1-188097.mp3-9005ae19beff843a4d14b683693c90e4.mp3str"
+
+[deps]
+
+source_file="res://characters/enemies/ene_swamp/3 Turtle/sounds/cute-animal-squeak-1-188097.mp3"
+dest_files=["res://.godot/imported/cute-animal-squeak-1-188097.mp3-9005ae19beff843a4d14b683693c90e4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
