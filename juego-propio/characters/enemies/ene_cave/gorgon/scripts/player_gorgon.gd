@@ -152,7 +152,7 @@ func morir():
 	audio_gorgon.play()  # Sonido de muerte
 	ani_gorgon.play("dead")  # Animación de muerte
 	area_ataque.set_monitoring(false)  # Desactiva el área de ataque
-	$col_gorgon.set_deferred("disabled", true)  # Desactiva el collider
+	$col_gorgon.set_deferred("disabled", true)
 	set_physics_process(false)  # Detiene el procesamiento
 	emit_signal("enemigo_muerto", false)
 	await ani_gorgon.animation_finished  # Espera a que termine la animación

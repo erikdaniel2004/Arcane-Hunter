@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://clpqqi7bvo7ts"]
+
+[ext_resource type="Texture2D" uid="uid://bmne61qe88okk" path="res://environment/object_resources/tileset_cave/Objects/Rocks/img/6.png" id="1_x7c85"]
+
+[node name="Rock6" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_x7c85")

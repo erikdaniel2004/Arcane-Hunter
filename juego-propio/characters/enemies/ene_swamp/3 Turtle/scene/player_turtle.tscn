@@ -184,7 +184,7 @@ animation = &"run"
 frame_progress = 0.395569
 
 [node name="col_turtle" type="CollisionShape2D" parent="."]
-position = Vector2(43, 46.6667)
+position = Vector2(43, 49.3334)
 shape = SubResource("RectangleShape2D_iul3t")
 
 [node name="turtle_area" type="Area2D" parent="."]

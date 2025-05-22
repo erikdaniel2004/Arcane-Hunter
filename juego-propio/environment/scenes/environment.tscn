@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=4 uid="uid://jeo3on8k4c1i"]
+[gd_scene load_steps=68 format=4 uid="uid://jeo3on8k4c1i"]
 
 [ext_resource type="Script" path="res://environment/scripts/environment.gd" id="1_sty8x"]
 [ext_resource type="PackedScene" uid="uid://bptd4qrmqc0nj" path="res://environment/scenes/background.tscn" id="1_t6eer"]
@@ -59,6 +59,9 @@
 [ext_resource type="PackedScene" uid="uid://dggj8qjtr5vb7" path="res://characters/enemies/ene_swamp/2 Larva/scene/player_larva.tscn" id="51_7ng0h"]
 [ext_resource type="PackedScene" uid="uid://c0piytr1fgv27" path="res://characters/enemies/ene_swamp/3 Turtle/scene/player_turtle.tscn" id="52_1quli"]
 [ext_resource type="PackedScene" uid="uid://cqa3jcie2tg6x" path="res://characters/enemies/bosses/bosses_swamp/scenes/player_boss_swamp.tscn" id="53_hc4eg"]
+[ext_resource type="PackedScene" uid="uid://cjxcdksqcdk76" path="res://characters/enemies/ene_swamp/4 Bat/scene/player_bat.tscn" id="53_rs5lp"]
+[ext_resource type="PackedScene" uid="uid://okw2d3866ka5" path="res://characters/enemies/ene_swamp/5 Drowned/scene/player_drowned.tscn" id="55_bx8bo"]
+[ext_resource type="PackedScene" uid="uid://biyrk1nuw4t3h" path="res://characters/enemies/ene_swamp/6 Bloat/scene/player_bloat.tscn" id="56_f2tf8"]
 [ext_resource type="PackedScene" uid="uid://dpe1fjhi42sv3" path="res://environment/scenes/end_level.tscn" id="61_uj6f4"]
 [ext_resource type="PackedScene" uid="uid://dtjxmsyd8rse5" path="res://environment/object_resources/tileset_swamp/4 Animated objects/scenes/BreakableWall.tscn" id="62_muhp8"]
 [ext_resource type="PackedScene" uid="uid://4ulrtgfiee7u" path="res://menus/menu_options/scene/menu_options.tscn" id="64_o2a5v"]
@@ -66,6 +69,7 @@
 [ext_resource type="PackedScene" uid="uid://bogvj4wsr47b7" path="res://characters/enemies/ene_swamp/1 Ooze/scene/player_ooze.tscn" id="66_qs3en"]
 
 [node name="level_1" type="Node2D" groups=["nivel"]]
+texture_filter = 5
 script = ExtResource("1_sty8x")
 
 [node name="background" parent="." instance=ExtResource("1_t6eer")]
@@ -1350,12 +1354,12 @@ moneda_escena = null
 runa_escena = null
 
 [node name="chest2" parent="chests" instance=ExtResource("4_b7nhl")]
-position = Vector2(838, 684)
+position = Vector2(838, 685)
 moneda_escena = null
 runa_escena = null
 
 [node name="chest3" parent="chests" instance=ExtResource("4_b7nhl")]
-position = Vector2(2021, 682)
+position = Vector2(2021, 683)
 moneda_escena = null
 runa_escena = null
 
@@ -1365,12 +1369,12 @@ moneda_escena = null
 runa_escena = null
 
 [node name="chest5" parent="chests" instance=ExtResource("4_b7nhl")]
-position = Vector2(2203, 1163)
+position = Vector2(2203, 1164)
 moneda_escena = null
 runa_escena = null
 
 [node name="chest6" parent="chests" instance=ExtResource("4_b7nhl")]
-position = Vector2(266, 939)
+position = Vector2(266, 940)
 moneda_escena = null
 runa_escena = null
 
@@ -1541,22 +1545,22 @@ position = Vector2(83, 922)
 position = Vector2(124, 623)
 
 [node name="player_knight" parent="." instance=ExtResource("10_85w36")]
-position = Vector2(213, 240)
+position = Vector2(198, 240)
 scale = Vector2(0.75, 0.75)
 
 [node name="enemies" type="Node2D" parent="."]
 
 [node name="player_ooze" parent="enemies" instance=ExtResource("66_qs3en")]
-position = Vector2(639, 240)
+position = Vector2(639, 222)
 
 [node name="player_ooze2" parent="enemies" instance=ExtResource("66_qs3en")]
-position = Vector2(1932, 751)
+position = Vector2(1932, 734)
 
 [node name="player_larva" parent="enemies" instance=ExtResource("51_7ng0h")]
-position = Vector2(2021, 493)
+position = Vector2(2021, 477)
 
 [node name="player_larva2" parent="enemies" instance=ExtResource("51_7ng0h")]
-position = Vector2(832, 493)
+position = Vector2(832, 477)
 
 [node name="player_turtle" parent="enemies" instance=ExtResource("52_1quli")]
 position = Vector2(612, 734)
@@ -1564,8 +1568,29 @@ position = Vector2(612, 734)
 [node name="player_turtle2" parent="enemies" instance=ExtResource("52_1quli")]
 position = Vector2(1741, 1151)
 
-[node name="player_boss_swamp" parent="." instance=ExtResource("53_hc4eg")]
-position = Vector2(211, 1746)
+[node name="player_bat" parent="enemies" instance=ExtResource("53_rs5lp")]
+position = Vector2(1757, 1713)
+
+[node name="player_bat2" parent="enemies" instance=ExtResource("53_rs5lp")]
+position = Vector2(1512, 1655)
+
+[node name="player_bat3" parent="enemies" instance=ExtResource("53_rs5lp")]
+position = Vector2(1049, 1688)
+
+[node name="player_boss_swamp" parent="enemies" instance=ExtResource("53_hc4eg")]
+position = Vector2(257, 1745)
+
+[node name="player_drowned" parent="enemies" instance=ExtResource("55_bx8bo")]
+position = Vector2(305, 591)
+
+[node name="player_drowned2" parent="enemies" instance=ExtResource("55_bx8bo")]
+position = Vector2(2220, 976)
+
+[node name="player_bloat" parent="enemies" instance=ExtResource("56_f2tf8")]
+position = Vector2(324, 1150)
+
+[node name="player_bloat2" parent="enemies" instance=ExtResource("56_f2tf8")]
+position = Vector2(1664, 1407)
 
 [node name="boxes" type="Node2D" parent="."]
 

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dgxqxgm65cd8k"
+path="res://.godot/imported/being-strangled-97247.mp3-6a5c8f115ca1a090e26205376988579b.mp3str"
+
+[deps]
+
+source_file="res://characters/enemies/ene_swamp/5 Drowned/sounds/being-strangled-97247.mp3"
+dest_files=["res://.godot/imported/being-strangled-97247.mp3-6a5c8f115ca1a090e26205376988579b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

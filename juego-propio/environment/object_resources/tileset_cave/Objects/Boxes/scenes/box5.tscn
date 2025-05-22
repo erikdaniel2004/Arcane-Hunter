@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://7dyysmkg74kp"]
+
+[ext_resource type="Script" path="res://environment/object_resources/tileset_cave/Objects/Boxes/script/box.gd" id="1_52h6a"]
+[ext_resource type="Texture2D" uid="uid://cm3aey17vx21x" path="res://environment/object_resources/tileset_cave/Objects/Boxes/img/Box5.png" id="1_gjyee"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m8w7b"]
+friction = 0.2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pr8ea"]
+size = Vector2(32, 24)
+
+[node name="Box5" type="RigidBody2D" groups=["destructibles"]]
+collision_layer = 3
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_m8w7b")
+can_sleep = false
+freeze_mode = 1
+continuous_cd = 1
+script = ExtResource("1_52h6a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gjyee")
+
+[node name="col_box" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_pr8ea")
+
+[node name="particles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 500
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 4
+emission_points = PackedVector2Array(5, 2, 5, 2, 5, 2)
+emission_colors = PackedColorArray(0, 0.658824, 0, 1, 0, 0, 0, 1, 0.155157, 0.46476, 0.432798, 1)
+particle_flag_align_y = true
+spread = 180.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 200.0
+initial_velocity_max = 308.22
+scale_amount_max = 2.5
+color = Color(0.478431, 0.305882, 0.239216, 1)

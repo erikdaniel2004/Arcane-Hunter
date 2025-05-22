@@ -172,7 +172,7 @@ size = Vector2(48, 32)
 size = Vector2(85, 87)
 
 [node name="player_ooze" type="CharacterBody2D" groups=["enemigos"]]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.75, 0.75)
 script = ExtResource("1_vbo6u")
 
 [node name="ani_ooze" type="AnimatedSprite2D" parent="."]
@@ -182,7 +182,7 @@ sprite_frames = SubResource("SpriteFrames_vwq7n")
 animation = &"attack"
 
 [node name="col_ooze" type="CollisionShape2D" parent="."]
-position = Vector2(44, 45)
+position = Vector2(44, 46.3333)
 shape = SubResource("RectangleShape2D_qr1fq")
 
 [node name="ooze_area" type="Area2D" parent="."]
@@ -192,11 +192,11 @@ position = Vector2(42.5, 26.5)
 shape = SubResource("RectangleShape2D_tp3t4")
 
 [node name="detector_right" type="RayCast2D" parent="."]
-position = Vector2(72, 4)
+position = Vector2(77.3334, 2.66667)
 target_position = Vector2(0, 63)
 
 [node name="detector_left" type="RayCast2D" parent="."]
-position = Vector2(14, 3)
+position = Vector2(8.66667, 1.66667)
 target_position = Vector2(0, 64)
 
 [node name="timer_dead" type="Timer" parent="."]

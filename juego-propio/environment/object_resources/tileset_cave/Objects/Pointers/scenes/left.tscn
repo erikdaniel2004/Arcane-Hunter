@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd246lj581ubi"]
+
+[ext_resource type="Texture2D" uid="uid://ddonbxdihpt15" path="res://environment/object_resources/tileset_cave/Objects/Pointers/img/8.png" id="1_nn1gk"]
+
+[node name="left" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nn1gk")
+flip_h = true

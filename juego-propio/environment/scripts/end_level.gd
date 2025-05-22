@@ -22,8 +22,8 @@ func _on_body_entered(body):
 				"tiempo": player.contador3.obtener_tiempo(),
 				"monedas": player.monedas,
 				"runas": player.runas,
-				"enemigos": 0, # puedes ajustarlo más adelante
-				"jefes": 0     # si has matado algún jefe, también lo añades
+				"enemigos": player.enemigos_muertos, 
+				"jefes": player.jefes_muertos
 			}
 			environment._on_jugador_muerto(data, true) # true = nivel completado
 #endregion

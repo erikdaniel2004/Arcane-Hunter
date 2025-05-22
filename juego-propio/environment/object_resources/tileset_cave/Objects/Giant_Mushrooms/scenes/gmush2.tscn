@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2co7xvdgg8dv"]
+
+[ext_resource type="Texture2D" uid="uid://cr40ghc50knt0" path="res://environment/object_resources/tileset_cave/Objects/Giant_Mushrooms/img/2.png" id="1_c85ni"]
+
+[node name="Gmush2" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_c85ni")

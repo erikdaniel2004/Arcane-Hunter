@@ -310,11 +310,11 @@ position = Vector2(2, 25)
 shape = SubResource("RectangleShape2D_fj5c5")
 
 [node name="detector_right" type="RayCast2D" parent="."]
-position = Vector2(32, -16)
+position = Vector2(18, -16)
 target_position = Vector2(0, 82)
 
 [node name="detector_left" type="RayCast2D" parent="."]
-position = Vector2(-28, -16)
+position = Vector2(-22, -16)
 target_position = Vector2(0, 82)
 
 [node name="timer_dead" type="Timer" parent="."]

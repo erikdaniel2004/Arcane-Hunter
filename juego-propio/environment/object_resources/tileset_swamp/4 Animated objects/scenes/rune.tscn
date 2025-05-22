@@ -48,6 +48,8 @@ height = 10.0
 radius = 16.0312
 
 [node name="runa" type="RigidBody2D"]
+freeze_mode = 1
+continuous_cd = 1
 script = ExtResource("1_db4ok")
 
 [node name="ani_runa" type="AnimatedSprite2D" parent="."]

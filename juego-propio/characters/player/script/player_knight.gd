@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export var air_acceleration = 1500
 @export var air_friction = 700
 @export var max_health := 100
+@export var damage := 25
 
 # Coordenadas en las que se detiene la muerte por caida
 @export var death_limit_stop_x := 1800
@@ -25,6 +26,7 @@ extends CharacterBody2D
 @onready var timer_bar = $timer_bar
 @onready var audio_player = $audio_player
 @onready var attack_area = $attack_area
+@onready var area_empuje = $area_empuje
 @onready var bar_health = $bar_health/TextureProgressBar
 @onready var particles_blood = $particles_blood # Partículas de sangre
 
@@ -46,6 +48,7 @@ var muerte_por_caida_desactivada := false
 # Contadores
 var monedas = 0
 var runas = 0
+var contadores_en_cero := 0
 var enemigos_muertos := 0
 var jefes_muertos := 0
 
@@ -66,8 +69,8 @@ signal jugador_muerto(data: Dictionary, completado: bool)
 # Función que establece unos parámetros al cargar el jugador
 func _ready():
 	add_to_group("player_knight")
-	contador.actualizar(0)
-	contador2.actualizar(0)
+	contador.actualizar(contadores_en_cero)
+	contador2.actualizar(contadores_en_cero)
 	contador3.iniciar()
 	bar_health.visible = false
 #endregion
@@ -98,6 +101,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("atacar"):
 		atacar()
 	update_attack_area_direction()
+	detectar_cajas_cercanas()
 #endregion
 
 #region Physics Functions
@@ -147,6 +151,15 @@ func update_animation(input_axis):
 #endregion
 
 #region Generic Functions
+#region Boxes
+func detectar_cajas_cercanas():
+	var bodies = area_empuje.get_overlapping_bodies()
+	for bodie in bodies:
+		if bodie is RigidBody2D and (bodie.name.begins_with("Box") or bodie.name.begins_with("Barrel")):
+			var direccion = (bodie.global_position - global_position).normalized()
+			bodie.apply_central_impulse(direccion * 200)
+#endregion
+
 #region Collectibles
 # Función para sumar monedas
 func sumar_monedas(valor):
@@ -219,6 +232,7 @@ func recibir_dano(cantidad):
 func hacer_invulnerable_temporalmente():
 	is_invulnerable = true
 	timer_invincible.start()
+
 #endregion
 
 #region Attack
@@ -228,9 +242,12 @@ func atacar():
 	var area = attack_area.get_overlapping_bodies()
 
 	for cuerpo in area:
-		if cuerpo.is_in_group("enemigos"):
-			if cuerpo.has_method("recibir_dano"):
-				cuerpo.recibir_dano(25)
+		if cuerpo.has_method("recibir_dano"):
+			if cuerpo.is_in_group("enemigos"):
+				cuerpo.recibir_dano(damage)
+			elif cuerpo.is_in_group("destructibles"):
+				cuerpo.recibir_dano(damage)
+
 #endregion
 
 #region Health Bar
@@ -239,6 +256,8 @@ func recuperar_vida(cantidad):
 	current_health += cantidad
 	current_health = clamp(current_health, 0, max_health)
 	bar_health.value = current_health
+	bar_health.visible = true
+	timer_bar.start()
 #endregion
 
 #region Direction
@@ -251,6 +270,22 @@ func update_attack_area_direction():
 		attack_area.position.x = offset
 #endregion
 
+#region Camera Limits
+func establecer_limites_camara(left: int, top: int, right: int, bottom: int):
+	var cam = get_node("cam_player")
+	# Activar la cámara
+	cam.make_current()
+
+	# Aplicar límites
+	cam.limit_left = left
+	cam.limit_top = top
+	cam.limit_right = right
+	cam.limit_bottom = bottom
+
+	# Establecer su posición inicial centrada
+	cam.global_position = global_position
+#endregion
+
 #region Nodes Connections
 # Función que hace invisible la barra de salud del jugador tras un periodo corto de tiempo 
 func _on_timer_bar_timeout():
@@ -259,7 +294,6 @@ func _on_timer_bar_timeout():
 # Función que devuelve la vulnerabilidad al jugador cuando el tiempo ha pasado
 func _on_timer_invincible_timeout():
 	is_invulnerable = false
-	
 
 func conectar_enemigo(enemy: Node):
 	if enemy.has_signal("enemigo_muerto"):
@@ -271,5 +305,7 @@ func _on_enemigo_muerto(es_jefe: bool):
 	else:
 		enemigos_muertos += 1
 
+func registrar_muerte_de_jefe():
+	jefes_muertos += 1
 #endregion
 #endregion

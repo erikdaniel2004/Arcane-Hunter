@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://b7jsgsfp26rxu"]
+
+[ext_resource type="Script" path="res://environment/object_resources/tileset_swamp/4 Animated objects/scripts/checkpoint.gd" id="1_ao6s0"]
+[ext_resource type="Texture2D" uid="uid://deqjhj1naw50d" path="res://environment/object_resources/tileset_cave/Objects_Animated/img/Flag.png" id="2_sgmwk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooks8"]
+atlas = ExtResource("2_sgmwk")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwbfy"]
+atlas = ExtResource("2_sgmwk")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srf5q"]
+atlas = ExtResource("2_sgmwk")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2a2ij"]
+atlas = ExtResource("2_sgmwk")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyxk6"]
+atlas = ExtResource("2_sgmwk")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxmno"]
+atlas = ExtResource("2_sgmwk")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vwlw3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ooks8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwbfy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srf5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2a2ij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyxk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxmno")
+}],
+"loop": true,
+"name": &"move",
+"speed": 7.0
+}]
+
+[node name="flag" type="Node2D"]
+script = ExtResource("1_ao6s0")
+
+[node name="ani_flag" type="AnimatedSprite2D" parent="."]
+texture_filter = 5
+sprite_frames = SubResource("SpriteFrames_vwlw3")
+animation = &"move"
+frame_progress = 0.439958

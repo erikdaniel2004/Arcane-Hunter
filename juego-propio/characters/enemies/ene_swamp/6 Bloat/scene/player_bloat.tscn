@@ -1,0 +1,264 @@
+[gd_scene load_steps=34 format=3 uid="uid://biyrk1nuw4t3h"]
+
+[ext_resource type="Script" path="res://characters/enemies/ene_swamp/6 Bloat/script/player_bloat.gd" id="1_xxisu"]
+[ext_resource type="Texture2D" uid="uid://be04jsqgkhu8p" path="res://characters/enemies/ene_swamp/6 Bloat/images/Bloat_attack.png" id="2_x3d75"]
+[ext_resource type="Texture2D" uid="uid://63p68qoywcm" path="res://characters/enemies/ene_swamp/6 Bloat/images/Bloat_death.png" id="3_4kuok"]
+[ext_resource type="Texture2D" uid="uid://b3spkv3vcivem" path="res://characters/enemies/ene_swamp/6 Bloat/images/Bloat_hurt.png" id="4_4iwm8"]
+[ext_resource type="Texture2D" uid="uid://dx76wg80d5f5d" path="res://characters/enemies/ene_swamp/6 Bloat/images/Bloat_idle.png" id="5_sk8q7"]
+[ext_resource type="Texture2D" uid="uid://di5phnt8jjfp3" path="res://characters/enemies/ene_swamp/6 Bloat/images/Bloat_walk.png" id="6_73l63"]
+[ext_resource type="AudioStream" uid="uid://xg58tnrifip6" path="res://characters/enemies/ene_swamp/6 Bloat/sounds/zombie-6851.mp3" id="7_dc8mn"]
+[ext_resource type="Texture2D" uid="uid://qhfmd1m6x53l" path="res://characters/player/img/Under.png" id="8_12wkq"]
+[ext_resource type="Texture2D" uid="uid://dgp20hdd774br" path="res://characters/player/img/Over.png" id="9_r1660"]
+[ext_resource type="Texture2D" uid="uid://b5tuyxluli5q5" path="res://characters/player/img/Progress.png" id="10_pipk3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd2mp"]
+atlas = ExtResource("2_x3d75")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5kdo"]
+atlas = ExtResource("2_x3d75")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cb8d"]
+atlas = ExtResource("2_x3d75")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg25s"]
+atlas = ExtResource("2_x3d75")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fheg"]
+atlas = ExtResource("3_4kuok")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lon6"]
+atlas = ExtResource("3_4kuok")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnrl8"]
+atlas = ExtResource("3_4kuok")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krj4x"]
+atlas = ExtResource("3_4kuok")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ss1h"]
+atlas = ExtResource("4_4iwm8")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28u81"]
+atlas = ExtResource("4_4iwm8")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dwq8"]
+atlas = ExtResource("5_sk8q7")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6j6y"]
+atlas = ExtResource("5_sk8q7")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mklvb"]
+atlas = ExtResource("5_sk8q7")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ih5b2"]
+atlas = ExtResource("5_sk8q7")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cyi8k"]
+atlas = ExtResource("6_73l63")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fphnl"]
+atlas = ExtResource("6_73l63")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sl161"]
+atlas = ExtResource("6_73l63")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogq2o"]
+atlas = ExtResource("6_73l63")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1v5w0"]
+atlas = ExtResource("6_73l63")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_feuox"]
+atlas = ExtResource("6_73l63")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hevx0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jd2mp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5kdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cb8d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg25s")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fheg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lon6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnrl8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krj4x")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ss1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28u81")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dwq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6j6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mklvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ih5b2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cyi8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fphnl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sl161")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogq2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1v5w0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_feuox")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wo6ni"]
+size = Vector2(22.6667, 26.6667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mxarh"]
+size = Vector2(82, 58.3333)
+
+[node name="player_bloat" type="CharacterBody2D" groups=["enemigos"]]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_xxisu")
+
+[node name="ani_bloat" type="AnimatedSprite2D" parent="."]
+position = Vector2(26, 19.5)
+scale = Vector2(2, 1.89583)
+sprite_frames = SubResource("SpriteFrames_hevx0")
+animation = &"attack"
+frame = 3
+frame_progress = 1.0
+
+[node name="col_bloat" type="CollisionShape2D" parent="."]
+position = Vector2(43.6667, 50.3333)
+shape = SubResource("RectangleShape2D_wo6ni")
+
+[node name="bloat_area" type="Area2D" parent="."]
+position = Vector2(0, -13.3333)
+
+[node name="col_area" type="CollisionShape2D" parent="bloat_area"]
+position = Vector2(41, 49.1666)
+shape = SubResource("RectangleShape2D_mxarh")
+
+[node name="detector_right" type="RayCast2D" parent="."]
+position = Vector2(66.3333, 19.3334)
+target_position = Vector2(0, 45.6666)
+
+[node name="detector_left" type="RayCast2D" parent="."]
+position = Vector2(21, 19.6667)
+target_position = Vector2(0, 45.3333)
+
+[node name="timer_dead" type="Timer" parent="."]
+
+[node name="timer_bar" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="timer_attack" type="Timer" parent="."]
+
+[node name="audio_bloat" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_dc8mn")
+bus = &"SFX"
+
+[node name="bar_health" type="Node2D" parent="."]
+position = Vector2(48.3333, 33.6667)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="bar_health"]
+offset_left = -84.0
+offset_top = -78.0
+offset_right = 45.0
+offset_bottom = 32.0
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("8_12wkq")
+texture_over = ExtResource("9_r1660")
+texture_progress = ExtResource("10_pipk3")
+tint_under = Color(0, 0, 0, 1)
+tint_over = Color(0.0627451, 0.588235, 0.345098, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="particles_blood" type="CPUParticles2D" parent="." groups=["efectos_visuales"]]
+position = Vector2(42, 0)
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.75
+particle_flag_align_y = true
+spread = 180.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 150.0
+initial_velocity_max = 308.0
+angular_velocity_min = 9.86
+angular_velocity_max = 720.0
+color = Color(0.92549, 0.145098, 0.133333, 1)
+
+[connection signal="timeout" from="timer_bar" to="." method="_on_timer_bar_timeout"]
+[connection signal="timeout" from="timer_attack" to="." method="_on_timer_attack_timeout"]

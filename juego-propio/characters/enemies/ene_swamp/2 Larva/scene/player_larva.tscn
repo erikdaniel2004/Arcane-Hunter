@@ -172,7 +172,7 @@ size = Vector2(48, 32)
 size = Vector2(99, 41)
 
 [node name="player_larva" type="CharacterBody2D" groups=["enemigos"]]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.75, 0.75)
 script = ExtResource("1_habxs")
 
 [node name="ani_larva" type="AnimatedSprite2D" parent="."]

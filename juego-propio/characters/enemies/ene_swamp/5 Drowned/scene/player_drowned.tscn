@@ -1,0 +1,263 @@
+[gd_scene load_steps=34 format=3 uid="uid://okw2d3866ka5"]
+
+[ext_resource type="Script" path="res://characters/enemies/ene_swamp/5 Drowned/script/player_drowned.gd" id="1_d4gug"]
+[ext_resource type="Texture2D" uid="uid://bd160h3xap2uj" path="res://characters/enemies/ene_swamp/5 Drowned/images/Drowned_attack.png" id="2_jyj7j"]
+[ext_resource type="Texture2D" uid="uid://coyyg8nxfgc72" path="res://characters/enemies/ene_swamp/5 Drowned/images/Drowned_death.png" id="3_aw1c0"]
+[ext_resource type="Texture2D" uid="uid://b5d2rjrxs4ys" path="res://characters/enemies/ene_swamp/5 Drowned/images/Drowned_hurt.png" id="4_b2e3r"]
+[ext_resource type="Texture2D" uid="uid://dlabi8ph11noa" path="res://characters/enemies/ene_swamp/5 Drowned/images/Drowned_idle.png" id="5_xx1s0"]
+[ext_resource type="Texture2D" uid="uid://b6603behlbw4q" path="res://characters/enemies/ene_swamp/5 Drowned/images/Drowned_walk.png" id="6_n1p7q"]
+[ext_resource type="AudioStream" uid="uid://dgxqxgm65cd8k" path="res://characters/enemies/ene_swamp/5 Drowned/sounds/being-strangled-97247.mp3" id="7_qcuw5"]
+[ext_resource type="Texture2D" uid="uid://qhfmd1m6x53l" path="res://characters/player/img/Under.png" id="8_xl7eb"]
+[ext_resource type="Texture2D" uid="uid://dgp20hdd774br" path="res://characters/player/img/Over.png" id="9_sfcae"]
+[ext_resource type="Texture2D" uid="uid://b5tuyxluli5q5" path="res://characters/player/img/Progress.png" id="10_38wh8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0t6sp"]
+atlas = ExtResource("2_jyj7j")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5p7mq"]
+atlas = ExtResource("2_jyj7j")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tadjc"]
+atlas = ExtResource("2_jyj7j")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf7ex"]
+atlas = ExtResource("2_jyj7j")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnjxu"]
+atlas = ExtResource("3_aw1c0")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou04f"]
+atlas = ExtResource("3_aw1c0")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15t01"]
+atlas = ExtResource("3_aw1c0")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_faa4o"]
+atlas = ExtResource("3_aw1c0")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ru48"]
+atlas = ExtResource("4_b2e3r")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p87dh"]
+atlas = ExtResource("4_b2e3r")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xox1w"]
+atlas = ExtResource("5_xx1s0")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqmpb"]
+atlas = ExtResource("5_xx1s0")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxevv"]
+atlas = ExtResource("5_xx1s0")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lv7cb"]
+atlas = ExtResource("5_xx1s0")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydbiw"]
+atlas = ExtResource("6_n1p7q")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mljt"]
+atlas = ExtResource("6_n1p7q")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdcjp"]
+atlas = ExtResource("6_n1p7q")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8u7l3"]
+atlas = ExtResource("6_n1p7q")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8f5c"]
+atlas = ExtResource("6_n1p7q")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1juo"]
+atlas = ExtResource("6_n1p7q")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vu6it"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0t6sp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p7mq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tadjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf7ex")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnjxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ou04f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15t01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_faa4o")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ru48")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p87dh")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xox1w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqmpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxevv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lv7cb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydbiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mljt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdcjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8u7l3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8f5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1juo")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f553r"]
+size = Vector2(22.6667, 26.6667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6hm66"]
+size = Vector2(82, 58.3333)
+
+[node name="player_drowned" type="CharacterBody2D" groups=["enemigos"]]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_d4gug")
+
+[node name="ani_drowned" type="AnimatedSprite2D" parent="."]
+position = Vector2(26, 19.5)
+scale = Vector2(2, 1.89583)
+sprite_frames = SubResource("SpriteFrames_vu6it")
+animation = &"run"
+frame_progress = 0.706122
+
+[node name="col_drowned" type="CollisionShape2D" parent="."]
+position = Vector2(43.6667, 50.3333)
+shape = SubResource("RectangleShape2D_f553r")
+
+[node name="drowned_area" type="Area2D" parent="."]
+position = Vector2(0, -13.3333)
+
+[node name="col_area" type="CollisionShape2D" parent="drowned_area"]
+position = Vector2(41, 49.1666)
+shape = SubResource("RectangleShape2D_6hm66")
+
+[node name="detector_right" type="RayCast2D" parent="."]
+position = Vector2(62.3333, 19.3334)
+target_position = Vector2(0, 45.6666)
+
+[node name="detector_left" type="RayCast2D" parent="."]
+position = Vector2(23.6667, 19.6667)
+target_position = Vector2(0, 45.3333)
+
+[node name="timer_dead" type="Timer" parent="."]
+
+[node name="timer_bar" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="timer_attack" type="Timer" parent="."]
+
+[node name="audio_drowned" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_qcuw5")
+bus = &"SFX"
+
+[node name="bar_health" type="Node2D" parent="."]
+position = Vector2(48.3333, 33.6667)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="bar_health"]
+offset_left = -84.0
+offset_top = -78.0
+offset_right = 45.0
+offset_bottom = 32.0
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("8_xl7eb")
+texture_over = ExtResource("9_sfcae")
+texture_progress = ExtResource("10_38wh8")
+tint_under = Color(0, 0, 0, 1)
+tint_over = Color(0.0627451, 0.588235, 0.345098, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="particles_blood" type="CPUParticles2D" parent="." groups=["efectos_visuales"]]
+position = Vector2(42, 0)
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.75
+particle_flag_align_y = true
+spread = 180.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 150.0
+initial_velocity_max = 308.0
+angular_velocity_min = 9.86
+angular_velocity_max = 720.0
+color = Color(0.92549, 0.145098, 0.133333, 1)
+
+[connection signal="timeout" from="timer_bar" to="." method="_on_timer_bar_timeout"]
+[connection signal="timeout" from="timer_attack" to="." method="_on_timer_attack_timeout"]

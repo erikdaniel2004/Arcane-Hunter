@@ -254,11 +254,11 @@ position = Vector2(43, 25)
 shape = SubResource("RectangleShape2D_8s6pf")
 
 [node name="detector_right" type="RayCast2D" parent="."]
-position = Vector2(72, 0)
-target_position = Vector2(0, 63)
+position = Vector2(36, 0)
+target_position = Vector2(0, 64)
 
 [node name="detector_left" type="RayCast2D" parent="."]
-position = Vector2(14, 0)
+position = Vector2(-56, 0)
 target_position = Vector2(0, 64)
 
 [node name="timer_dead" type="Timer" parent="."]

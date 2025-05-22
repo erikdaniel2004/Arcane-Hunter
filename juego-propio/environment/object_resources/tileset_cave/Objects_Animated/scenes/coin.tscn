@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://c5bdnfr46k02d"]
+
+[ext_resource type="Script" path="res://environment/object_resources/tileset_swamp/4 Animated objects/scripts/moneda.gd" id="1_mu6h1"]
+[ext_resource type="Texture2D" uid="uid://c76rnnqryykwh" path="res://environment/object_resources/tileset_swamp/4 Animated objects/img/Coin.png" id="2_33v1t"]
+[ext_resource type="AudioStream" uid="uid://bh1ttjvhtkul8" path="res://environment/object_resources/tileset_swamp/4 Animated objects/audio/collect-points-190037.mp3" id="3_rlyqi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgs4k"]
+atlas = ExtResource("2_33v1t")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn32g"]
+atlas = ExtResource("2_33v1t")
+region = Rect2(10, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cn68s"]
+atlas = ExtResource("2_33v1t")
+region = Rect2(20, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wj4wy"]
+atlas = ExtResource("2_33v1t")
+region = Rect2(30, 0, 10, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kuswe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgs4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn32g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cn68s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wj4wy")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4rfcn"]
+radius = 5.52268
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_382el"]
+radius = 18.0278
+
+[node name="moneda" type="RigidBody2D"]
+freeze_mode = 1
+continuous_cd = 1
+script = ExtResource("1_mu6h1")
+
+[node name="ani_moneda" type="AnimatedSprite2D" parent="."]
+texture_filter = 5
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_kuswe")
+animation = &"idle"
+frame_progress = 0.175887
+
+[node name="col_moneda" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("CircleShape2D_4rfcn")
+
+[node name="area_moneda" type="Area2D" parent="."]
+
+[node name="col_area" type="CollisionShape2D" parent="area_moneda"]
+position = Vector2(-1, 1)
+shape = SubResource("CircleShape2D_382el")
+
+[node name="audio_moneda" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(592, 315)
+stream = ExtResource("3_rlyqi")
+max_distance = 5000.0
+bus = &"SFX"

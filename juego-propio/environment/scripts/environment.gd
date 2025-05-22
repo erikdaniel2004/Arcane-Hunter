@@ -2,18 +2,29 @@ extends Node2D
 
 #region Variables
 @onready var pause_menu_scene := preload("res://menus/menu_options/scene/menu_options.tscn")
-@onready var player = get_node("player_knight") # o tu ruta real
+@onready var player = get_node("player_knight")
+@onready var camera = player.get_node("cam_player")
 @onready var menu_levels_scene = preload("res://menus/menu_levels/scene/menu_levels.tscn")
-
+@onready var jefe = $enemies/player_boss_swamp
+@onready var pared = $effects/BreakableWall
+signal jugador_muerto(data: Dictionary, completado: bool)
 var pause_menu_instance: Node = null
 var menu_levels_instance: Node = null
 #endregion
 
 #region Ready
 func _ready():
+	await get_tree().process_frame
+	player.muerte_por_caida_desactivada = false
+	player.establecer_limites_camara(2, 0, 2383, 1843)
+	player.conectar_enemigo(jefe)
+	if jefe.has_signal("enemigo_muerto"):
+		jefe.connect("enemigo_muerto", Callable(self, "_on_jefe_muerto"), CONNECT_DEFERRED)
 	add_to_group("nivel")
 	aplicar_configuracion_visual()
 	mover_a_user_si_no_existe()
+	pared.visible = true
+	
 	# Menú de pausa
 	pause_menu_instance = pause_menu_scene.instantiate()
 	add_child(pause_menu_instance)
@@ -25,9 +36,10 @@ func _ready():
 	menu_levels_instance.hide()
 
 	# Conexión a enemigos ya en la escena
+	await get_tree().process_frame
 	for enemy in get_tree().get_nodes_in_group("enemigos"):
 		player.conectar_enemigo(enemy)
-		
+	
 	# Conectar señal de muerte del jugador
 	player.connect("jugador_muerto", Callable(self, "_on_jugador_muerto"))
 #endregion
@@ -44,12 +56,26 @@ func _input(event):
 #endregion
 
 #region Generic Functions
+
 #region Nodes Connection
 func _on_jugador_muerto(data: Dictionary, completado: bool):
 	get_tree().paused = true
 	menu_levels_instance.mostrar_estadisticas(data, completado, get_scene_file_path())
 	guardar_estadisticas(data, completado)
 	menu_levels_instance.show()
+
+func _on_jefe_muerto(es_jefe):
+	print("Se ha ejecutado _on_jefe_muerto")
+	player.registrar_muerte_de_jefe()
+	
+	var data = {
+		"tiempo": player.contador3.obtener_tiempo(),
+		"monedas": player.monedas,
+		"runas": player.runas,
+		"enemigos": player.enemigos_muertos,
+		"jefes": player.jefes_muertos
+	}
+	emit_signal("jugador_muerto", data, true)
 #endregion
 
 #region Save Stats

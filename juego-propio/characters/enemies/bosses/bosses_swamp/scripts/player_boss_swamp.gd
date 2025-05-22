@@ -19,7 +19,7 @@ extends CharacterBody2D
 # Export variables
 @export var speed := 100
 @export var charge_speed := 300
-@export var max_health := 1000
+@export var max_health := 500
 @export var x_activar := 450
 @export var y_activar := 1743
 
@@ -53,9 +53,17 @@ func _ready():
 	timer_invulnerable.one_shot = true
 	timer_invulnerable.timeout.connect(_reset_invulnerabilidad)
 
+	await get_tree().process_frame
 	var jugadores = get_tree().get_nodes_in_group("player_knight")
 	if jugadores.size() > 0:
 		jugador_detectado = jugadores[0]
+		if jugador_detectado.has_method("_on_enemigo_muerto"):
+			connect("enemigo_muerto", Callable(jugador_detectado, "_on_enemigo_muerto"), CONNECT_DEFERRED)
+
+	var environment = get_tree().get_first_node_in_group("nivel")
+	if environment and environment.has_method("_on_jefe_muerto"):
+		connect("enemigo_muerto", Callable(environment, "_on_jefe_muerto"), CONNECT_DEFERRED)
+
 #endregion
 
 #region Physics Process
@@ -80,8 +88,14 @@ func _physics_process(delta):
 		var direccion = (jugador_detectado.global_position - global_position).normalized()
 		velocity.x = direccion.x * speed
 		ani_boss.flip_h = jugador_detectado.global_position.x > global_position.x
-		if !ani_boss.is_playing() or ani_boss.animation != "run":
-			ani_boss.play("run")
+		
+		# Solo correr si no está contra una pared
+		if not is_on_wall():
+			if !ani_boss.is_playing() or ani_boss.animation != "run":
+				ani_boss.play("run")
+		else:
+			if !ani_boss.is_playing() or ani_boss.animation != "idle":
+				ani_boss.play("idle")
 	else:
 		velocity.x = 0
 		ani_boss.play("idle")
@@ -226,6 +240,7 @@ func morir():
 	col_boss.set_deferred("disabled", true)
 	set_physics_process(false)
 	emit_signal("enemigo_muerto", true)
+	
 	await ani_boss.animation_finished
 	timer_dead.start()
 	await timer_dead.timeout

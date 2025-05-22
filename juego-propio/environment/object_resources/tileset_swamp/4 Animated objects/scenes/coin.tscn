@@ -47,6 +47,8 @@ radius = 5.52268
 radius = 18.0278
 
 [node name="moneda" type="RigidBody2D"]
+freeze_mode = 1
+continuous_cd = 1
 script = ExtResource("1_5dd0d")
 
 [node name="ani_moneda" type="AnimatedSprite2D" parent="."]

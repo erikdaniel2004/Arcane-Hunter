@@ -7,29 +7,30 @@ extends CanvasLayer
 
 #region Ready
 func _ready():
-	# Escala el contenido si estamos en pantalla completa
-	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
-		ajustar_escala_a_pantalla()
+	aplicar_volumen_desde_config()
 #endregion
 
 #region Generic Functions
+#region Settings
+func aplicar_volumen_desde_config():
+	var path = "user://JSON/config.json"
+	if FileAccess.file_exists(path):
+		var file = FileAccess.open(path, FileAccess.READ)
+		var config = JSON.parse_string(file.get_as_text())
+		if config is Dictionary:
+			var musica = config.get("musica", 0.5)
+			var sonidos = config.get("sonidos", 0.5)
 
-#region Fullscreen
-func ajustar_escala_a_pantalla():
-	var viewport_size = get_viewport().get_visible_rect().size
-	var diseño_base = Vector2(384, 216) * 3
-	var factor_escala = viewport_size / diseño_base
-	var escala_final = min(factor_escala.x, factor_escala.y)
+			var music_bus_index = AudioServer.get_bus_index("Music")
+			if music_bus_index != -1:
+				AudioServer.set_bus_volume_db(music_bus_index, linear_to_db(musica))
+			var sfx_bus_index = AudioServer.get_bus_index("SFX")
+			if sfx_bus_index != -1:
+				AudioServer.set_bus_volume_db(sfx_bus_index, linear_to_db(sonidos))
 
-	# Escala solo el nodo de contenido visual
-	if has_node("resources"):
-		var contenido = resources
-		contenido.scale = Vector2(escala_final, escala_final)
+func linear_to_db(value: float) -> float:
+	return -80 if value == 0 else 20 * log(value) / log(10)
 
-		if contenido is Control:
-			await get_tree().process_frame
-			var size = contenido.get_combined_minimum_size()
-			contenido.position = (viewport_size - size * escala_final) / 2
 #endregion
 
 #region Nodes Connections
