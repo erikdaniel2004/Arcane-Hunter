@@ -387,6 +387,7 @@ offset_left = 495.0
 offset_top = 14.0
 offset_right = 495.0
 offset_bottom = 14.0
+metadata/_edit_use_anchors_ = true
 
 [node name="bar_health" type="Node2D" parent="."]
 

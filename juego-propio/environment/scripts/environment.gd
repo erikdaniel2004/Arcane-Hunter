@@ -1,15 +1,25 @@
 extends Node2D
 
 #region Variables
+# Variables concretas
 @onready var pause_menu_scene := preload("res://menus/menu_options/scene/menu_options.tscn")
-@onready var player = get_node("player_knight")
+@onready var player = get_node("players/player_knight")
 @onready var camera = player.get_node("cam_player")
 @onready var menu_levels_scene = preload("res://menus/menu_levels/scene/menu_levels.tscn")
 @onready var jefe = $enemies/player_boss_swamp
 @onready var pared = $effects/BreakableWall
+@onready var player1 := $players/player_knight
+@onready var player2 = $players/player_cat
+@export var limite_separacion := 300
+
+# Señales
 signal jugador_muerto(data: Dictionary, completado: bool)
+
+# Variables genéricas
 var pause_menu_instance: Node = null
 var menu_levels_instance: Node = null
+var modo_multijugador := Global.modo_multijugador
+var salud_original_enemigos = {}
 #endregion
 
 #region Ready
@@ -24,6 +34,13 @@ func _ready():
 	aplicar_configuracion_visual()
 	mover_a_user_si_no_existe()
 	pared.visible = true
+	
+	if modo_multijugador:
+		set_jugador2_activo(true)
+		duplicar_salud_enemigos()
+	else:
+		set_jugador2_activo(false)
+		restaurar_salud_enemigos()
 	
 	# Menú de pausa
 	pause_menu_instance = pause_menu_scene.instantiate()
@@ -44,6 +61,15 @@ func _ready():
 	player.connect("jugador_muerto", Callable(self, "_on_jugador_muerto"))
 #endregion
 
+#region Physics Process
+func _physics_process(delta):
+	if not modo_multijugador:
+		return
+
+	bloquear_jugadores_por_limites_de_camara()
+	bloquear_jugadores_por_separacion()
+#endregion
+
 #region Input
 func _input(event):
 	if event.is_action_pressed("pausa"):
@@ -56,6 +82,92 @@ func _input(event):
 #endregion
 
 #region Generic Functions
+#region Distance Players
+func bloquear_jugadores_por_limites_de_camara():
+	var cam_pos = camera.global_position
+	var cam_size = camera.get_viewport_rect().size
+	var limite_izquierdo = cam_pos.x - cam_size.x / 2
+	var limite_derecho = cam_pos.x + cam_size.x / 2
+
+	# Limitar player1 (knight)
+	if player1.global_position.x < limite_izquierdo:
+		player1.velocity.x = max(player1.velocity.x, 0)
+	elif player1.global_position.x > limite_derecho:
+		player1.velocity.x = min(player1.velocity.x, 0)
+
+	# Limitar player2 (cat), solo si sigue existiendo
+	if is_instance_valid(player2):
+		if player2.global_position.x < limite_izquierdo:
+			player2.velocity.x = max(player2.velocity.x, 0)
+		elif player2.global_position.x > limite_derecho:
+			player2.velocity.x = min(player2.velocity.x, 0)
+
+func bloquear_jugadores_por_separacion():
+	if not is_instance_valid(player2):
+		return
+	
+	var distancia = player1.global_position.x - player2.global_position.x
+
+	if abs(distancia) > limite_separacion:
+		if distancia > 0:
+			# player1 está delante → player2 muy atrás
+			player1.velocity.x = min(player1.velocity.x, 0) # bloquea avance
+			player2.velocity.x = max(player2.velocity.x, 0) # bloquea retroceso
+		else:
+			# player2 está delante → player1 muy atrás
+			player2.velocity.x = min(player2.velocity.x, 0) # bloquea avance
+			player1.velocity.x = max(player1.velocity.x, 0) # bloquea retroceso
+#endregion
+
+#region Player 2
+func set_jugador2_activo(activo: bool):
+	player2.visible = activo
+	player2.set_physics_process(activo)
+	player2.set_process(activo)
+	player2.set_process_input(activo)
+	player2.set_process_unhandled_input(activo)
+
+	if activo:
+		player2.jugador_principal = player1
+
+	# Activar o desactivar colisiones
+	for shape in player2.get_children():
+		if shape is CollisionShape2D:
+			shape.disabled = not activo
+		elif shape.has_method("get_children"):
+			for child in shape.get_children():
+				if child is CollisionShape2D:
+					child.disabled = not activo
+
+#endregion
+
+#region Health Enemies
+func duplicar_salud_enemigos():
+	for enemigo in get_tree().get_nodes_in_group("enemigos"):
+		if "max_health" in enemigo and enemigo.has_node("bar_health/TextureProgressBar"):
+			var barra = enemigo.get_node("bar_health/TextureProgressBar")
+			var salud = enemigo.max_health
+
+			# Guardar salud original solo si aún no se ha hecho
+			if not salud_original_enemigos.has(enemigo):
+				salud_original_enemigos[enemigo] = salud
+
+			enemigo.max_health = salud * 2
+			enemigo.current_health = enemigo.max_health
+			barra.max_value = enemigo.max_health
+			barra.value = enemigo.current_health
+
+func restaurar_salud_enemigos():
+	for enemigo in get_tree().get_nodes_in_group("enemigos"):
+		if salud_original_enemigos.has(enemigo):
+			var salud = salud_original_enemigos[enemigo]
+			if enemigo.has_node("bar_health/TextureProgressBar"):
+				var barra = enemigo.get_node("bar_health/TextureProgressBar")
+				enemigo.max_health = salud
+				enemigo.current_health = salud
+				barra.max_value = salud
+				barra.value = salud
+#endregion
 
 #region Nodes Connection
 func _on_jugador_muerto(data: Dictionary, completado: bool):

@@ -424,3 +424,6 @@ initial_velocity_max = 308.0
 angular_velocity_min = 9.86
 angular_velocity_max = 720.0
 color = Color(0.92549, 0.145098, 0.133333, 1)
+
+[connection signal="timeout" from="timer_bar" to="." method="_on_timer_bar_timeout"]
+[connection signal="timeout" from="timer_attack" to="." method="_on_timer_attack_timeout"]

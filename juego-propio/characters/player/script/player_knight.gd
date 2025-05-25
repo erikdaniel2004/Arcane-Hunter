@@ -2,13 +2,13 @@ extends CharacterBody2D
 
 #region Variables
 # Propiedades del jugador sobre el terreno
-@export var gravity_scale = 2
+@export var gravity_scale = 2.8
 @export var speed = 200
-@export var acceleration = 200
-@export var friction = 900
-@export var jump_force = -550
-@export var air_acceleration = 1500
-@export var air_friction = 700
+@export var acceleration = 350
+@export var friction = 1100
+@export var jump_force = -650
+@export var air_acceleration = 600
+@export var air_friction = 400
 @export var max_health := 100
 @export var damage := 25
 
@@ -68,7 +68,7 @@ signal jugador_muerto(data: Dictionary, completado: bool)
 #region Ready
 # Función que establece unos parámetros al cargar el jugador
 func _ready():
-	add_to_group("player_knight")
+	add_to_group("players")
 	contador.actualizar(contadores_en_cero)
 	contador2.actualizar(contadores_en_cero)
 	contador3.iniciar()
@@ -287,6 +287,7 @@ func establecer_limites_camara(left: int, top: int, right: int, bottom: int):
 #endregion
 
 #region Nodes Connections
+
 # Función que hace invisible la barra de salud del jugador tras un periodo corto de tiempo 
 func _on_timer_bar_timeout():
 	bar_health.visible = false
@@ -308,4 +309,10 @@ func _on_enemigo_muerto(es_jefe: bool):
 func registrar_muerte_de_jefe():
 	jefes_muertos += 1
 #endregion
+
+#region Debbug
+func get_id_debug():
+	print("Este player_knight tiene ID:", get_instance_id())
+#endregion
+
 #endregion

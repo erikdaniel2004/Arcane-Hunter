@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgmrnqxqm7nhv"]
+[gd_scene load_steps=6 format=3 uid="uid://bgmrnqxqm7nhv"]
 
 [ext_resource type="Script" path="res://environment/object_resources/tileset_cave/Objects/Food/script/food.gd" id="1_mh76v"]
 [ext_resource type="Texture2D" uid="uid://djye4tx6pfsvq" path="res://environment/object_resources/tileset_cave/Objects/Food/img/11.png" id="2_n24ew"]
+[ext_resource type="AudioStream" uid="uid://bgc1fgmsfvqut" path="res://environment/object_resources/tileset_cave/Objects/Food/sounds/eat-323883.mp3" id="3_ijpcs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0bi4x"]
 radius = 12.51
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5mgil"]
-radius = 22.0
+radius = 37.054
 
 [node name="food" type="RigidBody2D" groups=["comida"]]
 freeze_mode = 1
@@ -30,5 +31,6 @@ shape = SubResource("CircleShape2D_5mgil")
 
 [node name="audio_comida" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(592, 315)
+stream = ExtResource("3_ijpcs")
 max_distance = 5000.0
 bus = &"SFX"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2avhp51q28y4"]
+[gd_scene load_steps=10 format=3 uid="uid://c2avhp51q28y4"]
 
 [ext_resource type="Script" path="res://menus/menu_selection/script/menu_selection.gd" id="1_qpvc5"]
 [ext_resource type="AudioStream" uid="uid://tku240roit3h" path="res://menus/menu_selection/music/medieval-adventure-270567.mp3" id="1_r1j1n"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d2lfc3pwv64n6" path="res://interface/1 Frames/map_frame.png" id="4_3lbvi"]
 [ext_resource type="Texture2D" uid="uid://bkno638orwh0d" path="res://interface/3 Icons/Icons yellow/Icon_13.png" id="4_xux8c"]
 [ext_resource type="FontFile" uid="uid://cek71hj6bulak" path="res://interface/7 General Font/Pixellari.ttf" id="5_l4uxa"]
+[ext_resource type="Texture2D" uid="uid://44pghpicgyai" path="res://interface/3 Icons/Icons yellow/Icon_33.png" id="7_fsh8t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_opalg"]
 font = ExtResource("5_l4uxa")
@@ -123,16 +124,17 @@ offset_bottom = 40.0
 
 [node name="vbox_salir" type="VBoxContainer" parent="resources/boxs"]
 layout_mode = 0
-offset_left = 1077.0
+offset_left = 1071.0
 offset_top = 557.0
-offset_right = 1152.0
-offset_bottom = 663.0
+offset_right = 1153.0
+offset_bottom = 658.0
 theme_override_constants/separation = 66
 
 [node name="btn_salir" type="Button" parent="resources/boxs/vbox_salir"]
 self_modulate = Color(1, 1, 0.054902, 1)
 texture_filter = 5
 layout_mode = 2
+focus_mode = 0
 text = "
 
 
@@ -154,6 +156,7 @@ theme_override_constants/separation = 66
 
 [node name="btn_start" type="Button" parent="resources/boxs/vbox_menu"]
 layout_mode = 2
+focus_mode = 0
 text = "
 
 
@@ -172,6 +175,7 @@ theme_override_constants/separation = 66
 
 [node name="btn_start2" type="Button" parent="resources/boxs/vbox_start2"]
 layout_mode = 2
+focus_mode = 0
 text = "
 
 
@@ -179,6 +183,30 @@ text = "
 "
 flat = true
 
+[node name="vbox_multi" type="VBoxContainer" parent="resources/boxs"]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 557.0
+offset_right = 329.0
+offset_bottom = 657.0
+alignment = 1
+
+[node name="btn_multijugador" type="Button" parent="resources/boxs/vbox_multi"]
+self_modulate = Color(1, 1, 0.054902, 1)
+texture_filter = 5
+layout_mode = 2
+focus_mode = 0
+text = "
+
+
+
+"
+icon = ExtResource("7_fsh8t")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
 [connection signal="pressed" from="resources/boxs/vbox_salir/btn_salir" to="." method="_on_btn_salir_pressed"]
 [connection signal="pressed" from="resources/boxs/vbox_menu/btn_start" to="." method="_on_btn_start_pressed"]
 [connection signal="pressed" from="resources/boxs/vbox_start2/btn_start2" to="." method="_on_btn_start_2_pressed"]
+[connection signal="pressed" from="resources/boxs/vbox_multi/btn_multijugador" to="." method="_on_btn_multijugador_pressed"]

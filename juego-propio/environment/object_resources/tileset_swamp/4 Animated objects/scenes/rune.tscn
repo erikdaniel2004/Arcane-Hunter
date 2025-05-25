@@ -45,9 +45,10 @@ radius = 3.0
 height = 10.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0q5ot"]
-radius = 16.0312
+radius = 33.1361
 
 [node name="runa" type="RigidBody2D"]
+collision_layer = 3
 freeze_mode = 1
 continuous_cd = 1
 script = ExtResource("1_db4ok")

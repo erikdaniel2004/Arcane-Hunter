@@ -44,9 +44,10 @@ animations = [{
 radius = 5.52268
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_382el"]
-radius = 18.0278
+radius = 31.0
 
 [node name="moneda" type="RigidBody2D"]
+collision_layer = 3
 freeze_mode = 1
 continuous_cd = 1
 script = ExtResource("1_5dd0d")

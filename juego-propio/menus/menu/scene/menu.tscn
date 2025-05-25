@@ -150,6 +150,7 @@ uppercase = true
 self_modulate = Color(1, 1, 0, 1)
 texture_filter = 5
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -170,6 +171,7 @@ expand_icon = true
 self_modulate = Color(1, 1, 0, 1)
 texture_filter = 5
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -227,6 +229,7 @@ offset_left = -12.0
 offset_top = 556.0
 offset_right = 57.0
 offset_bottom = 625.0
+focus_mode = 0
 flat = true
 
 [node name="btn_stats" type="Button" parent="resources/buttons"]
@@ -235,6 +238,7 @@ offset_left = 1056.0
 offset_top = 565.0
 offset_right = 1121.0
 offset_bottom = 622.0
+focus_mode = 0
 flat = true
 
 [connection signal="pressed" from="resources/boxes/vbox_menu/btn_start" to="." method="_on_btn_start_pressed"]

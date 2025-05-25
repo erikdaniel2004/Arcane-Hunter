@@ -45,14 +45,14 @@ func soltar_runa():
 
 #region Nodes Connections
 func _on_body_entered(body):
-	if body.is_in_group("player_knight") and not abierto:
+	if body.is_in_group("players") and not abierto:
 		sprite.play("open")
 		soltar_monedas()
 		soltar_runa()
 		abierto = true  # Evitar que se abra varias veces
 
 func _on_body_exited(body):
-	if body.is_in_group("player_knight") and abierto:
+	if body.is_in_group("players") and abierto:
 		sprite.play("close")
 #endregion
 #endregion

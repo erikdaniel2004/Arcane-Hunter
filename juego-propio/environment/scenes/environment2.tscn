@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=4 uid="uid://dps38523bax6r"]
+[gd_scene load_steps=79 format=4 uid="uid://dps38523bax6r"]
 
 [ext_resource type="PackedScene" uid="uid://ttxkblnaoxgc" path="res://environment/scenes/background_level2.tscn" id="1_uvm2x"]
 [ext_resource type="Script" path="res://environment/scripts/environment_2.gd" id="1_vpe4b"]
@@ -63,6 +63,7 @@
 [ext_resource type="PackedScene" uid="uid://bgmrnqxqm7nhv" path="res://environment/object_resources/tileset_cave/Objects/Food/scenes/food1.tscn" id="55_k43nr"]
 [ext_resource type="PackedScene" uid="uid://baghgg38vunuf" path="res://environment/object_resources/tileset_cave/Objects_Animated/scenes/rune.tscn" id="56_p1d3m"]
 [ext_resource type="PackedScene" uid="uid://dwykw44qlawi5" path="res://characters/enemies/ene_cave/gorgon/scenes/player_gorgon.tscn" id="58_qe4oh"]
+[ext_resource type="PackedScene" uid="uid://diuh602m1c7iu" path="res://characters/player 2/scenes/player_cat.tscn" id="59_8qgr1"]
 [ext_resource type="PackedScene" uid="uid://u5xkaygt2ix6" path="res://characters/enemies/ene_cave/gorgon/scenes/player_gorgon_2.tscn" id="59_lj21u"]
 [ext_resource type="PackedScene" uid="uid://02tebis2kuvw" path="res://characters/enemies/ene_cave/minotaur/scenes/player_minotaur.tscn" id="60_i4l56"]
 [ext_resource type="PackedScene" uid="uid://ue26kux2kaoe" path="res://characters/enemies/ene_cave/minotaur/scenes/player_minotaur_2.tscn" id="61_vofxb"]
@@ -1983,9 +1984,14 @@ position = Vector2(116, 2096)
 [node name="runa11" parent="runes" instance=ExtResource("56_p1d3m")]
 position = Vector2(3143, 2096)
 
-[node name="player_knight" parent="." instance=ExtResource("3_436em")]
-position = Vector2(100, 159)
+[node name="players" type="Node2D" parent="."]
+
+[node name="player_knight" parent="players" instance=ExtResource("3_436em")]
+position = Vector2(128, 159)
 scale = Vector2(0.75, 0.75)
+
+[node name="player_cat" parent="players" instance=ExtResource("59_8qgr1")]
+position = Vector2(63, 159)
 
 [node name="enemies" type="Node2D" parent="."]
 

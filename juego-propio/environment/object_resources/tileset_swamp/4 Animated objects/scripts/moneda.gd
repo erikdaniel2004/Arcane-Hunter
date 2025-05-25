@@ -12,7 +12,7 @@ extends RigidBody2D
 #region Ready
 func _ready():
 	col_area.disabled = true
-	await get_tree().create_timer(0.3).timeout
+	await get_tree().create_timer(0.8).timeout
 	col_area.disabled = false
 	freeze_mode = RigidBody2D.FREEZE_MODE_KINEMATIC
 	sprite.play("idle")
@@ -28,7 +28,7 @@ func _ready():
 #region Generic Functions
 #region Nodes Connections
 func _on_body_entered(body):
-	if body.is_in_group("player_knight"):
+	if body.is_in_group("players"):
 		body.sumar_monedas(valor_moneda)
 		
 		# Desvincular el audio de la moneda antes de eliminarla

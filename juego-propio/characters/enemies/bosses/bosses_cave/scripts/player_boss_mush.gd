@@ -56,7 +56,7 @@ func _ready():
 	timer_invulnerable.timeout.connect(_reset_invulnerabilidad)
 
 	await get_tree().process_frame
-	var jugadores = get_tree().get_nodes_in_group("player_knight")
+	var jugadores = get_tree().get_nodes_in_group("players")
 	if jugadores.size() > 0:
 		jugador_detectado = jugadores[0]
 		if jugador_detectado.has_method("_on_enemigo_muerto"):
@@ -66,7 +66,6 @@ func _ready():
 	var environment = get_tree().get_first_node_in_group("nivel")
 	if environment and environment.has_method("_on_jefe_muerto"):
 		connect("enemigo_muerto", Callable(environment, "_on_jefe_muerto"))
-		print("Se conectó la señal al environment desde jefe.")
 #endregion
 
 #region Physics Process
@@ -162,7 +161,7 @@ func ataque_carga():
 		var collision = move_and_collide(direccion * charge_speed * get_process_delta_time())
 		if collision:
 			var collider = collision.get_collider()
-			if collider.is_in_group("player_knight") and collider.has_method("recibir_dano"):
+			if collider.is_in_group("players") and collider.has_method("recibir_dano"):
 				jugador_detectado.last_attacker = self
 				collider.recibir_dano(50)
 			velocity = Vector2.ZERO
@@ -220,7 +219,7 @@ func recibir_dano(cantidad):
 		await get_tree().create_timer(0.5).timeout
 
 	var vidas_a_recuperar = int((max_health - current_health) / 100) * 50
-	var jugadores = get_tree().get_nodes_in_group("player_knight")
+	var jugadores = get_tree().get_nodes_in_group("players")
 	if jugadores.size() > 0:
 		var player = jugadores[0]
 		if player.has_method("recuperar_vida"):
@@ -254,7 +253,7 @@ func morir():
 
 #region Nodes Connections
 func _on_boss_area_body_entered(body):
-	if body.is_in_group("player_knight") and puede_atacar and not is_attacking and not esta_herido and not is_dead:
+	if body.is_in_group("players") and puede_atacar and not is_attacking and not esta_herido and not is_dead:
 		jugador_detectado = body
 		var ataque_random = randi_range(1, 4)
 		realizar_ataque("attack" + str(ataque_random))

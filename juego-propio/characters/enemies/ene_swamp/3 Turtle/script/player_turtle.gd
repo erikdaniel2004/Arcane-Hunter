@@ -165,7 +165,7 @@ func morir():
 # Función que se ejecuta cuando un cuerpo entra en el área de ataque
 func _on_turtle_area_body_entered(body):
 	# Si el cuerpo es un jugador y puede atacar, inicia el ataque
-	if body.is_in_group("player_knight") and not is_attacking and puede_atacar:
+	if body.is_in_group("players") and not is_attacking and puede_atacar:
 		jugador_detectado = body
 		iniciar_ataque()
 

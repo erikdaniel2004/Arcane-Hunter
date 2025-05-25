@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=4 uid="uid://jeo3on8k4c1i"]
+[gd_scene load_steps=69 format=4 uid="uid://jeo3on8k4c1i"]
 
 [ext_resource type="Script" path="res://environment/scripts/environment.gd" id="1_sty8x"]
 [ext_resource type="PackedScene" uid="uid://bptd4qrmqc0nj" path="res://environment/scenes/background.tscn" id="1_t6eer"]
@@ -56,6 +56,7 @@
 [ext_resource type="PackedScene" uid="uid://d2veqyjiqjgm5" path="res://environment/object_resources/tileset_swamp/3 Objects/Stones/scenes/stone3.tscn" id="47_pqs8k"]
 [ext_resource type="PackedScene" uid="uid://nxgc647cxanl" path="res://environment/object_resources/tileset_swamp/3 Objects/Stones/scenes/stone4.tscn" id="48_7vn3i"]
 [ext_resource type="PackedScene" uid="uid://cxc2om4kqnl7w" path="res://environment/object_resources/tileset_swamp/3 Objects/Stones/scenes/stone5.tscn" id="49_80764"]
+[ext_resource type="PackedScene" uid="uid://diuh602m1c7iu" path="res://characters/player 2/scenes/player_cat.tscn" id="50_nm6de"]
 [ext_resource type="PackedScene" uid="uid://dggj8qjtr5vb7" path="res://characters/enemies/ene_swamp/2 Larva/scene/player_larva.tscn" id="51_7ng0h"]
 [ext_resource type="PackedScene" uid="uid://c0piytr1fgv27" path="res://characters/enemies/ene_swamp/3 Turtle/scene/player_turtle.tscn" id="52_1quli"]
 [ext_resource type="PackedScene" uid="uid://cqa3jcie2tg6x" path="res://characters/enemies/bosses/bosses_swamp/scenes/player_boss_swamp.tscn" id="53_hc4eg"]
@@ -1544,9 +1545,14 @@ position = Vector2(83, 922)
 [node name="rune7" parent="runes" instance=ExtResource("9_7i3yf")]
 position = Vector2(124, 623)
 
-[node name="player_knight" parent="." instance=ExtResource("10_85w36")]
+[node name="players" type="Node2D" parent="."]
+
+[node name="player_knight" parent="players" instance=ExtResource("10_85w36")]
 position = Vector2(198, 240)
 scale = Vector2(0.75, 0.75)
+
+[node name="player_cat" parent="players" instance=ExtResource("50_nm6de")]
+position = Vector2(153, 240)
 
 [node name="enemies" type="Node2D" parent="."]
 
