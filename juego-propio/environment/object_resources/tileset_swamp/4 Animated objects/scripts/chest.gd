@@ -30,17 +30,25 @@ func soltar_monedas():
 	
 	for i in range(cantidad):
 		var moneda = moneda_escena.instantiate() as RigidBody2D
-		get_tree().current_scene.add_child(moneda)
-		moneda.global_position = global_position + Vector2(randf_range(-10, 10), -10)
-		moneda.apply_impulse(Vector2(randf_range(-100, 100), -150))
+		# Deferido para evitar errores de físicas
+		call_deferred("_agregar_moneda", moneda)
 
 func soltar_runa():
 	var chance = randi_range(1, 100)  # Generar un número aleatorio entre 1 y 100
 	if chance == 1:  # Si el número aleatorio es 1, se genera la runa
 		var runa = runa_escena.instantiate() as RigidBody2D
-		get_tree().current_scene.add_child(runa)
-		runa.global_position = global_position + Vector2(randf_range(-10, 10), -10)
-		runa.apply_impulse(Vector2(randf_range(-100, 100), -150))
+		# Deferido para evitar errores de físicas
+		call_deferred("_agregar_runa", runa)
+
+func _agregar_moneda(moneda):
+	get_tree().current_scene.add_child(moneda)
+	moneda.global_position = global_position + Vector2(randf_range(-10, 10), -10)
+	moneda.apply_impulse(Vector2(randf_range(-100, 100), -150))
+
+func _agregar_runa(runa):
+	get_tree().current_scene.add_child(runa)
+	runa.global_position = global_position + Vector2(randf_range(-10, 10), -10)
+	runa.apply_impulse(Vector2(randf_range(-100, 100), -150))
 #endregion
 
 #region Nodes Connections

@@ -5,8 +5,8 @@ extends Node2D
 @onready var flash_rect = $CanvasLayer/flash_rect
 @onready var timer_trueno = $timer_thunder
 @onready var audio_thunder = $audio_thunder
-@onready var tween = create_tween()
 
+var tween: Tween = null
 var efectos_visuales_activos: bool = true
 #endregion
 
@@ -19,11 +19,6 @@ func _ready():
 
 	flash_rect.hide()
 	flash_rect.color = Color(1, 1, 1, 0)
-
-	# Evita mostrar el rayo desde el inicio
-	thunder_sprite.stop()
-	thunder_sprite.frame = 0
-	thunder_sprite.hide()
 
 	# Evita mostrar el rayo desde el inicio
 	thunder_sprite.stop()
@@ -44,7 +39,8 @@ func reproducir_trueno():
 	flash_rect.show()
 	flash_rect.color = Color(1, 1, 1, 0.8)
 
-	tween.kill()
+	if tween:
+		tween.kill()
 	tween = create_tween()
 	tween.tween_property(flash_rect, "color", Color(0.6, 0.8, 1.0, 0.4), 0.3)
 	tween.tween_property(flash_rect, "color", Color(0.6, 0.8, 1.0, 0.0), 0.5)

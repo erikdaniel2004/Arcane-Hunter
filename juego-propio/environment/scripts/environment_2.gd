@@ -27,6 +27,7 @@ func _ready():
 	add_to_group("nivel")
 	await get_tree().process_frame
 	player.muerte_por_caida_desactivada = true
+	player2.muerte_por_caida_desactivada = true
 	player.establecer_limites_camara(-48, -32, 3216, 2208)
 	player.conectar_enemigo(jefe)
 	player.conectar_enemigo(jefe2)
@@ -189,21 +190,23 @@ func _on_jefe_muerto(es_jefe):
 	player.registrar_muerte_de_jefe()
 	
 	jefes_vivos -= 1
+	print("Jefes restantes:", jefes_vivos)
+
 	if jefes_vivos <= 0:
 		# Todos los jefes han muerto, se activa la salida
 		if salida_nivel:
 			print("Todos los jefes muertos. Activando salida.")
 			salida_nivel.set_deferred("monitoring", true)
 
-	# Emitir al final, para evitar pausar antes de activar salida
-	var data = {
-		"tiempo": player.contador3.obtener_tiempo(),
-		"monedas": player.monedas,
-		"runas": player.runas,
-		"enemigos": player.enemigos_muertos,
-		"jefes": player.jefes_muertos
-	}
-	emit_signal("jugador_muerto", data, true)
+		# Solo aquí se emite la señal final
+		var data = {
+			"tiempo": player.contador3.obtener_tiempo(),
+			"monedas": player.monedas,
+			"runas": player.runas,
+			"enemigos": player.enemigos_muertos,
+			"jefes": player.jefes_muertos
+		}
+		emit_signal("jugador_muerto", data, true)
 #endregion
 
 #region Save Stats

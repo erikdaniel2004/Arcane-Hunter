@@ -10,8 +10,14 @@ extends CharacterBody2D
 @export var air_friction = 700
 @export var max_health := 100
 @export var damage := 25
-@export var death_y_threshold: float = 1500
 @export var jugador_principal: Node = null
+
+# Altura límite para morir
+@export var death_y_threshold: float = 1500
+
+# Coordenadas en las que se detiene la muerte por caida
+@export var death_limit_stop_x := 1800
+@export var death_limit_stop_y := 1500
 
 @onready var ani_player = $ani_player
 @onready var time = $time
@@ -38,9 +44,16 @@ var last_attacker: Node = null
 # Variable para determinar la cámara principal
 var camara_jugador: Camera2D = null
 
+# Variable para desactivar la muerte por caida tras pasar un punto de control
+var muerte_por_caida_desactivada := false
+
 # Variables para almacenar de forma temporal los coleccionables
 var monedas_recogidas := 0
 var runas_recogidas := 0
+
+# Variables para determinar la limitación de la cámara sobre el eje Y
+var tiempo_fuera_camara_y := 0.0
+var esperando_teletransporte_y := false
 
 var input_axis = Input.get_axis("mover_izquierda_p2", "mover_derecha_p2")
 
@@ -50,47 +63,25 @@ var input_axis = Input.get_axis("mover_izquierda_p2", "mover_derecha_p2")
 func _ready():
 	add_to_group("players")
 	bar_health.visible = false
-	camara_jugador = get_tree().get_root().get_node("environment/players/player_knight/cam_player")
+	
+	var entorno = get_tree().get_first_node_in_group("nivel")
+	if entorno:
+		var player_knight = entorno.get_node("players/player_knight")
+		if player_knight.has_node("cam_player"):
+			camara_jugador = player_knight.get_node("cam_player")
+		else:
+			print("Advertencia: cam_player no encontrado en player_knight.")
+	else:
+		print("Advertencia: Nodo 'nivel' no encontrado.")
+
 #endregion
 
 #region Physics Process
 func _physics_process(delta):
-	# Impedir que el gato salga de los límites de la cámara
-	if camara_jugador:
-		var cam_pos = camara_jugador.global_position
-		var cam_size = camara_jugador.get_viewport_rect().size
-		var limite_izquierdo = cam_pos.x - cam_size.x / 2
-		var limite_derecho = cam_pos.x + cam_size.x / 2
-		
-		if global_position.x < limite_izquierdo:
-			velocity.x = max(velocity.x, 0)
-		elif global_position.x > limite_derecho:
-			velocity.x = min(velocity.x, 0)
-
-	# Si está herido, ignora input pero sigue física
-	if esta_herido:
-		input_axis = 0
-
-	if global_position.y > death_y_threshold:
-		desactivar()
-
-	input_axis = Input.get_axis("mover_izquierda_p2", "mover_derecha_p2")
-	apply_gravity(delta)
-	handle_acceleration(input_axis, delta)
-	apply_friction(input_axis, delta)
-	handle_jump()
-	handle_air_acceleration(input_axis, delta)
-	update_animation(input_axis)
-	move_and_slide()
-	update_attack_area_direction()
-
-	if Input.is_action_just_pressed("atacar_p2"):
-		atacar()
-
-	if Input.is_action_just_pressed("maullar_p2"):
-		audio_player.play()
-
-	detectar_cajas_cercanas()
+	procesar_muerte_por_caida()
+	limitar_por_camara(delta)
+	procesar_movimiento(delta)
+	procesar_entrada_jugador()
 #endregion
 
 #region Physics Functions
@@ -114,6 +105,64 @@ func handle_air_acceleration(input_axis, delta):
 	if not is_on_floor(): 
 		if input_axis != 0:
 			velocity.x = move_toward(velocity.x, speed * input_axis, air_acceleration * delta)
+
+func procesar_movimiento(delta):
+	if esta_herido:
+		input_axis = 0
+
+	input_axis = Input.get_axis("mover_izquierda_p2", "mover_derecha_p2")
+	apply_gravity(delta)
+	handle_acceleration(input_axis, delta)
+	apply_friction(input_axis, delta)
+	handle_jump()
+	handle_air_acceleration(input_axis, delta)
+	update_animation(input_axis)
+	move_and_slide()
+	update_attack_area_direction()
+
+func procesar_entrada_jugador():
+	if Input.is_action_just_pressed("atacar_p2"):
+		atacar()
+
+	if Input.is_action_just_pressed("maullar_p2"):
+		audio_player.play()
+
+	detectar_cajas_cercanas()
+#endregion
+
+#region Camera
+func limitar_por_camara(delta):
+	if not camara_jugador:
+		return
+
+	var cam_pos = camara_jugador.global_position
+	var cam_size = camara_jugador.get_viewport_rect().size
+	var limite_izquierdo = cam_pos.x - cam_size.x / 2
+	var limite_derecho = cam_pos.x + cam_size.x / 2
+	var limite_superior = cam_pos.y - cam_size.y / 2
+	var limite_inferior = cam_pos.y + cam_size.y / 2
+
+	# Limitar en eje X
+	if global_position.x < limite_izquierdo:
+		velocity.x = max(velocity.x, 0)
+	elif global_position.x > limite_derecho:
+		velocity.x = min(velocity.x, 0)
+
+	# Verificar si está fuera en eje Y
+	if global_position.y < limite_superior or global_position.y > limite_inferior:
+		if not esperando_teletransporte_y:
+			tiempo_fuera_camara_y = 0.0
+			esperando_teletransporte_y = true
+	else:
+		tiempo_fuera_camara_y = 0.0
+		esperando_teletransporte_y = false
+
+	if esperando_teletransporte_y:
+		tiempo_fuera_camara_y += delta
+		if tiempo_fuera_camara_y >= 2.0 and jugador_principal:
+			global_position = jugador_principal.global_position + Vector2(40, 0)
+			tiempo_fuera_camara_y = 0.0
+			esperando_teletransporte_y = false
 #endregion
 
 #region Animation
@@ -172,24 +221,30 @@ func recibir_dano(cantidad):
 
 	# Si muere directamente, no reproducir animación hurt
 	if current_health <= 0:
-		desactivar()
+		morir()
 		return
 
 	# Reproducir animación de daño sin congelar la física
 	esta_herido = true
-	ani_player.play("hurt")
 	await ani_player.animation_finished
 	esta_herido = false
 
 	hacer_invulnerable_temporalmente()
 
-func desactivar():
+func morir():
 	set_physics_process(false)
 	visible = false
 	collision_layer = 0
 	collision_mask = 0
 	await get_tree().create_timer(0.5).timeout
 	queue_free()
+
+func procesar_muerte_por_caida():
+	if not muerte_por_caida_desactivada and global_position.x >= death_limit_stop_x and global_position.y >= death_limit_stop_y:
+		muerte_por_caida_desactivada = true
+
+	if not muerte_por_caida_desactivada and global_position.y > death_y_threshold:
+		morir()
 
 func hacer_invulnerable_temporalmente():
 	is_invulnerable = true

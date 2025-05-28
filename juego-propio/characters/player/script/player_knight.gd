@@ -297,8 +297,9 @@ func _on_timer_invincible_timeout():
 	is_invulnerable = false
 
 func conectar_enemigo(enemy: Node):
-	if enemy.has_signal("enemigo_muerto"):
-		enemy.connect("enemigo_muerto", Callable(self, "_on_enemigo_muerto"))
+	if enemy.has_signal("enemigo_muerto") and enemy.has_method("connect"):
+		if not enemy.is_connected("enemigo_muerto", Callable(self, "_on_enemigo_muerto")):
+			enemy.connect("enemigo_muerto", Callable(self, "_on_enemigo_muerto"), CONNECT_DEFERRED)
 
 func _on_enemigo_muerto(es_jefe: bool):
 	if es_jefe:

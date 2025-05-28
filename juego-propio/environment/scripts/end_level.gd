@@ -12,7 +12,7 @@ func _ready():
 #region Generic Functions
 #region Nodes Connections
 func _on_body_entered(body):
-	if body.is_in_group("player_knight"):
+	if body.is_in_group("players"):
 		# Obtener el script del jugador
 		var player = body
 		var environment = get_node(environment_path)

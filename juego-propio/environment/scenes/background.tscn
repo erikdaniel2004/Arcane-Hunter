@@ -38,7 +38,7 @@ motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(1152, 0)
 metadata/_edit_group_ = true
 
-[node name="Thunder" parent="layer_thunder" groups=["efectos_visuales"] instance=ExtResource("3_s85wc")]
+[node name="Thunder" parent="layer_thunder" instance=ExtResource("3_s85wc")]
 
 [node name="layer_medio2" type="ParallaxLayer" parent="."]
 position = Vector2(46, 3)
@@ -57,7 +57,7 @@ motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(1152, 0)
 metadata/_edit_group_ = true
 
-[node name="Thunder" parent="layer_thunder2" groups=["efectos_visuales"] instance=ExtResource("5_iimpw")]
+[node name="Thunder" parent="layer_thunder2" instance=ExtResource("5_iimpw")]
 position = Vector2(-1, -24)
 
 [node name="layer_medio3" type="ParallaxLayer" parent="."]

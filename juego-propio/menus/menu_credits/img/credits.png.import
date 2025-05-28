@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6dmy4wp2a215"
-path="res://.godot/imported/marco_menu.png-32f3a61f246ba37ffe96202bd9c989e7.ctex"
+uid="uid://de6p2knjdx1l"
+path="res://.godot/imported/credits.png-4ccf8341820a554d06078745ffaabfb4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://menus/menu/img/marco_menu.png"
-dest_files=["res://.godot/imported/marco_menu.png-32f3a61f246ba37ffe96202bd9c989e7.ctex"]
+source_file="res://menus/menu_credits/img/credits.png"
+dest_files=["res://.godot/imported/credits.png-4ccf8341820a554d06078745ffaabfb4.ctex"]
 
 [params]
 

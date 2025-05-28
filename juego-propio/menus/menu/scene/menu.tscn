@@ -5,12 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://cj862apvtrktv" path="res://menus/menu/img/menu.jpg" id="3_5fvo0"]
 [ext_resource type="Texture2D" uid="uid://cvpiqbckk7gv" path="res://interface/5 Logo/Logo.png" id="4_t7282"]
 [ext_resource type="Texture2D" uid="uid://cx7gdagkveevd" path="res://interface/2 Bars/Button3.png" id="5_a6ihc"]
+[ext_resource type="Texture2D" uid="uid://dkefart0da67i" path="res://interface/3 Icons/Icons yellow/Icon_25.png" id="5_x4nuw"]
 [ext_resource type="FontFile" uid="uid://cek71hj6bulak" path="res://interface/7 General Font/Pixellari.ttf" id="6_uhv57"]
 [ext_resource type="FontFile" uid="uid://b0ovcqsgsdr2m" path="res://interface/6 Font/CraftPixNet Survival Kit.otf" id="7_jeblv"]
 [ext_resource type="Texture2D" uid="uid://7jw6a7aa7gih" path="res://interface/3 Icons/Icon with back/Icon_01.png" id="8_kocx4"]
 [ext_resource type="Texture2D" uid="uid://mxt5b82iph4j" path="res://interface/3 Icons/Icon with back/Icon_13.png" id="9_bxvom"]
 [ext_resource type="Texture2D" uid="uid://crumik5o8afto" path="res://interface/3 Icons/Icons yellow/Icon_30.png" id="10_2sbbi"]
-[ext_resource type="Texture2D" uid="uid://dn1jog0cqt3sd" path="res://interface/3 Icons/Icons yellow/Icon_40.png" id="11_qn7tj"]
 [ext_resource type="Texture2D" uid="uid://gt17kvokulyt" path="res://interface/3 Icons/Icons yellow/Icon_23.png" id="12_c14ik"]
 [ext_resource type="Texture2D" uid="uid://bm2786usuoowh" path="res://interface/3 Icons/Icons yellow/Icon_39.png" id="15_x2uku"]
 
@@ -43,6 +43,7 @@ shadow_color = Color(0, 0, 0, 1)
 script = ExtResource("1_hphn0")
 
 [node name="resources" type="Control" parent="."]
+texture_filter = 5
 layout_mode = 3
 anchors_preset = 0
 offset_left = 21.0
@@ -59,6 +60,7 @@ offset_right = -21.0
 offset_bottom = -19.0
 
 [node name="image_menu" type="Sprite2D" parent="resources/images"]
+texture_filter = 5
 position = Vector2(575.5, 323.5)
 scale = Vector2(3.84333, 3.85119)
 texture = ExtResource("3_5fvo0")
@@ -86,14 +88,15 @@ self_modulate = Color(1, 1, 0.392157, 1)
 texture_filter = 5
 position = Vector2(44, 43)
 scale = Vector2(4, 4)
-texture = ExtResource("10_2sbbi")
+texture = ExtResource("5_x4nuw")
 
-[node name="like" type="Sprite2D" parent="resources/images"]
-self_modulate = Color(1, 1, 0.392157, 1)
+[node name="credits" type="Sprite2D" parent="resources/images"]
+self_modulate = Color(0.945098, 0.937255, 0, 1)
+top_level = true
 texture_filter = 5
 position = Vector2(1111, 42)
 scale = Vector2(4, 4)
-texture = ExtResource("11_qn7tj")
+texture = ExtResource("10_2sbbi")
 
 [node name="settings" type="Sprite2D" parent="resources/images"]
 self_modulate = Color(1, 1, 0.392157, 1)
@@ -241,7 +244,27 @@ offset_bottom = 622.0
 focus_mode = 0
 flat = true
 
+[node name="btn_credits" type="Button" parent="resources/buttons"]
+layout_mode = 0
+offset_left = 1058.0
+offset_top = -11.0
+offset_right = 1120.0
+offset_bottom = 57.0
+focus_mode = 0
+flat = true
+
+[node name="btn_help" type="Button" parent="resources/buttons"]
+layout_mode = 0
+offset_left = -13.0
+offset_top = -12.0
+offset_right = 59.0
+offset_bottom = 60.0
+focus_mode = 0
+flat = true
+
 [connection signal="pressed" from="resources/boxes/vbox_menu/btn_start" to="." method="_on_btn_start_pressed"]
 [connection signal="pressed" from="resources/boxes/vbox_menu/btn_exit" to="." method="_on_btn_end_pressed"]
 [connection signal="pressed" from="resources/buttons/btn_settings" to="." method="_on_btn_settings_pressed"]
 [connection signal="pressed" from="resources/buttons/btn_stats" to="." method="_on_btn_stats_pressed"]
+[connection signal="pressed" from="resources/buttons/btn_credits" to="." method="_on_btn_credits_pressed"]
+[connection signal="pressed" from="resources/buttons/btn_help" to="." method="_on_btn_help_pressed"]

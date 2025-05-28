@@ -13,7 +13,7 @@ extends RigidBody2D
 func _ready():
 	col_area.disabled = true
 	await get_tree().create_timer(0.8).timeout
-	col_area.disabled = false
+	col_area.set_deferred("disabled", false)
 	freeze_mode = RigidBody2D.FREEZE_MODE_KINEMATIC
 	sprite.play("idle")
 	area.body_entered.connect(_on_body_entered)

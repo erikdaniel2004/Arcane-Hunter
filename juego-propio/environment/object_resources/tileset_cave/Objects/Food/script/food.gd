@@ -31,10 +31,13 @@ func _on_body_entered(body):
 	if body.is_in_group("players"):
 		body.recuperar_vida(vida_a_recuperar)
 		
-		# Desvincular el audio de la comida antes de eliminarla
-		remove_child(audio_comida)  
-		get_tree().current_scene.add_child(audio_comida) 
-		
+		# Asegurar que el nodo de audio no tenga otro padre antes de moverlo
+		if audio_comida.get_parent():
+			audio_comida.get_parent().remove_child(audio_comida)
+
+		if audio_comida.get_parent() == null:
+			get_tree().current_scene.add_child(audio_comida)
+
 		audio_comida.play()
 		col_comida.set_deferred("disabled", true)
 		img_comida.visible = false

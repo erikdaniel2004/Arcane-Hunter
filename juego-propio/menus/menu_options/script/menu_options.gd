@@ -22,8 +22,8 @@ func _physics_process(delta):
 		if visible:
 			_unpause_and_close()
 		else:
-			await get_tree().process_frame
 			show()
+			await get_tree().process_frame
 			get_tree().paused = true
 #endregion
 
@@ -37,11 +37,13 @@ func _on_btn_continue_pressed():
 	_unpause_and_close()
 
 func _on_btn_restart_pressed():
+	get_tree().paused = false
 	var current_scene = get_tree().current_scene.scene_file_path
 	_unpause_and_close()
 	get_tree().change_scene_to_file(current_scene)
 
 func _on_btn_levels_pressed():
+	get_tree().paused = false
 	_unpause_and_close()
 	get_tree().change_scene_to_file("res://menus/menu_selection/scene/menu_selection.tscn")
 
@@ -57,9 +59,11 @@ func _on_btn_settings_pressed():
 	self.hide()
 
 func _on_btn_quit_pressed():
+	get_tree().paused = false
 	_unpause_and_close()
 	get_tree().change_scene_to_file("res://menus/menu_selection/scene/menu_selection.tscn")
 
 func _on_btn_quit2_pressed():
+	get_tree().paused = false
 	_unpause_and_close()
 #endregion

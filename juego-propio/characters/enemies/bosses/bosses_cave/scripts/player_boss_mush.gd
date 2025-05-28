@@ -60,12 +60,16 @@ func _ready():
 	if jugadores.size() > 0:
 		jugador_detectado = jugadores[0]
 		if jugador_detectado.has_method("_on_enemigo_muerto"):
-			connect("enemigo_muerto", Callable(jugador_detectado, "_on_enemigo_muerto"), CONNECT_DEFERRED)
+			if not is_connected("enemigo_muerto", Callable(jugador_detectado, "_on_enemigo_muerto")):
+				connect("enemigo_muerto", Callable(jugador_detectado, "_on_enemigo_muerto"), CONNECT_DEFERRED)
+
 	
 	await get_tree().process_frame
 	var environment = get_tree().get_first_node_in_group("nivel")
 	if environment and environment.has_method("_on_jefe_muerto"):
-		connect("enemigo_muerto", Callable(environment, "_on_jefe_muerto"))
+		if not is_connected("enemigo_muerto", Callable(environment, "_on_jefe_muerto")):
+			connect("enemigo_muerto", Callable(environment, "_on_jefe_muerto"), CONNECT_DEFERRED)
+
 #endregion
 
 #region Physics Process

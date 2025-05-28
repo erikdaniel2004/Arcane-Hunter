@@ -56,6 +56,23 @@ func _on_btn_stats_pressed():
 	hide()
 #endregion
 
+#region Credits
+func _on_btn_credits_pressed() -> void:
+	var menu_credits = preload("res://menus/menu_credits/scene/menu_credits.tscn").instantiate()
+	add_child(menu_credits)
+	await get_tree().process_frame
+	hide()
+#endregion
+
+#region Help
+func _on_btn_help_pressed() -> void:
+	var ruta_manual = ProjectSettings.globalize_path("res://docs/Manual de usuario TFG.pdf")
+	if FileAccess.file_exists("res://docs/Manual de usuario TFG.pdf"):
+		OS.shell_open(ruta_manual)
+	else:
+		print("No se encontró el archivo del manual.")
+#endregion
+
 #region Exit
 func _on_btn_end_pressed():
 	get_tree().quit()

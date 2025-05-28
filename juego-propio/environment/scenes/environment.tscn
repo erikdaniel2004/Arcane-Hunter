@@ -1548,7 +1548,7 @@ position = Vector2(124, 623)
 [node name="players" type="Node2D" parent="."]
 
 [node name="player_knight" parent="players" instance=ExtResource("10_85w36")]
-position = Vector2(198, 240)
+position = Vector2(208, 240)
 scale = Vector2(0.75, 0.75)
 
 [node name="player_cat" parent="players" instance=ExtResource("50_nm6de")]
@@ -1670,7 +1670,8 @@ bus = &"Music"
 parameters/looping = true
 
 [node name="BreakableWall" parent="effects" groups=["efectos_visuales"] instance=ExtResource("62_muhp8")]
-position = Vector2(129, 1650)
+position = Vector2(131, 1651)
+scale = Vector2(0.973, 0.973)
 
 [node name="menu_option" parent="." instance=ExtResource("64_o2a5v")]
 visible = false

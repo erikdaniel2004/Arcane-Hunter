@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4lqnel5fa3hj"]
+
+[ext_resource type="Script" path="res://menus/menu_credits/script/menu_credits.gd" id="1_llxp3"]
+[ext_resource type="Texture2D" uid="uid://de6p2knjdx1l" path="res://menus/menu_credits/img/credits.png" id="2_1vg7j"]
+[ext_resource type="Texture2D" uid="uid://bxc6aqfrovyh7" path="res://interface/1 Frames/Frame1.png" id="3_p2sdy"]
+[ext_resource type="Texture2D" uid="uid://bkno638orwh0d" path="res://interface/3 Icons/Icons yellow/Icon_13.png" id="4_jo0mm"]
+
+[node name="menu_credits" type="CanvasLayer"]
+script = ExtResource("1_llxp3")
+
+[node name="color_rect" type="ColorRect" parent="."]
+anchors_preset = -1
+anchor_right = 2.04427
+anchor_bottom = 2.70679
+offset_right = -355.0
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.105882, 0.105882, 0.105882, 0.470588)
+metadata/_edit_use_anchors_ = true
+
+[node name="images" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="img_credits" type="Sprite2D" parent="images"]
+position = Vector2(616, 326)
+scale = Vector2(0.535156, 0.419271)
+texture = ExtResource("2_1vg7j")
+
+[node name="cross" type="Node2D" parent="images"]
+position = Vector2(555.492, 1.73797)
+scale = Vector2(1.5, 1.5)
+
+[node name="mark_cross" type="Sprite2D" parent="images/cross"]
+position = Vector2(199, 27)
+scale = Vector2(1.45455, 1.47826)
+texture = ExtResource("3_p2sdy")
+
+[node name="mark_cross2" type="Sprite2D" parent="images/cross"]
+position = Vector2(199, 27)
+scale = Vector2(1.45455, 1.47826)
+texture = ExtResource("4_jo0mm")
+
+[node name="resources" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="btn_quit" type="Button" parent="resources"]
+layout_mode = 0
+offset_left = 839.0
+offset_top = 4.0
+offset_right = 887.0
+offset_bottom = 54.0
+focus_mode = 0
+flat = true
+
+[connection signal="pressed" from="resources/btn_quit" to="." method="_on_btn_quit_pressed"]

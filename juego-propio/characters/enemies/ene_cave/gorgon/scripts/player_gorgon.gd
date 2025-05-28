@@ -38,8 +38,11 @@ func _ready() -> void:
 	bar_health.visible = false
 	
 	# Se conectan las señales del área de ataque para detectar entrada y salida del jugador
-	area_ataque.body_entered.connect(_on_gorgon_area_body_entered)
-	area_ataque.body_exited.connect(_on_gorgon_area_body_exited)
+	if not area_ataque.is_connected("body_entered", Callable(self, "_on_gorgon_area_body_entered")):
+		area_ataque.body_entered.connect(_on_gorgon_area_body_entered)
+		
+	if not area_ataque.is_connected("body_exited", Callable(self, "_on_gorgon_area_body_exited")):
+		area_ataque.body_exited.connect(_on_gorgon_area_body_exited)
 #endregion
 
 #region Physics Process

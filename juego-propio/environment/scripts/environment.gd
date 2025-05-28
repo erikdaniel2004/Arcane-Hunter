@@ -10,6 +10,7 @@ extends Node2D
 @onready var pared = $effects/BreakableWall
 @onready var player1 := $players/player_knight
 @onready var player2 = $players/player_cat
+@onready var salida_nivel = $effects/end_level # Final del nivel
 @export var limite_separacion := 300
 
 # Señales
@@ -20,20 +21,29 @@ var pause_menu_instance: Node = null
 var menu_levels_instance: Node = null
 var modo_multijugador := Global.modo_multijugador
 var salud_original_enemigos = {}
+var jefes_vivos := 0
 #endregion
 
 #region Ready
 func _ready():
 	await get_tree().process_frame
 	player.muerte_por_caida_desactivada = false
+	player2.muerte_por_caida_desactivada = false
 	player.establecer_limites_camara(2, 0, 2383, 1843)
-	player.conectar_enemigo(jefe)
-	if jefe.has_signal("enemigo_muerto"):
-		jefe.connect("enemigo_muerto", Callable(self, "_on_jefe_muerto"), CONNECT_DEFERRED)
 	add_to_group("nivel")
 	aplicar_configuracion_visual()
 	mover_a_user_si_no_existe()
 	pared.visible = true
+	
+	# Contar jefes vivos al cargar
+	jefes_vivos = 0
+	for jefe_individual in get_tree().get_nodes_in_group("jefes"):
+		jefes_vivos += 1
+		if jefe_individual.has_signal("enemigo_muerto") and not jefe_individual.is_connected("enemigo_muerto", Callable(self, "_on_jefe_muerto")):
+			print("Jefe conectado correctamente")
+			jefe_individual.connect("enemigo_muerto", Callable(self, "_on_jefe_muerto"), CONNECT_DEFERRED)
+
+	salida_nivel.set_deferred("monitoring", false)  # Bloquear la salida al inicio
 	
 	if modo_multijugador:
 		set_jugador2_activo(true)
@@ -180,6 +190,14 @@ func _on_jefe_muerto(es_jefe):
 	print("Se ha ejecutado _on_jefe_muerto")
 	player.registrar_muerte_de_jefe()
 	
+	jefes_vivos -= 1
+	if jefes_vivos <= 0:
+		# Todos los jefes han muerto, se activa la salida
+		if salida_nivel:
+			print("Todos los jefes muertos. Activando salida.")
+			salida_nivel.set_deferred("monitoring", true)
+
+	# Emitir al final, para evitar pausar antes de activar salida
 	var data = {
 		"tiempo": player.contador3.obtener_tiempo(),
 		"monedas": player.monedas,
@@ -188,6 +206,7 @@ func _on_jefe_muerto(es_jefe):
 		"jefes": player.jefes_muertos
 	}
 	emit_signal("jugador_muerto", data, true)
+#endregion
 #endregion
 
 #region Save Stats

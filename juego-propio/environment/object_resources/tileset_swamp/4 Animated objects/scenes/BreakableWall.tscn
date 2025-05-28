@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c2kwrevegttj4" path="res://environment/object_resources/tileset_swamp/4 Animated objects/img/wall.png" id="2_2utg7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m7j3l"]
-size = Vector2(15, 131)
+size = Vector2(17, 131)
 
 [node name="BreakableWall" type="StaticBody2D" groups=["breakable_wall"]]
 texture_filter = 5
