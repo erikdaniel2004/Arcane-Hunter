@@ -84,9 +84,13 @@ func _input(event):
 	if event.is_action_pressed("pausa"):
 		if get_tree().paused:
 			get_tree().paused = false
+			if pause_menu_instance.has_node("color_rect"):
+				pause_menu_instance.get_node("color_rect").visible = false
 			pause_menu_instance.hide()
 		else:
 			get_tree().paused = true
+			if pause_menu_instance.has_node("color_rect"):
+				pause_menu_instance.get_node("color_rect").visible = true
 			pause_menu_instance.show()
 #endregion
 
@@ -186,6 +190,10 @@ func _on_jugador_muerto(data: Dictionary, completado: bool):
 	menu_levels_instance.show()
 
 func _on_jefe_muerto(es_jefe):
+	if jefes_vivos <= 0:
+		print("Ignorando _on_jefe_muerto porque jefes_vivos ya es", jefes_vivos)
+		return
+		
 	print("Se ha ejecutado _on_jefe_muerto")
 	player.registrar_muerte_de_jefe()
 	

@@ -15,18 +15,6 @@ func _ready():
 	hide()
 #endregion
 
-#region Physics Process
-func _physics_process(delta):
-	if Input.is_action_just_pressed("pausa"):
-		color_rect.visible = true
-		if visible:
-			_unpause_and_close()
-		else:
-			show()
-			await get_tree().process_frame
-			get_tree().paused = true
-#endregion
-
 #region Options
 func _unpause_and_close():
 	get_tree().paused = false

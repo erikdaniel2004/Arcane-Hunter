@@ -388,6 +388,10 @@ wait_time = 3.0
 
 [node name="timer_attack" type="Timer" parent="."]
 
+[node name="timer_invulnerable" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
 [node name="audio_boss" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_sonp5")
 bus = &"SFX"
@@ -427,3 +431,4 @@ color = Color(0.92549, 0.145098, 0.133333, 1)
 
 [connection signal="timeout" from="timer_bar" to="." method="_on_timer_bar_timeout"]
 [connection signal="timeout" from="timer_attack" to="." method="_on_timer_attack_timeout"]
+[connection signal="timeout" from="timer_invulnerable" to="." method="_on_timer_invulnerable_timeout"]

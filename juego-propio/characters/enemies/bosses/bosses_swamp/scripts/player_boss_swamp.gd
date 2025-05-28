@@ -182,17 +182,33 @@ func iniciar_burla():
 	is_burlando = false
 #endregion
 
+#region Move Away
+func alejar_jugador():
+	if jugador_detectado and jugador_detectado.is_inside_tree():
+		var direccion = sign(jugador_detectado.global_position.x - global_position.x)
+		var impulso = 500 * direccion  # puede ajustar valor
+
+		# Si el jugador tiene velocity (tipo KinematicBody2D o CharacterBody2D)
+		if "speed" in jugador_detectado:
+			jugador_detectado.velocity.x = impulso
+#endregion
+
 #region Damage/Death
 func recibir_dano(cantidad):
 	if is_dead or es_invulnerable:
 		return
 
 	golpes_recibidos_seguidos += 1
-	timer_invulnerable.start()
 
 	if golpes_recibidos_seguidos >= 3:
 		es_invulnerable = true
 		golpes_recibidos_seguidos = 0
+
+		# Timer que controla el fin de la invulnerabilidad
+		timer_invulnerable.start()
+
+		# Repelemos al jugador para alejarlo
+		alejar_jugador()
 		return
 
 	# Resta vida y actualiza la barra
@@ -264,5 +280,8 @@ func _on_timer_bar_timeout():
 
 func _on_timer_attack_timeout():
 	puede_atacar = true
+
+func _on_timer_invulnerable_timeout():
+	es_invulnerable = false
 #endregion
 #endregion

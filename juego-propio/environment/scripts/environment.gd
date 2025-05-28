@@ -85,9 +85,13 @@ func _input(event):
 	if event.is_action_pressed("pausa"):
 		if get_tree().paused:
 			get_tree().paused = false
+			if pause_menu_instance.has_node("color_rect"):
+				pause_menu_instance.get_node("color_rect").visible = false
 			pause_menu_instance.hide()
 		else:
 			get_tree().paused = true
+			if pause_menu_instance.has_node("color_rect"):
+				pause_menu_instance.get_node("color_rect").visible = true
 			pause_menu_instance.show()
 #endregion
 
