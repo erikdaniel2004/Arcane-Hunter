@@ -66,11 +66,20 @@ func _on_btn_credits_pressed() -> void:
 
 #region Help
 func _on_btn_help_pressed() -> void:
-	var ruta_manual = ProjectSettings.globalize_path("res://docs/Manual de usuario TFG.pdf")
-	if FileAccess.file_exists("res://docs/Manual de usuario TFG.pdf"):
-		OS.shell_open(ruta_manual)
+	var ruta_absoluta: String
+
+	if Engine.is_editor_hint():
+		ruta_absoluta = ProjectSettings.globalize_path("res://docs/manual_usuario.pdf")
 	else:
-		print("No se encontró el archivo del manual.")
+		var base = OS.get_executable_path().get_base_dir()
+		ruta_absoluta = base.path_join("docs").path_join("manual_usuario.pdf")
+
+	print("Intentando abrir:", ruta_absoluta)
+
+	if FileAccess.file_exists(ruta_absoluta):
+		OS.shell_open(ruta_absoluta)
+	else:
+		print("No se encontró el manual en la carpeta docs junto al .exe")
 #endregion
 
 #region Exit

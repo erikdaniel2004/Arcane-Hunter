@@ -1673,8 +1673,10 @@ parameters/looping = true
 position = Vector2(131, 1651)
 scale = Vector2(0.973, 0.973)
 
-[node name="menu_option" parent="." instance=ExtResource("64_o2a5v")]
+[node name="menus" type="Node2D" parent="."]
+
+[node name="menu_option" parent="menus" instance=ExtResource("64_o2a5v")]
 visible = false
 
-[node name="menu_settings" parent="." instance=ExtResource("65_qd4dh")]
+[node name="menu_settings" parent="menus" instance=ExtResource("65_qd4dh")]
 visible = false

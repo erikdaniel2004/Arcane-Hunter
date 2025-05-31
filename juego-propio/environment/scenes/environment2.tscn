@@ -2129,8 +2129,10 @@ autoplay = true
 bus = &"Music"
 parameters/looping = true
 
-[node name="menu_option" parent="." instance=ExtResource("6_vry81")]
+[node name="menus" type="Node2D" parent="."]
+
+[node name="menu_option" parent="menus" instance=ExtResource("6_vry81")]
 visible = false
 
-[node name="menu_settings" parent="." instance=ExtResource("7_xlqbg")]
+[node name="menu_settings" parent="menus" instance=ExtResource("7_xlqbg")]
 visible = false

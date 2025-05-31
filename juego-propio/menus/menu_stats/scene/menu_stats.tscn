@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://1n2vapdl0h2h"]
+[gd_scene load_steps=32 format=3 uid="uid://1n2vapdl0h2h"]
 
 [ext_resource type="Script" path="res://menus/menu_stats/script/menu_stats.gd" id="1_f5ak8"]
 [ext_resource type="Texture2D" uid="uid://c7r5nqcrhcuej" path="res://interface/1 Frames/Back3.png" id="2_8hq2x"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://dmeetgq82fyps" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_37.png" id="23_xoxhg"]
 [ext_resource type="Texture2D" uid="uid://bxc6aqfrovyh7" path="res://interface/1 Frames/Frame1.png" id="24_4tc0m"]
 [ext_resource type="Texture2D" uid="uid://4b82bpa7hyyh" path="res://interface/3 Icons/Icons yellow/Icon_12.png" id="25_1a31d"]
+[ext_resource type="Texture2D" uid="uid://bjmqyamu3q5ht" path="res://interface/3 Icons/Icons yellow/Icon_37.png" id="26_03m7k"]
 [ext_resource type="FontFile" uid="uid://b0ovcqsgsdr2m" path="res://interface/6 Font/CraftPixNet Survival Kit.otf" id="27_8dj48"]
 [ext_resource type="FontFile" uid="uid://cek71hj6bulak" path="res://interface/7 General Font/Pixellari.ttf" id="28_ku8vt"]
 
@@ -1256,15 +1257,28 @@ position = Vector2(0.713597, 1.15864)
 [node name="mark_exit" type="Sprite2D" parent="resources/images"]
 self_modulate = Color(1, 0.835294, 0.411765, 1)
 texture_filter = 5
-position = Vector2(152.5, 322.29)
+position = Vector2(108.914, 322.29)
+scale = Vector2(1.54545, 1.43043)
+texture = ExtResource("24_4tc0m")
+
+[node name="mark_restart" type="Sprite2D" parent="resources/images"]
+self_modulate = Color(1, 0.835294, 0.411765, 1)
+texture_filter = 5
+position = Vector2(196.638, 322.29)
 scale = Vector2(1.54545, 1.43043)
 texture = ExtResource("24_4tc0m")
 
 [node name="exit" type="Sprite2D" parent="resources/images"]
-position = Vector2(152.1, 321.49)
+position = Vector2(109.066, 321.49)
 rotation = -1.5708
 scale = Vector2(1.55556, 1.42222)
 texture = ExtResource("25_1a31d")
+
+[node name="restart" type="Sprite2D" parent="resources/images"]
+position = Vector2(196.79, 322.042)
+rotation = -1.5708
+scale = Vector2(1.55556, 1.42222)
+texture = ExtResource("26_03m7k")
 
 [node name="labels" type="Node2D" parent="resources"]
 
@@ -1337,10 +1351,29 @@ vertical_alignment = 1
 [node name="buttons" type="Node2D" parent="resources"]
 
 [node name="btn_back" type="Button" parent="resources/buttons"]
-offset_left = 135.867
+offset_left = 92.8325
+offset_top = 306.448
+offset_right = 126.832
+offset_bottom = 339.448
+flat = true
+
+[node name="btn_restart" type="Button" parent="resources/buttons"]
+offset_left = 180.0
 offset_top = 307.0
-offset_right = 169.867
+offset_right = 215.0
 offset_bottom = 340.0
 flat = true
 
+[node name="confirm_restart_dialog" type="ConfirmationDialog" parent="."]
+title = "Porfavor confirma"
+initial_position = 2
+size = Vector2i(200, 210)
+ok_button_text = "Aceptar"
+dialog_text = "¿Estás seguro de que quieres reiniciar tu progreso?
+
+Nota: No podrás volver hacia atrás"
+dialog_autowrap = true
+
 [connection signal="pressed" from="resources/buttons/btn_back" to="." method="_on_btn_back_pressed"]
+[connection signal="pressed" from="resources/buttons/btn_restart" to="." method="_on_btn_restart_pressed"]
+[connection signal="confirmed" from="confirm_restart_dialog" to="." method="_on_confirm_restart_dialog_confirmed"]
