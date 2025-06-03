@@ -30,7 +30,7 @@ extends CharacterBody2D
 @onready var particles_blood = $particles_blood
 
 # Variable de vida
-var current_health := max_health
+var current_health : int
 
 # Variable que vuelve invulnerable durante X segundos al jugador
 var is_invulnerable := false
@@ -62,6 +62,11 @@ var input_axis = Input.get_axis("mover_izquierda_p2", "mover_derecha_p2")
 #region Ready
 func _ready():
 	add_to_group("players")
+	aplicar_mejoras()
+	current_health = max_health
+	bar_health.max_value = max_health
+	bar_health.scale.x = clamp(max_health / 100.0, 1.0, 2.0)
+	bar_health.value = current_health
 	bar_health.visible = false
 	
 	var entorno = get_tree().get_first_node_in_group("nivel")
@@ -264,6 +269,23 @@ func atacar():
 	for cuerpo in area:
 		if cuerpo.has_method("recibir_dano") and cuerpo.is_in_group("enemigos") or cuerpo.is_in_group("destructibles"):
 			cuerpo.recibir_dano(damage)
+#endregion
+
+#region Upgrades
+func aplicar_mejoras():
+	var path = "user://JSON/upgrades.json"
+	if not FileAccess.file_exists(path):
+		return
+
+	var file = FileAccess.open(path, FileAccess.READ)
+	var contenido = file.get_as_text()
+	var datos = JSON.parse_string(contenido)
+
+	if datos is Dictionary:
+		# Ajustar atributos base en función del nivel de mejora
+		max_health += datos.get("vida", 0) * 10
+		damage += datos.get("danio", 0) * 2.5
+		speed += datos.get("velocidad", 0) * 20
 #endregion
 
 #region Health Bar

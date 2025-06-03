@@ -1,0 +1,1144 @@
+[gd_scene load_steps=39 format=3 uid="uid://coy2pl2wfuro5"]
+
+[ext_resource type="Script" path="res://menus/menu_upgrades/script/menu_upgrades.gd" id="1_kpa5n"]
+[ext_resource type="Texture2D" uid="uid://c7r5nqcrhcuej" path="res://interface/1 Frames/Back3.png" id="2_dnuy6"]
+[ext_resource type="Texture2D" uid="uid://bot4ewjqhtffc" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_01.png" id="3_g0mqk"]
+[ext_resource type="Texture2D" uid="uid://bntmx2nsknr6m" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_02.png" id="4_pyseh"]
+[ext_resource type="Texture2D" uid="uid://bomh8u4nf44vp" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_03.png" id="5_j0nkm"]
+[ext_resource type="Texture2D" uid="uid://fwbgxlp7wb6q" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_04.png" id="6_3ssf7"]
+[ext_resource type="Texture2D" uid="uid://bclehm701a7xd" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_05.png" id="7_b5y0y"]
+[ext_resource type="Texture2D" uid="uid://brovvq4a7d87g" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_06.png" id="8_hfjpj"]
+[ext_resource type="Texture2D" uid="uid://bjt3qcj8bt75t" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_07.png" id="9_4lp2k"]
+[ext_resource type="Texture2D" uid="uid://cqt3q4akfn7ii" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_11_2.png" id="10_iamkj"]
+[ext_resource type="Texture2D" uid="uid://b14usfrsjwxss" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_21.png" id="11_kqaqk"]
+[ext_resource type="Texture2D" uid="uid://d0bxdm0455jr0" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_22.png" id="12_fbyk8"]
+[ext_resource type="Texture2D" uid="uid://bax6kvlobfn7y" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_23.png" id="13_j880m"]
+[ext_resource type="Texture2D" uid="uid://bueweghnhyn6e" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_24.png" id="14_h74cd"]
+[ext_resource type="Texture2D" uid="uid://48npa6k07hmu" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_25.png" id="15_vnbvc"]
+[ext_resource type="Texture2D" uid="uid://b21jafah7haqi" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_26.png" id="16_hyrkd"]
+[ext_resource type="Texture2D" uid="uid://clj6incu46oke" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_31.png" id="17_je8k6"]
+[ext_resource type="Texture2D" uid="uid://cfa0jy6hgmix4" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_32.png" id="18_y2qxl"]
+[ext_resource type="Texture2D" uid="uid://bnvggarfa6qln" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_33.png" id="19_w6u3v"]
+[ext_resource type="Texture2D" uid="uid://bbufuf5rvnth3" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_34.png" id="20_ppt1v"]
+[ext_resource type="Texture2D" uid="uid://0bcxvi42ci5i" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_35.png" id="21_2jyfj"]
+[ext_resource type="Texture2D" uid="uid://cvax8kk64r0pn" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_36.png" id="22_7rk03"]
+[ext_resource type="Texture2D" uid="uid://dmeetgq82fyps" path="res://interface/1 Frames/Frame_tiles/Frame_Tile_37.png" id="23_ko22f"]
+[ext_resource type="Texture2D" uid="uid://bxc6aqfrovyh7" path="res://interface/1 Frames/Frame1.png" id="24_kqxq7"]
+[ext_resource type="Texture2D" uid="uid://4b82bpa7hyyh" path="res://interface/3 Icons/Icons yellow/Icon_12.png" id="25_gashf"]
+[ext_resource type="Texture2D" uid="uid://bjmqyamu3q5ht" path="res://interface/3 Icons/Icons yellow/Icon_37.png" id="26_u0m13"]
+[ext_resource type="Texture2D" uid="uid://gfxuwf2jfig2" path="res://interface/3 Icons/Icons red/Icon_26.png" id="27_r4na5"]
+[ext_resource type="Texture2D" uid="uid://fce3udbi5jpa" path="res://interface/3 Icons/Icons yellow/Icon_28.png" id="28_ealn2"]
+[ext_resource type="Texture2D" uid="uid://bushbgi26dl05" path="res://interface/3 Icons/Icons blue/Icon_18.png" id="29_ifj67"]
+[ext_resource type="Texture2D" uid="uid://bm8kcafyv1g05" path="res://interface/3 Icons/Icons yellow/Icon_10.png" id="30_sxv16"]
+[ext_resource type="FontFile" uid="uid://b0ovcqsgsdr2m" path="res://interface/6 Font/CraftPixNet Survival Kit.otf" id="31_c1s8q"]
+[ext_resource type="FontFile" uid="uid://cek71hj6bulak" path="res://interface/7 General Font/Pixellari.ttf" id="32_asyhg"]
+[ext_resource type="Texture2D" uid="uid://c7igfbm4tdwj5" path="res://interface/2 Bars/Loading_bar2.png" id="33_wbmjs"]
+[ext_resource type="Texture2D" uid="uid://di2xf6njw4c4l" path="res://interface/2 Bars/Loading_bar1.png" id="34_dl8wm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dxeo7"]
+font = ExtResource("31_c1s8q")
+font_size = 35
+font_color = Color(1, 0.835294, 0.411765, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o1hia"]
+font = ExtResource("32_asyhg")
+font_size = 20
+font_color = Color(0.909804, 0.223529, 0.109804, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ny0h0"]
+font = ExtResource("32_asyhg")
+font_size = 20
+font_color = Color(0.803922, 0.494118, 0.0823529, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_id81w"]
+font = ExtResource("32_asyhg")
+font_size = 20
+font_color = Color(0.388235, 0.654902, 0.831373, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="menu_upgrades" type="CanvasLayer"]
+scale = Vector2(1.45, 1.45)
+transform = Transform2D(1.45, 0, 0, 1.45, 0, 0)
+script = ExtResource("1_kpa5n")
+
+[node name="color_rect" type="ColorRect" parent="."]
+anchors_preset = -1
+anchor_right = 1.76389
+anchor_bottom = 2.07716
+offset_right = -355.0
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.105882, 0.105882, 0.105882, 0.470588)
+metadata/_edit_use_anchors_ = true
+
+[node name="design" type="Control" parent="."]
+texture_filter = 5
+layout_mode = 3
+anchor_left = -7.9857e-05
+anchor_top = -0.000212855
+anchor_right = 0.267281
+anchor_bottom = 0.538367
+offset_left = 210.644
+offset_top = 64.8736
+offset_right = 210.644
+offset_bottom = 64.8736
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.25, 1.25)
+metadata/_edit_use_anchors_ = true
+
+[node name="background" type="GridContainer" parent="design"]
+layout_mode = 0
+offset_left = -27.0
+offset_top = 5.0
+offset_right = 261.0
+offset_bottom = 56.0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+
+[node name="Back3" type="Sprite2D" parent="design/background"]
+texture_filter = 5
+position = Vector2(180.208, 9)
+scale = Vector2(1.24761, 1)
+texture = ExtResource("2_dnuy6")
+
+[node name="Back4" type="Sprite2D" parent="design/background"]
+texture_filter = 5
+position = Vector2(180.208, 36.0345)
+scale = Vector2(1.24761, 1)
+texture = ExtResource("2_dnuy6")
+flip_v = true
+
+[node name="Back5" type="Sprite2D" parent="design/background"]
+texture_filter = 5
+position = Vector2(180.208, 63.069)
+scale = Vector2(1.24761, 1)
+texture = ExtResource("2_dnuy6")
+
+[node name="Back6" type="Sprite2D" parent="design/background"]
+texture_filter = 5
+position = Vector2(180.208, 89.5517)
+scale = Vector2(1.24761, 1)
+texture = ExtResource("2_dnuy6")
+flip_v = true
+
+[node name="Back7" type="Sprite2D" parent="design/background"]
+texture_filter = 5
+position = Vector2(180.208, 114.931)
+scale = Vector2(1.24761, 1)
+texture = ExtResource("2_dnuy6")
+
+[node name="Back8" type="Sprite2D" parent="design/background"]
+texture_filter = 5
+position = Vector2(180.208, 141.966)
+scale = Vector2(1.24761, 1)
+texture = ExtResource("2_dnuy6")
+flip_v = true
+
+[node name="Back9" type="Sprite2D" parent="design/background"]
+texture_filter = 5
+position = Vector2(180.208, 169)
+scale = Vector2(1.24761, 1)
+texture = ExtResource("2_dnuy6")
+
+[node name="Back10" type="Sprite2D" parent="design/background"]
+texture_filter = 5
+position = Vector2(180.208, 196.034)
+scale = Vector2(1.24761, 1)
+texture = ExtResource("2_dnuy6")
+flip_v = true
+
+[node name="Back11" type="Sprite2D" parent="design/background"]
+texture_filter = 5
+position = Vector2(180.208, 221.966)
+scale = Vector2(1.24761, 1)
+texture = ExtResource("2_dnuy6")
+
+[node name="marks" type="GridContainer" parent="design"]
+texture_filter = 5
+layout_mode = 0
+offset_right = 224.0
+offset_bottom = 352.0
+scale = Vector2(1.4, 1)
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 14
+
+[node name="TextureRect" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("3_g0mqk")
+
+[node name="TextureRect2" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("4_pyseh")
+
+[node name="TextureRect3" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("5_j0nkm")
+
+[node name="TextureRect4" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("6_3ssf7")
+
+[node name="TextureRect5" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("7_b5y0y")
+
+[node name="TextureRect6" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("8_hfjpj")
+
+[node name="TextureRect7" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("9_4lp2k")
+
+[node name="TextureRect14" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("9_4lp2k")
+flip_h = true
+
+[node name="TextureRect13" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("8_hfjpj")
+flip_h = true
+
+[node name="TextureRect12" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("7_b5y0y")
+flip_h = true
+
+[node name="TextureRect11" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("6_3ssf7")
+flip_h = true
+
+[node name="TextureRect10" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("5_j0nkm")
+flip_h = true
+
+[node name="TextureRect9" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("4_pyseh")
+flip_h = true
+
+[node name="TextureRect8" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("3_g0mqk")
+flip_h = true
+
+[node name="TextureRect15" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("10_iamkj")
+
+[node name="TextureRect16" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect17" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect18" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect19" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect20" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect21" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect22" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect23" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect24" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect25" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect26" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect27" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect28" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("10_iamkj")
+flip_h = true
+
+[node name="TextureRect29" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("10_iamkj")
+
+[node name="TextureRect30" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect31" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect32" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect33" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect34" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect35" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect36" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect37" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect38" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect39" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect40" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect41" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect42" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("10_iamkj")
+flip_h = true
+
+[node name="TextureRect43" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("11_kqaqk")
+
+[node name="TextureRect44" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("12_fbyk8")
+
+[node name="TextureRect49" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("12_fbyk8")
+
+[node name="TextureRect45" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("13_j880m")
+
+[node name="TextureRect46" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("14_h74cd")
+
+[node name="TextureRect47" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("15_vnbvc")
+
+[node name="TextureRect48" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("16_hyrkd")
+
+[node name="TextureRect55" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("16_hyrkd")
+flip_h = true
+
+[node name="TextureRect56" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("15_vnbvc")
+flip_h = true
+
+[node name="TextureRect54" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("14_h74cd")
+flip_h = true
+
+[node name="TextureRect53" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("13_j880m")
+flip_h = true
+
+[node name="TextureRect51" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("12_fbyk8")
+
+[node name="TextureRect52" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("12_fbyk8")
+
+[node name="TextureRect50" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("11_kqaqk")
+flip_h = true
+
+[node name="TextureRect57" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("10_iamkj")
+
+[node name="TextureRect58" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect59" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect60" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect61" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect62" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect63" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect64" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect65" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect66" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect67" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect68" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect69" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect70" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("10_iamkj")
+flip_h = true
+
+[node name="TextureRect71" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("10_iamkj")
+
+[node name="TextureRect72" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect73" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect74" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect75" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect76" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect77" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+flip_h = true
+
+[node name="TextureRect78" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect79" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect80" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect81" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect82" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect83" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect84" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("10_iamkj")
+flip_h = true
+
+[node name="TextureRect85" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("10_iamkj")
+
+[node name="TextureRect86" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect87" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect88" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect89" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect90" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect91" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect92" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+flip_h = true
+
+[node name="TextureRect93" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect94" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect95" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect96" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect97" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+flip_h = true
+
+[node name="TextureRect98" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("10_iamkj")
+flip_h = true
+
+[node name="TextureRect99" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("10_iamkj")
+
+[node name="TextureRect100" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect101" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect102" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect103" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect104" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect105" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect106" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect107" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect108" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect109" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect110" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect111" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+flip_h = true
+
+[node name="TextureRect112" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("10_iamkj")
+flip_h = true
+
+[node name="TextureRect113" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("10_iamkj")
+
+[node name="TextureRect114" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect115" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect116" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect117" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect118" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect119" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+flip_h = true
+
+[node name="TextureRect120" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect121" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect122" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect123" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect124" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect125" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect126" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("10_iamkj")
+flip_h = true
+
+[node name="TextureRect127" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("10_iamkj")
+
+[node name="TextureRect128" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect129" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect130" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect131" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect132" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect133" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect134" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect135" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect136" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect137" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect138" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect139" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+flip_h = true
+
+[node name="TextureRect140" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("10_iamkj")
+flip_h = true
+
+[node name="TextureRect141" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("10_iamkj")
+
+[node name="TextureRect142" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect143" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect144" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect145" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect146" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect147" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect148" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect149" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect150" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect151" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect152" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect153" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+flip_h = true
+
+[node name="TextureRect154" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("10_iamkj")
+flip_h = true
+
+[node name="TextureRect155" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("10_iamkj")
+
+[node name="TextureRect156" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect157" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect158" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect159" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect160" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect161" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect162" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect163" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect164" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect165" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect166" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect167" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect168" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("10_iamkj")
+flip_h = true
+
+[node name="TextureRect169" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("10_iamkj")
+
+[node name="TextureRect170" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect171" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect172" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect173" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect174" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect175" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect176" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect177" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect178" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect179" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect180" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect181" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect182" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("10_iamkj")
+flip_h = true
+
+[node name="TextureRect183" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("10_iamkj")
+
+[node name="TextureRect184" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect185" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect186" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect187" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect188" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect189" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect190" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect191" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect192" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect193" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect194" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect195" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+
+[node name="TextureRect196" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("10_iamkj")
+flip_h = true
+
+[node name="TextureRect295" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("17_je8k6")
+
+[node name="TextureRect296" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("18_y2qxl")
+
+[node name="TextureRect297" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("19_w6u3v")
+
+[node name="TextureRect298" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("20_ppt1v")
+
+[node name="TextureRect299" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("21_2jyfj")
+
+[node name="TextureRect300" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("22_7rk03")
+
+[node name="TextureRect301" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("23_ko22f")
+
+[node name="TextureRect302" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("23_ko22f")
+
+[node name="TextureRect303" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("22_7rk03")
+flip_h = true
+
+[node name="TextureRect304" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("21_2jyfj")
+flip_h = true
+
+[node name="TextureRect305" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("20_ppt1v")
+flip_h = true
+
+[node name="TextureRect306" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("19_w6u3v")
+flip_h = true
+
+[node name="TextureRect307" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("18_y2qxl")
+flip_h = true
+
+[node name="TextureRect308" type="TextureRect" parent="design/marks"]
+layout_mode = 2
+texture = ExtResource("17_je8k6")
+flip_h = true
+
+[node name="resources" type="Control" parent="."]
+texture_filter = 5
+layout_mode = 3
+anchor_left = -7.9857e-05
+anchor_top = -0.000212855
+anchor_right = 0.268149
+anchor_bottom = 0.539911
+offset_left = 210.644
+offset_top = 65.5632
+offset_right = 210.644
+offset_bottom = 65.5632
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.25, 1.25)
+metadata/_edit_use_anchors_ = true
+
+[node name="images" type="Node2D" parent="resources"]
+texture_filter = 5
+position = Vector2(0.713597, 1.15864)
+
+[node name="mark_exit" type="Sprite2D" parent="resources/images"]
+self_modulate = Color(1, 0.835294, 0.411765, 1)
+texture_filter = 5
+position = Vector2(108.914, 209.187)
+scale = Vector2(1.54545, 1.43043)
+texture = ExtResource("24_kqxq7")
+
+[node name="mark_restart" type="Sprite2D" parent="resources/images"]
+self_modulate = Color(1, 0.835294, 0.411765, 1)
+texture_filter = 5
+position = Vector2(196.638, 209.187)
+scale = Vector2(1.54545, 1.43043)
+texture = ExtResource("24_kqxq7")
+
+[node name="exit" type="Sprite2D" parent="resources/images"]
+position = Vector2(109.066, 208.387)
+rotation = -1.5708
+scale = Vector2(1.55556, 1.42222)
+texture = ExtResource("25_gashf")
+
+[node name="restart" type="Sprite2D" parent="resources/images"]
+position = Vector2(196.79, 208.939)
+rotation = -1.5708
+scale = Vector2(1.55556, 1.42222)
+texture = ExtResource("26_u0m13")
+
+[node name="mark_health" type="Sprite2D" parent="resources/images"]
+position = Vector2(126.044, 93.021)
+scale = Vector2(1.12853, 0.983508)
+texture = ExtResource("24_kqxq7")
+
+[node name="mark_damage" type="Sprite2D" parent="resources/images"]
+position = Vector2(126.044, 130.538)
+scale = Vector2(1.12853, 0.983508)
+texture = ExtResource("24_kqxq7")
+
+[node name="icon_health" type="Sprite2D" parent="resources/images"]
+texture_filter = 5
+position = Vector2(125.958, 92.383)
+scale = Vector2(1.02108, 0.95977)
+texture = ExtResource("27_r4na5")
+
+[node name="icon_damage" type="Sprite2D" parent="resources/images"]
+texture_filter = 5
+position = Vector2(125.958, 129.9)
+scale = Vector2(1.02108, 0.95977)
+texture = ExtResource("28_ealn2")
+
+[node name="mark_velocity" type="Sprite2D" parent="resources/images"]
+position = Vector2(126.044, 167.504)
+scale = Vector2(1.12853, 0.983508)
+texture = ExtResource("24_kqxq7")
+
+[node name="icon_velocity" type="Sprite2D" parent="resources/images"]
+texture_filter = 5
+position = Vector2(125.958, 166.866)
+scale = Vector2(1.02108, 0.95977)
+texture = ExtResource("29_ifj67")
+
+[node name="mark_plus" type="Sprite2D" parent="resources/images"]
+position = Vector2(286.845, 92.9839)
+scale = Vector2(1.12853, 0.983508)
+texture = ExtResource("24_kqxq7")
+
+[node name="icon_plus" type="Sprite2D" parent="resources/images"]
+texture_filter = 5
+position = Vector2(286.759, 92.3458)
+scale = Vector2(1.02108, 0.95977)
+texture = ExtResource("30_sxv16")
+
+[node name="mark_plus2" type="Sprite2D" parent="resources/images"]
+position = Vector2(287.107, 130.046)
+scale = Vector2(1.15232, 0.943941)
+texture = ExtResource("24_kqxq7")
+
+[node name="icon_plus2" type="Sprite2D" parent="resources/images"]
+texture_filter = 5
+position = Vector2(287.019, 129.434)
+scale = Vector2(1.0426, 0.921158)
+texture = ExtResource("30_sxv16")
+
+[node name="mark_plus3" type="Sprite2D" parent="resources/images"]
+position = Vector2(287.107, 168.667)
+scale = Vector2(1.15232, 0.943941)
+texture = ExtResource("24_kqxq7")
+
+[node name="icon_plus3" type="Sprite2D" parent="resources/images"]
+texture_filter = 5
+position = Vector2(287.019, 168.054)
+scale = Vector2(1.0426, 0.921158)
+texture = ExtResource("30_sxv16")
+
+[node name="labels" type="Node2D" parent="resources"]
+
+[node name="lbl_upgrades" type="Label" parent="resources/labels"]
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 309.0
+offset_bottom = 50.0
+text = "Mejoras"
+label_settings = SubResource("LabelSettings_dxeo7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lbl_health" type="Label" parent="resources/labels"]
+offset_left = 20.3448
+offset_top = 85.6552
+offset_right = 104.345
+offset_bottom = 113.655
+text = "Vida"
+label_settings = SubResource("LabelSettings_o1hia")
+horizontal_alignment = 1
+
+[node name="lbl_damage" type="Label" parent="resources/labels"]
+offset_left = 22.3448
+offset_top = 122.517
+offset_right = 103.345
+offset_bottom = 150.517
+text = "Daño
+"
+label_settings = SubResource("LabelSettings_ny0h0")
+horizontal_alignment = 1
+
+[node name="lbl_velocity" type="Label" parent="resources/labels"]
+offset_left = 19.3448
+offset_top = 159.379
+offset_right = 106.345
+offset_bottom = 179.379
+text = "Velocidad
+"
+label_settings = SubResource("LabelSettings_id81w")
+horizontal_alignment = 1
+
+[node name="buttons" type="Node2D" parent="resources"]
+
+[node name="btn_back" type="Button" parent="resources/buttons"]
+offset_left = 92.8325
+offset_top = 193.345
+offset_right = 126.832
+offset_bottom = 226.345
+flat = true
+
+[node name="btn_restart" type="Button" parent="resources/buttons"]
+offset_left = 180.0
+offset_top = 193.897
+offset_right = 215.0
+offset_bottom = 226.897
+flat = true
+
+[node name="btn_plus_health" type="Button" parent="resources/buttons"]
+offset_left = 275.448
+offset_top = 82.0
+offset_right = 300.448
+offset_bottom = 105.0
+focus_mode = 0
+flat = true
+
+[node name="btn_plus_damage" type="Button" parent="resources/buttons"]
+offset_left = 275.448
+offset_top = 119.517
+offset_right = 300.448
+offset_bottom = 142.517
+focus_mode = 0
+flat = true
+
+[node name="btn_plus_velocity" type="Button" parent="resources/buttons"]
+offset_left = 275.448
+offset_top = 157.586
+offset_right = 300.448
+offset_bottom = 180.586
+focus_mode = 0
+flat = true
+
+[node name="progress_bars" type="Node2D" parent="resources"]
+position = Vector2(-275.939, -6.7899)
+scale = Vector2(0.64, 0.64)
+
+[node name="progressbar_health" type="TextureProgressBar" parent="resources/progress_bars"]
+texture_filter = 5
+offset_left = 650.724
+offset_top = 142.621
+offset_right = 718.724
+offset_bottom = 158.621
+scale = Vector2(3, 1.75)
+max_value = 10.0
+texture_under = ExtResource("33_wbmjs")
+texture_progress = ExtResource("34_dl8wm")
+tint_progress = Color(0.909804, 0.266667, 0.266667, 1)
+
+[node name="progressbar_damage" type="TextureProgressBar" parent="resources/progress_bars"]
+texture_filter = 5
+offset_left = 650.724
+offset_top = 202.103
+offset_right = 718.724
+offset_bottom = 218.103
+scale = Vector2(3, 1.75)
+max_value = 10.0
+texture_under = ExtResource("33_wbmjs")
+texture_progress = ExtResource("34_dl8wm")
+
+[node name="progressbar_velocity" type="TextureProgressBar" parent="resources/progress_bars"]
+texture_filter = 5
+offset_left = 650.724
+offset_top = 259.862
+offset_right = 718.724
+offset_bottom = 275.862
+scale = Vector2(3, 1.75)
+max_value = 10.0
+texture_under = ExtResource("33_wbmjs")
+texture_progress = ExtResource("34_dl8wm")
+tint_progress = Color(0.313158, 0.691017, 0.828292, 1)
+
+[connection signal="pressed" from="resources/buttons/btn_back" to="." method="_on_btn_back_pressed"]
+[connection signal="pressed" from="resources/buttons/btn_restart" to="." method="_on_btn_restart_pressed"]
+[connection signal="pressed" from="resources/buttons/btn_plus_health" to="." method="_on_btn_plus_health_pressed"]
+[connection signal="pressed" from="resources/buttons/btn_plus_damage" to="." method="_on_btn_plus_damage_pressed"]
+[connection signal="pressed" from="resources/buttons/btn_plus_velocity" to="." method="_on_btn_plus_velocity_pressed"]

@@ -56,7 +56,7 @@ var jefes_muertos := 0
 var esta_herido = false
 
 # Variable con la que contabilizar la vida de la gorgona
-var current_health := max_health
+var current_health : int
 
 # Variable con la que hacer invulnerable al jugador cuando reciba un ataque
 var is_invulnerable := false
@@ -72,6 +72,13 @@ func _ready():
 	contador.actualizar(contadores_en_cero)
 	contador2.actualizar(contadores_en_cero)
 	contador3.iniciar()
+	
+	aplicar_mejoras()
+	
+	current_health = max_health
+	bar_health.max_value = max_health
+	bar_health.scale.x = clamp(max_health / 100.0, 1.0, 2.0)
+	bar_health.value = current_health
 	bar_health.visible = false
 #endregion
 
@@ -248,6 +255,23 @@ func atacar():
 			elif cuerpo.is_in_group("destructibles"):
 				cuerpo.recibir_dano(damage)
 
+#endregion
+
+#region Upgrades
+func aplicar_mejoras():
+	var path = "user://JSON/upgrades.json"
+	if not FileAccess.file_exists(path):
+		return
+
+	var file = FileAccess.open(path, FileAccess.READ)
+	var contenido = file.get_as_text()
+	var datos = JSON.parse_string(contenido)
+
+	if datos is Dictionary:
+		# Ajustar atributos base en función del nivel de mejora
+		max_health += datos.get("vida", 0) * 10
+		damage += datos.get("danio", 0) * 2.5
+		speed += datos.get("velocidad", 0) * 20
 #endregion
 
 #region Health Bar

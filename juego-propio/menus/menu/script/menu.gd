@@ -82,6 +82,14 @@ func _on_btn_help_pressed() -> void:
 		print("No se encontró el manual en la carpeta docs junto al .exe")
 #endregion
 
+#region Upgrades
+func _on_btn_upgrades_pressed() -> void:
+	var menu_upgrades = preload("res://menus/menu_upgrades/scene/menu_upgrades.tscn").instantiate()
+	add_child(menu_upgrades)
+	await get_tree().process_frame
+	hide()
+#endregion
+
 #region Exit
 func _on_btn_end_pressed():
 	get_tree().quit()

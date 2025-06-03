@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bf310qhl7at8o"]
+[gd_scene load_steps=18 format=3 uid="uid://bf310qhl7at8o"]
 
 [ext_resource type="Script" path="res://menus/menu/script/menu.gd" id="1_hphn0"]
 [ext_resource type="AudioStream" uid="uid://cjm2xyolltbqj" path="res://menus/menu/music/medieval-adventure-270566.mp3" id="2_adlgu"]
@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://cek71hj6bulak" path="res://interface/7 General Font/Pixellari.ttf" id="6_uhv57"]
 [ext_resource type="FontFile" uid="uid://b0ovcqsgsdr2m" path="res://interface/6 Font/CraftPixNet Survival Kit.otf" id="7_jeblv"]
 [ext_resource type="Texture2D" uid="uid://7jw6a7aa7gih" path="res://interface/3 Icons/Icon with back/Icon_01.png" id="8_kocx4"]
+[ext_resource type="Texture2D" uid="uid://cgvsd1oa7iv45" path="res://interface/3 Icons/Icons yellow/Icon_107.png" id="9_2r8t8"]
 [ext_resource type="Texture2D" uid="uid://mxt5b82iph4j" path="res://interface/3 Icons/Icon with back/Icon_13.png" id="9_bxvom"]
 [ext_resource type="Texture2D" uid="uid://crumik5o8afto" path="res://interface/3 Icons/Icons yellow/Icon_30.png" id="10_2sbbi"]
 [ext_resource type="Texture2D" uid="uid://gt17kvokulyt" path="res://interface/3 Icons/Icons yellow/Icon_23.png" id="12_c14ik"]
@@ -111,6 +112,13 @@ texture_filter = 5
 position = Vector2(1109, 606)
 scale = Vector2(4, 4)
 texture = ExtResource("15_x2uku")
+
+[node name="upgrades" type="Sprite2D" parent="resources/images"]
+self_modulate = Color(1, 1, 0.392157, 1)
+texture_filter = 5
+position = Vector2(1007, 606)
+scale = Vector2(4, 4)
+texture = ExtResource("9_2r8t8")
 
 [node name="audio" type="Control" parent="resources"]
 layout_mode = 3
@@ -262,9 +270,19 @@ offset_bottom = 60.0
 focus_mode = 0
 flat = true
 
+[node name="btn_upgrades" type="Button" parent="resources/buttons"]
+layout_mode = 0
+offset_left = 950.0
+offset_top = 558.0
+offset_right = 1019.0
+offset_bottom = 624.0
+focus_mode = 0
+flat = true
+
 [connection signal="pressed" from="resources/boxes/vbox_menu/btn_start" to="." method="_on_btn_start_pressed"]
 [connection signal="pressed" from="resources/boxes/vbox_menu/btn_exit" to="." method="_on_btn_end_pressed"]
 [connection signal="pressed" from="resources/buttons/btn_settings" to="." method="_on_btn_settings_pressed"]
 [connection signal="pressed" from="resources/buttons/btn_stats" to="." method="_on_btn_stats_pressed"]
 [connection signal="pressed" from="resources/buttons/btn_credits" to="." method="_on_btn_credits_pressed"]
 [connection signal="pressed" from="resources/buttons/btn_help" to="." method="_on_btn_help_pressed"]
+[connection signal="pressed" from="resources/buttons/btn_upgrades" to="." method="_on_btn_upgrades_pressed"]
