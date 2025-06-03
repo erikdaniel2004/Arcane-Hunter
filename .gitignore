@@ -1,1 +1,3 @@
-ArcaneHunter.exe
+/app/*.exe
+/app/*.zip
+/docs/*.pptx
